@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tanisi Mehta — Computational Media student at Georgia Tech. UI/UX designer and creative technologist blending design, code, and interactive media." />
+  <meta name="author" content="Tanisi Mehta" />
+
+  <!-- Open Graph / social preview -->
+  <meta property="og:title" content="Tanisi Mehta — Computational Media & UI/UX" />
+  <meta property="og:description" content="Designer and creative technologist blending design, code, and interactive media." />
+  <meta property="og:type" content="website" />
+
+  <title>Tanisi Mehta — Computational Media &amp; UI/UX Designer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%237c3aed'/><text x='50' y='68' font-size='58' font-family='Georgia,serif' fill='white' text-anchor='middle' font-weight='700'>T</text></svg>" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#hero" class="nav__brand" aria-label="Tanisi Mehta — home">
+        <span class="nav__mark">T</span>
+        <span class="nav__name">Tanisi<span class="nav__dot">.</span></span>
+      </a>
+
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="#about" class="nav__link">About</a>
+        <a href="#skills" class="nav__link">Skills</a>
+        <a href="#projects" class="nav__link">Projects</a>
+        <a href="#experience" class="nav__link">Experience</a>
+        <a href="#education" class="nav__link">Education</a>
+        <a href="#contact" class="nav__link nav__link--cta">Contact</a>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <div class="hero__bg" aria-hidden="true">
+        <span class="blob blob--1"></span>
+        <span class="blob blob--2"></span>
+        <span class="blob blob--3"></span>
+      </div>
+
+      <div class="hero__inner">
+        <div class="hero__text reveal">
+          <p class="hero__eyebrow">Computational Media · Georgia Tech</p>
+          <h1 class="hero__title">
+            Hi, I'm <span class="grad">Tanisi Mehta</span> —<br />
+            I design &amp; build <span class="underline">interactive experiences</span>.
+          </h1>
+          <p class="hero__lede">
+            A creative technologist working at the intersection of <strong>UI/UX design</strong>,
+            <strong>code</strong>, and <strong>interactive media</strong>. I take
+            <strong>ownership</strong> of real-world problems and turn them into clean, efficient
+            solutions that actually help people — from healthcare triage tools to games.
+          </p>
+          <div class="hero__cta">
+            <a href="#projects" class="btn btn--primary">View my work</a>
+            <a href="#contact" class="btn btn--ghost">Get in touch</a>
+          </div>
+          <ul class="hero__stats">
+            <li><span class="hero__stat-num">4.23</span><span class="hero__stat-lbl">HS GPA (4.0 scale)</span></li>
+            <li><span class="hero__stat-num">4+</span><span class="hero__stat-lbl">Design &amp; dev projects</span></li>
+            <li><span class="hero__stat-num">2030</span><span class="hero__stat-lbl">Expected GT grad</span></li>
+          </ul>
+        </div>
+
+        <div class="hero__portrait reveal">
+          <!-- Replace the src below with Tanisi's photo (see README). Falls back to a monogram if missing. -->
+          <div class="portrait">
+            <img src="images/tanisi.jpg" alt="Portrait of Tanisi Mehta"
+                 onerror="this.style.display='none';this.parentElement.classList.add('portrait--empty')" />
+            <span class="portrait__mono" aria-hidden="true">TM</span>
+          </div>
+          <div class="portrait__badge">✦ Open to internships</div>
+        </div>
+      </div>
+
+      <a href="#about" class="hero__scroll" aria-label="Scroll to About">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about">
+      <div class="wrap">
+        <p class="section__kicker reveal">01 — About</p>
+        <h2 class="section__title reveal">Designer, builder, and curious problem-solver.</h2>
+        <div class="about__grid">
+          <div class="about__lead reveal">
+            <p>
+              I'm a Computational Media student at the <strong>Georgia Institute of Technology</strong>,
+              where I blend the technical and the creative — computing, design, and storytelling.
+              I love the moment where research becomes something you can actually click, play, and feel.
+            </p>
+            <p>
+              My work spans <strong>UI/UX and visual design in Figma</strong>, front-end prototyping
+              with <strong>HTML/CSS/JavaScript</strong>, and game development in
+              <strong>GameMaker</strong>. I'm especially drawn to human-centered design: making
+              complex systems calmer, clearer, and more accessible for real people.
+            </p>
+            <p>
+              What drives me is <strong>solving real-life problems</strong>. I take
+              <strong>ownership</strong> of a challenge end-to-end — researching how things actually
+              work, questioning inefficient processes, and delivering solutions that add genuine
+              value. I care less about building something flashy and more about building something
+              that <strong>works, is efficient, and truly helps the people using it</strong>.
+            </p>
+            <p>
+              I also embrace <strong>AI-assisted workflows</strong> — using tools like
+              <strong>Kiro</strong> and <strong>Claude</strong> to move faster from idea to
+              working prototype, while keeping the design decisions thoughtful and human.
+            </p>
+          </div>
+          <ul class="about__facts reveal">
+            <li><span>📍</span><div><strong>Based in</strong>Atlanta, GA</div></li>
+            <li><span>🎓</span><div><strong>Studying</strong>BS, Computational Media @ GT</div></li>
+            <li><span>🎯</span><div><strong>Focus</strong>Solving real problems · Owning &amp; delivering solutions</div></li>
+            <li><span>🤖</span><div><strong>Builds with</strong>Figma · JS · Kiro · Claude</div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section section--tint" id="skills">
+      <div class="wrap">
+        <p class="section__kicker reveal">02 — Skills</p>
+        <h2 class="section__title reveal">What I work with.</h2>
+
+        <div class="skills__grid">
+          <article class="skillcard reveal">
+            <h3><span class="skillcard__ico">🎨</span> Design</h3>
+            <ul class="chips">
+              <li>UI/UX Design</li>
+              <li>Visual Design</li>
+              <li>Figma</li>
+              <li>Prototyping</li>
+              <li>Wireframing</li>
+              <li>Accessibility</li>
+            </ul>
+          </article>
+
+          <article class="skillcard reveal">
+            <h3><span class="skillcard__ico">💻</span> Development</h3>
+            <ul class="chips">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>Python</li>
+              <li>Java</li>
+              <li>GameMaker</li>
+            </ul>
+          </article>
+
+          <article class="skillcard reveal">
+            <h3><span class="skillcard__ico">🤖</span> AI &amp; Tools</h3>
+            <ul class="chips">
+              <li>Kiro (AI IDE)</li>
+              <li>Claude</li>
+              <li>AI-assisted dev</li>
+              <li>GitHub</li>
+              <li>Git</li>
+            </ul>
+          </article>
+
+          <article class="skillcard reveal">
+            <h3><span class="skillcard__ico">🧩</span> Strengths</h3>
+            <ul class="chips">
+              <li>Ownership &amp; Delivery</li>
+              <li>Creative Problem Solving</li>
+              <li>Process Improvement</li>
+              <li>Innovation</li>
+              <li>Real-World Impact</li>
+              <li>Team Collaboration</li>
+              <li>User Research</li>
+              <li>Interactive Media</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="section" id="projects">
+      <div class="wrap">
+        <p class="section__kicker reveal">03 — Projects</p>
+        <h2 class="section__title reveal">Selected work.</h2>
+        <p class="section__intro reveal">
+          Each project below is told the way I approach my work — the <strong>situation</strong> I
+          started with, the <strong>tasks</strong> I owned, the <strong>actions</strong> I took, and
+          the <strong>outcome</strong> I delivered.
+        </p>
+
+        <!-- ER TRIAGE — FEATURED -->
+        <article class="project project--featured reveal" id="er-triage">
+          <div class="project__head">
+            <div>
+              <span class="project__tag project__tag--star">★ Featured</span>
+              <h3 class="project__title">ER FastTrack — Emergency-Room Triage Support</h3>
+              <p class="project__meta">Interactive web prototype · Healthcare UX · September 2026</p>
+            </div>
+            <div class="project__stack">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Kiro AI</span><span>UX Research</span>
+            </div>
+          </div>
+
+          <p class="project__pitch">
+            A patient intake &amp; triage-support prototype for emergency departments built on one
+            principle: <em>“Patients report → Technology organizes → Clinical staff decide.”</em>
+            It gathers structured information before clinical assessment and surfaces what may deserve
+            prompt review — <strong>without ever diagnosing or ranking patients itself.</strong>
+          </p>
+
+          <div class="star">
+            <div class="star__item">
+              <span class="star__label">S — Situation</span>
+              <p>
+                Emergency rooms lose precious time to repetitive information-gathering, and patients
+                are unreliable at judging their own urgency — research shows roughly
+                <strong>65% overestimate</strong> and <strong>8% underestimate</strong> how serious
+                their condition is. The challenge: help staff get better information faster without
+                letting software make medical decisions it isn't qualified to make.
+              </p>
+            </div>
+            <div class="star__item">
+              <span class="star__label">T — Task</span>
+              <p>
+                Research how ER triage actually works, then design and build a functional, accessible
+                web prototype that supports patient prioritization and organization — while keeping
+                every final clinical decision firmly with qualified staff.
+              </p>
+            </div>
+            <div class="star__item">
+              <span class="star__label">A — Action</span>
+              <p>
+                Studied triage protocols and cited clinical references (ESI high-risk vital-signs, NCBI
+                thresholds) to ground the design. Using <strong>AI-assisted development with Kiro</strong>,
+                translated that research into a single-page app with three views —
+                <strong>Patient</strong>, <strong>Clinician</strong>, and a <strong>Case study</strong>.
+                Designed an adaptive one-question-per-screen intake flow, a
+                <strong>non-diagnostic flagging engine</strong> that explains <em>why</em> something is
+                flagged, and a nurse dashboard that visually separates <em>patient-reported</em> from
+                <em>measured</em> data. Baked in accessibility throughout: 56px touch targets, high
+                contrast, plain language, keyboard navigation, ARIA live regions, and “color is never
+                the only signal.”
+              </p>
+            </div>
+            <div class="star__item">
+              <span class="star__label">O — Outcome</span>
+              <p>
+                Delivered a fully working, dependency-free prototype demonstrating a safe,
+                human-centered triage-support model — flags surface urgent information with plain-language
+                reasons, patients cannot self-assign priority, and no measurement is ever invented. The
+                result is a polished portfolio piece that shows the full arc from
+                <strong>research → design decisions → accessible, shippable build</strong>.
+              </p>
+            </div>
+          </div>
+
+          <ul class="project__highlights">
+            <li>🩺 Non-diagnostic “review recommended” engine with explainable reasons</li>
+            <li>♿ Accessibility-first: keyboard, screen-reader, reduced-motion support</li>
+            <li>🤖 Built rapidly with Kiro AI, keeping design decisions human-owned</li>
+            <li>🧠 Grounded in real clinical research &amp; cited evidence</li>
+          </ul>
+        </article>
+
+        <!-- OTHER PROJECTS GRID -->
+        <div class="project__grid">
+
+          <article class="project project--card reveal" id="ignite">
+            <span class="project__tag">Hackathon</span>
+            <h3 class="project__title">GT IGNITE — Student Onboarding Portal</h3>
+            <p class="project__meta">Team project · July 2026</p>
+            <div class="star star--compact">
+              <p><span class="star__label">S</span> New Georgia Tech students juggle required tasks, resources, and information scattered across countless platforms and emails.</p>
+              <p><span class="star__label">T</span> Collaborate with a team to design an onboarding portal that organizes everything incoming students need in one place.</p>
+              <p><span class="star__label">A</span> Helped shape the solution and user flow, and used AI tools including <strong>Claude</strong> to support brainstorming, development, and project planning under hackathon time pressure.</p>
+              <p><span class="star__label">O</span> Produced a working onboarding concept that centralizes fragmented information into a single, student-friendly experience.</p>
+            </div>
+            <div class="project__stack project__stack--sm">
+              <span>UX</span><span>Claude</span><span>Team</span>
+            </div>
+          </article>
+
+          <article class="project project--card reveal" id="flower">
+            <span class="project__tag">Game Dev</span>
+            <h3 class="project__title">The Flower — 2D Platformer</h3>
+            <p class="project__meta">GameMaker · Sept 2026 – Present</p>
+            <div class="star star--compact">
+              <p><span class="star__label">S</span> Wanted to build a complete, polished 2D platformer from the ground up — not just mechanics, but a cohesive world.</p>
+              <p><span class="star__label">T</span> Design and develop a bunny-protagonist platformer with interactive environments, collectibles, hazards, dialogue, and level transitions.</p>
+              <p><span class="star__label">A</span> Implemented core systems — movement, double-jump, collisions, slopes, moving platforms, damage/death states, and object interactions — and created custom tiles, animations, and UI.</p>
+              <p><span class="star__label">O</span> An evolving, playable platformer that demonstrates end-to-end game design, from gameplay systems to visual identity.</p>
+            </div>
+            <div class="project__stack project__stack--sm">
+              <span>GameMaker</span><span>Game Design</span><span>Art</span>
+            </div>
+          </article>
+
+          <article class="project project--card reveal" id="unraveling">
+            <span class="project__tag">Design</span>
+            <h3 class="project__title">Unraveling — Game UI (VGDev)</h3>
+            <p class="project__meta">GT VGDev · Sept 2026 – Present</p>
+            <div class="star star--compact">
+              <p><span class="star__label">S</span> A large collaborative GT game project needed a visual language that captures a tense, paranoia-themed atmosphere.</p>
+              <p><span class="star__label">T</span> Design visual elements and UI overlays that reinforce the game's mood and enhance the player experience.</p>
+              <p><span class="star__label">A</span> Created paranoia-themed UI overlays in <strong>Figma</strong> and collaborated with a team of <strong>100+ members</strong>, iterating on feedback to refine the visual direction.</p>
+              <p><span class="star__label">O</span> Contributed cohesive, atmosphere-driven UI that strengthens the game's identity across a large cross-functional team.</p>
+            </div>
+            <div class="project__stack project__stack--sm">
+              <span>Figma</span><span>UI Design</span><span>Collaboration</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="section section--tint" id="experience">
+      <div class="wrap">
+        <p class="section__kicker reveal">04 — Experience</p>
+        <h2 class="section__title reveal">Where I've been building.</h2>
+
+        <ol class="timeline">
+          <li class="timeline__item reveal">
+            <span class="timeline__dot"></span>
+            <div class="timeline__body">
+              <div class="timeline__row">
+                <h3>Bits of Good — Figma Bootcamp</h3>
+                <span class="timeline__when">Sept 2026 – Present</span>
+              </div>
+              <p class="timeline__org">Georgia Tech</p>
+              <ul>
+                <li>Hands-on bootcamp focused on UI/UX design, interface design, prototyping, and visual design.</li>
+                <li>Develop interface concepts through Figma exercises — layouts, components, overlays, and visual hierarchy.</li>
+                <li>Research current UI/UX trends and explore AI-assisted design workflows and tools.</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="timeline__item reveal">
+            <span class="timeline__dot"></span>
+            <div class="timeline__body">
+              <div class="timeline__row">
+                <h3>VGDev — “Unraveling”</h3>
+                <span class="timeline__when">Sept 2026 – Present</span>
+              </div>
+              <p class="timeline__org">Georgia Tech</p>
+              <ul>
+                <li>Contribute visual elements to a collaborative GT game project.</li>
+                <li>Create paranoia-themed UI overlays in Figma to convey the game's atmosphere.</li>
+                <li>Collaborate with 100+ members to gather feedback, refine designs, and shape the visual direction.</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ EDUCATION & HONORS ============ -->
+    <section class="section" id="education">
+      <div class="wrap">
+        <p class="section__kicker reveal">05 — Education &amp; Honors</p>
+        <h2 class="section__title reveal">Learning &amp; credentials.</h2>
+
+        <div class="edu__grid">
+          <div class="edu__col reveal">
+            <article class="edu__card">
+              <h3>Georgia Institute of Technology</h3>
+              <p class="edu__deg">B.S. in Computational Media</p>
+              <p class="edu__meta">Atlanta, GA · Expected May 2030</p>
+            </article>
+            <article class="edu__card">
+              <h3>Chamblee High School</h3>
+              <p class="edu__deg">High School Diploma</p>
+              <p class="edu__meta">Chamblee, GA · May 2026 · GPA 4.23 / 4.00</p>
+            </article>
+          </div>
+
+          <div class="edu__col reveal">
+            <h3 class="edu__subhead">Certifications &amp; Honors</h3>
+            <ul class="honors">
+              <li><span>🏅</span> AP Computer Science A</li>
+              <li><span>🏅</span> AP Computer Science Principles</li>
+              <li><span>📜</span> Java Programming Certification (Certiport)</li>
+              <li><span>📜</span> Information Technology Specialist Certification (Certiport)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section section--cta" id="contact">
+      <div class="wrap wrap--narrow">
+        <p class="section__kicker section__kicker--light reveal">06 — Contact</p>
+        <h2 class="section__title section__title--light reveal">Let's build something together.</h2>
+        <p class="contact__lede reveal">
+          I'm open to internships, design collaborations, and interesting problems.
+          The fastest way to reach me is by email or LinkedIn.
+        </p>
+        <div class="contact__actions reveal">
+          <a class="btn btn--light" href="mailto:tmehta66@gatech.edu">✉️ tmehta66@gatech.edu</a>
+          <a class="btn btn--outline" href="https://www.linkedin.com/in/tanisi-mehta-159888421/" target="_blank" rel="noopener">in — LinkedIn</a>
+          <a class="btn btn--outline" href="tel:+17705684712">📞 (770) 568-4712</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <span>© <span id="year"></span> Tanisi Mehta</span>
+      <span class="footer__made">Computational Media · Georgia Tech</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
