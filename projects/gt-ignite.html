@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="GT IGNITE — a student onboarding portal by Tanisi Mehta, built with a team during a hackathon." />
+  <meta name="author" content="Tanisi Mehta" />
+  <title>GT IGNITE — Tanisi Mehta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%237c3aed'/><text x='50' y='68' font-size='58' font-family='Georgia,serif' fill='white' text-anchor='middle' font-weight='700'>T</text></svg>" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="detail-hero">
+    <div class="wrap">
+      <a class="detail-hero__back" href="../index.html#projects">← Back to portfolio</a>
+      <span class="detail-hero__tag">Hackathon · Team Project</span>
+      <h1 class="detail-hero__title">GT IGNITE — Student Onboarding Portal</h1>
+      <p class="detail-hero__meta">Team project · July 2026</p>
+      <div class="detail-hero__stack">
+        <span>UX</span><span>Claude</span><span>Team</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="detail">
+    <div class="wrap">
+      <p class="detail__pitch">
+        A student onboarding portal that pulls the required tasks, resources, and information new
+        Georgia Tech students need out of scattered platforms and emails, into
+        <strong>one clear, student-friendly place</strong>.
+      </p>
+
+      <figure class="detail__media">
+        <video controls preload="metadata" playsinline aria-label="GT Ignite student onboarding portal demo video">
+          <source src="../images/Website-Demo.mp4" type="video/mp4" />
+          Your browser doesn’t support embedded video.
+          <a href="../images/Website-Demo.mp4">Download the demo video</a>.
+        </video>
+      </figure>
+
+      <div class="detail__star">
+        <div class="star__item">
+          <span class="star__label">S — Situation</span>
+          <p>New Georgia Tech students juggle required tasks, resources, and information scattered across countless platforms and emails.</p>
+        </div>
+        <div class="star__item">
+          <span class="star__label">T — Task</span>
+          <p>Collaborate with a team to design an onboarding portal that organizes everything incoming students need in one place.</p>
+        </div>
+        <div class="star__item">
+          <span class="star__label">A — Action</span>
+          <p>Helped shape the solution and user flow, and used AI tools including <strong>Claude</strong> to support brainstorming, development, and project planning under hackathon time pressure.</p>
+        </div>
+        <div class="star__item">
+          <span class="star__label">O — Outcome</span>
+          <p>Produced a working onboarding concept that centralizes fragmented information into a single, student-friendly experience.</p>
+        </div>
+      </div>
+
+      <ul class="detail__highlights">
+        <li>🚀 Built under real hackathon time pressure as a team</li>
+        <li>🧭 Centralizes fragmented onboarding info into one flow</li>
+        <li>🤖 Used Claude to accelerate brainstorming &amp; planning</li>
+      </ul>
+
+      <div class="detail__nav">
+        <a class="btn btn--ghost" href="../index.html#projects">← All projects</a>
+        <a class="btn btn--primary" href="../index.html#contact">Get in touch</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <span>© <span id="year"></span> Tanisi Mehta</span>
+      <span class="footer__made">Computational Media · Georgia Tech</span>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
