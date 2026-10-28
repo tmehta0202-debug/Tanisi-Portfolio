@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="ER FastTrack — an accessible, non-diagnostic emergency-room triage-support prototype by Tanisi Mehta, built with Kiro AI." />
+  <meta name="description" content="ER FastTrack is an accessible, non-diagnostic emergency-room triage-support prototype by Tanisi Mehta, built with Kiro." />
   <meta name="author" content="Tanisi Mehta" />
-  <title>ER FastTrack — Tanisi Mehta</title>
+  <title>ER FastTrack · Tanisi Mehta</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/styles.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%237c3aed'/><text x='50' y='68' font-size='58' font-family='Georgia,serif' fill='white' text-anchor='middle' font-weight='700'>T</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%232f7de1'/><text x='50' y='68' font-size='58' font-family='Space Grotesk,Arial,sans-serif' fill='white' text-anchor='middle' font-weight='700'>T</text></svg>" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -19,10 +19,10 @@
     <div class="wrap">
       <a class="detail-hero__back" href="../index.html#projects">← Back to portfolio</a>
       <span class="detail-hero__tag">★ Featured · Healthcare UX</span>
-      <h1 class="detail-hero__title">ER FastTrack — Emergency-Room Triage Support</h1>
-      <p class="detail-hero__meta">Interactive web prototype · September 2026</p>
+      <h1 class="detail-hero__title">ER FastTrack</h1>
+      <p class="detail-hero__meta">Emergency-room triage support · Web app · September 2026</p>
       <div class="detail-hero__stack">
-        <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Kiro AI</span><span>UX Research</span>
+        <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Kiro</span><span>UX Research</span>
       </div>
     </div>
   </header>
@@ -30,14 +30,14 @@
   <main id="main" class="detail">
     <div class="wrap">
       <p class="detail__pitch">
-        A patient intake &amp; triage-support prototype for emergency departments built on one
-        principle: <em>“Patients report → Technology organizes → Clinical staff decide.”</em>
-        It gathers structured information before clinical assessment and surfaces what may deserve
-        prompt review — <strong>without ever diagnosing or ranking patients itself.</strong>
+        A patient intake and triage-support tool for emergency departments, built around one rule:
+        <em>patients report, the software organizes, and clinical staff decide.</em> It collects
+        structured information before a clinician sees the patient and surfaces details that may
+        need a faster look. <strong>It never diagnoses or ranks patients on its own.</strong>
       </p>
 
       <p class="detail__actions">
-        <a class="btn btn--primary" href="https://github.com/tmehta0202-debug/er-fasttrack" target="_blank" rel="noopener">View Code on GitHub ↗</a>
+        <a class="btn btn--primary" href="https://github.com/tmehta0202-debug/er-fasttrack" target="_blank" rel="noopener">View code on GitHub ↗</a>
       </p>
 
       <figure class="detail__media">
@@ -46,60 +46,58 @@
 
       <div class="detail__star">
         <div class="star__item">
-          <span class="star__label">S — Situation</span>
+          <span class="star__label">Situation</span>
           <p>
-            Emergency rooms lose precious time to repetitive information-gathering, and patients
-            are unreliable at judging their own urgency — research shows roughly
-            <strong>65% overestimate</strong> and <strong>8% underestimate</strong> how serious
-            their condition is. The challenge: help staff get better information faster without
-            letting software make medical decisions it isn't qualified to make.
+            Emergency rooms lose time to repeated information gathering, and patients are not good
+            judges of their own urgency. Research I read put it at roughly
+            <strong>65% who overestimate</strong> and <strong>8% who underestimate</strong> how
+            serious their condition is. The question was how to give staff better information
+            sooner without letting software make calls it isn't qualified to make.
           </p>
         </div>
         <div class="star__item">
-          <span class="star__label">T — Task</span>
+          <span class="star__label">Task</span>
           <p>
-            Research how ER triage actually works, then design and build a functional, accessible
-            web prototype that supports patient prioritization and organization — while keeping
-            every final clinical decision firmly with qualified staff.
+            Research how ER triage actually works, then design and build a working, accessible web
+            app that helps staff organize and prioritize incoming patients while keeping every
+            clinical decision with qualified staff.
           </p>
         </div>
         <div class="star__item">
-          <span class="star__label">A — Action</span>
+          <span class="star__label">Action</span>
           <p>
-            Studied triage protocols and cited clinical references (ESI high-risk vital-signs, NCBI
-            thresholds) to ground the design. Using <strong>AI-assisted development with Kiro</strong>,
-            translated that research into a single-page app with three views —
-            <strong>Patient</strong>, <strong>Clinician</strong>, and a <strong>Case study</strong>.
-            Designed an adaptive one-question-per-screen intake flow, a
-            <strong>non-diagnostic flagging engine</strong> that explains <em>why</em> something is
-            flagged, and a nurse dashboard that visually separates <em>patient-reported</em> from
-            <em>measured</em> data. Baked in accessibility throughout: 56px touch targets, high
-            contrast, plain language, keyboard navigation, ARIA live regions, and “color is never
-            the only signal.”
+            I read triage protocols and clinical references (ESI high-risk vital signs and NCBI
+            thresholds) and used them to ground the design. With <strong>Kiro</strong> helping me
+            move faster, I built a single-page app with three views: a <strong>patient</strong>
+            intake, a <strong>clinician</strong> dashboard, and a <strong>case study</strong>. The
+            intake asks one question per screen, a <strong>flagging engine</strong> explains why
+            something was flagged, and the dashboard keeps <em>patient-reported</em> data visually
+            separate from <em>measured</em> data. Accessibility was built in from the start: 56px
+            touch targets, high contrast, plain language, keyboard navigation, ARIA live regions,
+            and never relying on color alone to signal meaning.
           </p>
         </div>
         <div class="star__item">
-          <span class="star__label">O — Outcome</span>
+          <span class="star__label">Outcome</span>
           <p>
-            Delivered a fully working, dependency-free prototype demonstrating a safe,
-            human-centered triage-support model — flags surface urgent information with plain-language
-            reasons, patients cannot self-assign priority, and no measurement is ever invented. The
-            result is a polished portfolio piece that shows the full arc from
-            <strong>research → design decisions → accessible, shippable build</strong>.
+            A working prototype with no dependencies that shows a safe triage-support model: flags
+            come with plain-language reasons, patients can't assign their own priority, and the tool
+            never invents a measurement. It demonstrates the full path from
+            <strong>research to design decisions to an accessible build.</strong>
           </p>
         </div>
       </div>
 
       <ul class="detail__highlights">
-        <li>🩺 Non-diagnostic “review recommended” engine with explainable reasons</li>
-        <li>♿ Accessibility-first: keyboard, screen-reader, reduced-motion support</li>
-        <li>🤖 Built rapidly with Kiro AI, keeping design decisions human-owned</li>
-        <li>🧠 Grounded in real clinical research &amp; cited evidence</li>
+        <li>🩺 A non-diagnostic "review recommended" engine that explains its reasons</li>
+        <li>♿ Accessibility first: keyboard, screen reader, and reduced-motion support</li>
+        <li>🤖 Built quickly with Kiro while keeping the design decisions my own</li>
+        <li>🧠 Grounded in real clinical research and cited sources</li>
       </ul>
 
       <div class="detail__nav">
         <a class="btn btn--ghost" href="../index.html#projects">← All projects</a>
-        <a class="btn btn--ghost" href="https://github.com/tmehta0202-debug/er-fasttrack" target="_blank" rel="noopener">View Code on GitHub ↗</a>
+        <a class="btn btn--ghost" href="https://github.com/tmehta0202-debug/er-fasttrack" target="_blank" rel="noopener">View code on GitHub ↗</a>
         <a class="btn btn--primary" href="../index.html#contact">Get in touch</a>
       </div>
     </div>

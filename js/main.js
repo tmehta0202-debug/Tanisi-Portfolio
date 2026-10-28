@@ -1,5 +1,5 @@
 /* ============================================================
-   Tanisi Mehta — Portfolio interactions
+   Tanisi Mehta · Portfolio interactions
    - Sticky nav shadow on scroll
    - Mobile menu toggle (accessible)
    - Scroll-reveal animations (IntersectionObserver)
