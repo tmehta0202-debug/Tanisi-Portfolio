@@ -1,15 +1,17 @@
 # Tanisi Mehta · Portfolio
 
 A single-page portfolio website for **Tanisi Mehta**, a Computational Media student at
-Georgia Tech. Built with plain **HTML, CSS, and JavaScript**, with no build step and no
-dependencies, so it's ready to host on **GitHub Pages**.
+Georgia Tech and an aspiring software and product engineer with interaction design skills.
+Built with plain **HTML, CSS, and JavaScript** (generated with AI assistance using **Kiro**
+and **Claude**), with no build step and no dependencies, so it's ready to host on
+**GitHub Pages**.
 
 ## Highlights
 
 - Modern, tech-focused design using light blue and soft green accents on white, over a dark
   navy and slate text palette, with **Space Grotesk** for headings and **Inter** for body text
 - Sticky navigation with a mobile hamburger menu and active-link scroll-spy highlighting
-- Smooth scrolling, an animated hero, and scroll-reveal sections
+- Smooth scrolling, a hero with a typing animation, scroll-reveal sections, and subtle hover effects
 - Fully **responsive** (desktop → tablet → phone) and **accessible** (keyboard nav, skip link,
   focus rings, reduced-motion support)
 - Every project covers the situation, the task, the actions Tanisi took, and the outcome

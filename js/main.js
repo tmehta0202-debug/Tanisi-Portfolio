@@ -98,4 +98,51 @@
     );
     sections.forEach(function (s) { spy.observe(s); });
   }
+
+  /* ---- Hero typing animation ---- */
+  var typeEl = document.getElementById("typeText");
+  if (typeEl) {
+    var phrases = [
+      "software people can use.",
+      "games in GameMaker.",
+      "interfaces in Figma.",
+      "prototypes with AI tools.",
+      "things worth using."
+    ];
+    var prefersReduced =
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReduced) {
+      // No animation: show the first phrase and a steady caret.
+      typeEl.textContent = phrases[0];
+    } else {
+      var pIndex = 0;
+      var cIndex = 0;
+      var deleting = false;
+
+      function tick() {
+        var current = phrases[pIndex];
+        if (!deleting) {
+          cIndex++;
+          typeEl.textContent = current.slice(0, cIndex);
+          if (cIndex === current.length) {
+            deleting = true;
+            return setTimeout(tick, 1600); // pause on full phrase
+          }
+          setTimeout(tick, 58);
+        } else {
+          cIndex--;
+          typeEl.textContent = current.slice(0, cIndex);
+          if (cIndex === 0) {
+            deleting = false;
+            pIndex = (pIndex + 1) % phrases.length;
+            return setTimeout(tick, 320); // pause before next phrase
+          }
+          setTimeout(tick, 32);
+        }
+      }
+      setTimeout(tick, 500);
+    }
+  }
 })();

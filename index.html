@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Tanisi Mehta is a Computational Media student at Georgia Tech working across software engineering, product engineering, and interaction design." />
+  <meta name="description" content="Tanisi Mehta is a Computational Media student at Georgia Tech and an aspiring software and product engineer with interaction design skills, building with Python, Java, GameMaker, Figma, and AI tools." />
   <meta name="author" content="Tanisi Mehta" />
 
   <!-- Open Graph / social preview -->
@@ -61,13 +61,16 @@
           <p class="hero__eyebrow">Computational Media · Georgia Tech</p>
           <h1 class="hero__title">
             Hi, I'm <span class="grad">Tanisi Mehta</span>.<br />
-            I build <span class="underline">software and interfaces</span> people can use.
+            I build
+            <span class="type" aria-live="polite">
+              <span class="type__text" id="typeText">software people can use.</span><span class="type__caret" aria-hidden="true"></span>
+            </span>
           </h1>
           <p class="hero__lede">
-            I'm a Computational Media student focused on <strong>software engineering</strong>,
-            <strong>product engineering</strong>, and <strong>interaction design</strong>. I like
-            figuring out how a system actually works, then building something that makes it
-            clearer and faster to use, whether that's an ER intake tool or a 2D platformer.
+            I'm an aspiring <strong>software and product engineer</strong> with a strong interest in
+            <strong>interaction design</strong>. I like understanding how a system really works, then
+            turning that into something people find easier and clearer to use, from an ER intake tool
+            to a 2D platformer.
           </p>
           <div class="hero__cta">
             <a href="#projects" class="btn btn--primary">View my work</a>
@@ -100,37 +103,42 @@
     <section class="section" id="about">
       <div class="wrap">
         <p class="section__kicker reveal">01 / About</p>
-        <h2 class="section__title reveal">A builder who cares how things actually work.</h2>
+        <h2 class="section__title reveal">I like building things that are useful, and getting the details right.</h2>
         <div class="about__grid">
           <div class="about__lead reveal">
             <p>
-              I'm studying Computational Media at the <strong>Georgia Institute of Technology</strong>,
-              a degree that sits between computer science and design. That mix is what I like most:
-              I get to write the code and shape how it feels to use.
+              I'm studying Computational Media at <strong>Georgia Tech</strong>, where computer
+              science and design sit side by side. That's exactly the overlap I want to work in:
+              writing software and also caring about how it feels to use. I'm aiming for a career
+              in <strong>software and product engineering</strong>, with design as part of how I
+              think, not an afterthought.
             </p>
             <p>
-              My work spans <strong>front-end development</strong> with HTML, CSS, and JavaScript,
-              <strong>interface design</strong> in Figma, and <strong>game development</strong> in
-              GameMaker. Across all of it, I keep coming back to the same question: is this clear,
-              and does it hold up for the person on the other side of the screen?
+              I write code in <strong>Python</strong> and <strong>Java</strong>, build games in
+              <strong>GameMaker</strong>, and design interfaces in <strong>Figma</strong>. My
+              platformer, <em>The Flower</em>, is where a lot of that comes together: I wrote the
+              movement and collision systems in GameMaker and made the art and UI to match.
             </p>
             <p>
-              Before I design anything, I try to understand the real process first. For my ER
-              triage project, that meant reading how emergency departments sort patients. For a
-              Duolingo redesign, it meant writing a user persona. I'd rather build something that
-              fits how people work than something that looks impressive and gets in the way.
+              I start by understanding the real problem before I build. For my ER triage project I
+              read how emergency departments actually sort patients; for a Duolingo redesign I wrote
+              a user persona first. I'd rather ship something that fits how people work than
+              something that just looks impressive.
             </p>
             <p>
-              I also work with AI tools like <strong>Kiro</strong> and <strong>Claude</strong> to
-              get from an idea to a working prototype faster, while keeping the design and
-              engineering decisions my own.
+              I also build with AI tools like <strong>Kiro</strong> and <strong>Claude</strong>. The
+              HTML, CSS, and JavaScript behind several of my projects, including this site, were
+              generated with that help. I use AI to turn an idea into a working prototype quickly,
+              to explore options, and to learn the web stack as I go, while I own the direction and
+              the decisions. Being able to use these tools well is a skill I'm deliberately building.
             </p>
           </div>
           <ul class="about__facts reveal">
             <li><span>📍</span><div><strong>Based in</strong>Atlanta, GA</div></li>
             <li><span>🎓</span><div><strong>Studying</strong>B.S. Computational Media, Georgia Tech</div></li>
-            <li><span>🎯</span><div><strong>Focus</strong>Software &amp; product engineering, interaction design</div></li>
-            <li><span>🛠️</span><div><strong>Builds with</strong>JavaScript, Figma, GameMaker, Kiro, Claude</div></li>
+            <li><span>🎯</span><div><strong>Goal</strong>Software &amp; product engineering with design</div></li>
+            <li><span>🛠️</span><div><strong>Builds with</strong>Python, Java, GameMaker, Figma</div></li>
+            <li><span>🤖</span><div><strong>AI-assisted</strong>Kiro &amp; Claude for prototyping and learning</div></li>
           </ul>
         </div>
       </div>
@@ -141,41 +149,44 @@
       <div class="wrap">
         <p class="section__kicker reveal">02 / Skills</p>
         <h2 class="section__title reveal">What I work with.</h2>
+        <p class="section__intro reveal">
+          The languages and tools I write and design in, plus the AI tools I use to prototype and
+          learn. I've kept this honest about where AI does the heavy lifting.
+        </p>
 
         <div class="skills__grid">
           <article class="skillcard reveal">
-            <h3><span class="skillcard__ico">💻</span> Engineering</h3>
+            <h3><span class="skillcard__ico">💻</span> Programming</h3>
             <ul class="chips">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JavaScript</li>
               <li>Python</li>
               <li>Java</li>
               <li>GameMaker (GML)</li>
             </ul>
+            <p class="skillcard__note">Languages I write and debug myself.</p>
           </article>
 
           <article class="skillcard reveal">
             <h3><span class="skillcard__ico">🎨</span> Design</h3>
             <ul class="chips">
+              <li>Figma</li>
               <li>Interaction Design</li>
               <li>UI/UX Design</li>
-              <li>Figma</li>
               <li>Prototyping</li>
               <li>Wireframing</li>
-              <li>Design Systems</li>
+              <li>Auto Layout</li>
             </ul>
           </article>
 
           <article class="skillcard reveal">
-            <h3><span class="skillcard__ico">🔧</span> Tools</h3>
+            <h3><span class="skillcard__ico">🤖</span> AI-assisted development</h3>
             <ul class="chips">
-              <li>Git</li>
-              <li>GitHub</li>
               <li>Kiro</li>
               <li>Claude</li>
-              <li>Auto Layout</li>
+              <li>HTML / CSS / JS (AI-generated)</li>
+              <li>Prototyping</li>
+              <li>Learning as I build</li>
             </ul>
+            <p class="skillcard__note">I direct the build and review the output; the web code is AI-generated.</p>
           </article>
 
           <article class="skillcard reveal">
@@ -184,7 +195,7 @@
               <li>User Research</li>
               <li>Accessibility</li>
               <li>Problem Solving</li>
-              <li>Prototyping to ship</li>
+              <li>Git &amp; GitHub</li>
               <li>Team Collaboration</li>
               <li>Clear Communication</li>
             </ul>
