@@ -456,3 +456,77 @@ a { color: inherit; text-decoration: none; }
   .btn { width: 100%; justify-content: center; }
   .hero__cta { flex-direction: column; }
 }
+
+/* ============================================================
+   Refinements: typing animation, typography, hover polish
+   (appended; keeps the base system above untouched)
+   ============================================================ */
+
+/* ---- Sleeker display typography & hierarchy ---- */
+.hero__title { font-weight: 700; letter-spacing: -.03em; line-height: 1.06; }
+.section__title { letter-spacing: -.025em; }
+.section__kicker { position: relative; padding-left: 30px; }
+.section__kicker::before {
+  content: ""; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+  width: 22px; height: 2px; background: var(--green); border-radius: 2px;
+}
+.hero__lede { line-height: 1.7; }
+
+/* ---- Hero typing animation ---- */
+/* Reserve height for up to two typed lines so the layout doesn't jump. */
+.hero__title { min-height: 3.3em; }
+.type { display: inline; color: var(--blue-deep); white-space: pre-wrap; }
+.type__text {
+  background: var(--grad);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  font-weight: 700;
+}
+.type__caret {
+  display: inline-block; width: 3px; height: 1em; margin-left: 2px;
+  transform: translateY(2px); background: var(--green);
+  border-radius: 2px; animation: caret-blink 1s step-end infinite;
+}
+@keyframes caret-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .type__caret { animation: none; opacity: 1; }
+}
+
+/* ---- Skill card note + hover accent ---- */
+.skillcard { position: relative; overflow: hidden; }
+.skillcard::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px;
+  background: var(--grad); transform: scaleX(0); transform-origin: left;
+  transition: transform .3s ease;
+}
+.skillcard:hover::after { transform: scaleX(1); }
+.skillcard__note {
+  margin-top: 14px; font-size: .82rem; line-height: 1.5; color: var(--ink-3);
+}
+.chips li { transition: transform .15s ease, box-shadow .15s ease; }
+.skillcard:hover .chips li { box-shadow: 0 2px 8px rgba(15,37,64,.07); }
+
+/* ---- Subtle, tasteful hover effects ---- */
+.nav__link { position: relative; }
+.nav__link:not(.nav__link--cta)::after {
+  content: ""; position: absolute; left: 15px; right: 15px; bottom: 5px; height: 2px;
+  background: var(--green); border-radius: 2px; transform: scaleX(0); transform-origin: center;
+  transition: transform .22s ease;
+}
+.nav__link:not(.nav__link--cta):hover::after,
+.nav__link.is-active:not(.nav__link--cta)::after { transform: scaleX(1); }
+
+.tile__media img, .tile__media video { transition: transform .4s ease; }
+.tile:hover .tile__media img, .tile:hover .tile__media video { transform: scale(1.04); }
+.tile__title { transition: color .2s ease; }
+.tile:hover .tile__title { color: var(--blue-deep); }
+
+.about__facts li { transition: background .2s ease; }
+.about__facts li:hover { background: var(--tint); }
+
+.edu__card { transition: transform .2s ease, box-shadow .2s ease; }
+.edu__card:hover { transform: translateY(-3px); box-shadow: var(--shadow-2); }
+.honors li { transition: transform .15s ease, border-color .2s ease; }
+.honors li:hover { transform: translateX(3px); border-color: var(--sky); }
+
+.btn--primary { transition: transform .18s ease, box-shadow .18s ease; }
+.btn--primary:hover { box-shadow: 0 14px 30px rgba(31,91,176,.34); }
