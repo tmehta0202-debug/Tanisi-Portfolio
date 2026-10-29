@@ -463,7 +463,7 @@ a { color: inherit; text-decoration: none; }
    ============================================================ */
 
 /* ---- Sleeker display typography & hierarchy ---- */
-.hero__title { font-weight: 700; letter-spacing: -.03em; line-height: 1.06; }
+.hero__title { font-weight: 700; letter-spacing: -.03em; line-height: 1.06; margin-bottom: 12px; }
 .section__title { letter-spacing: -.025em; }
 .section__kicker { position: relative; padding-left: 30px; }
 .section__kicker::before {
@@ -473,20 +473,22 @@ a { color: inherit; text-decoration: none; }
 .hero__lede { line-height: 1.7; }
 
 /* ---- Hero typing animation ---- */
-/* The typed phrase now lives on the supporting line (.hero__typeline).
-   Reserve height for up to two typed lines so the layout doesn't jump. */
+/* The typed phrase lives on the supporting line (.hero__typeline) and
+   reads at the same size as the surrounding lede. A small min-height
+   (one line + a little) keeps the layout from jumping without leaving a
+   large gap before the paragraph below. */
 .hero__typeline {
-  font-size: 1.22rem; color: var(--ink); font-weight: 600; margin-bottom: 14px;
-  min-height: 2.9em;
+  font-size: 1.1rem; color: var(--ink-2); font-weight: 400; line-height: 1.7;
+  margin-bottom: 10px; min-height: 1.7em;
 }
-.type { display: inline; color: var(--blue-deep); white-space: pre-wrap; }
+.type { display: inline; color: var(--blue-deep); }
 .type__text {
   background: var(--grad);
   -webkit-background-clip: text; background-clip: text; color: transparent;
-  font-weight: 700;
+  font-weight: 600;
 }
 .type__caret {
-  display: inline-block; width: 3px; height: 1em; margin-left: 2px;
+  display: inline-block; width: 2px; height: 1.05em; margin-left: 2px;
   transform: translateY(2px); background: var(--green);
   border-radius: 2px; animation: caret-blink 1s step-end infinite;
 }
