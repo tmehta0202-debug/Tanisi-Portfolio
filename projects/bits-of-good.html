@@ -31,74 +31,110 @@
     <div class="wrap">
       <p class="detail__pitch">
         A design bootcamp at Georgia Tech where I practice interface design in Figma each week. The
-        gallery below is where I apply it: <strong>redesigning real product screens</strong> and
+        carousel below is where I apply it: <strong>redesigning real product screens</strong> and
         studying how strong interfaces are put together.
       </p>
 
-      <!-- Design gallery: one card per project (screenshot + title + short description) -->
-      <section class="gallery" aria-label="Design projects">
+      <!-- Design gallery: interactive carousel (one project at a time) -->
+      <section class="carousel" id="designCarousel" aria-roledescription="carousel" aria-label="Design projects">
+        <div class="carousel__viewport">
+          <ul class="carousel__track" id="carouselTrack">
 
-        <figure class="gcard">
-          <div class="gcard__media">
-            <img src="../images/Figma-AppleDesign.png" alt="Apple-inspired interface design created in Figma during the Bits of Good bootcamp" loading="lazy" />
-          </div>
-          <figcaption class="gcard__body">
-            <h3 class="gcard__title">Apple Design Study</h3>
-            <p class="gcard__desc">Rebuilt an Apple-style interface in Figma to study how its spacing, hierarchy, and consistency hold a layout together.</p>
-          </figcaption>
-        </figure>
+            <li class="slide" role="group" aria-roledescription="slide" aria-label="1 of 6">
+              <figure class="slide__inner">
+                <div class="slide__media">
+                  <img src="../images/Figma-AppleDesign.png" alt="Apple-inspired interface design created in Figma during the Bits of Good bootcamp" />
+                </div>
+                <figcaption class="slide__body">
+                  <h3 class="slide__title">Apple Design Study</h3>
+                  <p class="slide__desc">Rebuilt an Apple-style interface in Figma to study how its spacing, hierarchy, and consistency hold a layout together.</p>
+                </figcaption>
+              </figure>
+            </li>
 
-        <figure class="gcard">
-          <div class="gcard__media">
-            <img src="../images/Duolingo-Redesign.png" alt="Duolingo user persona and before/after profile page redesign created in Figma" loading="lazy" />
-          </div>
-          <figcaption class="gcard__body">
-            <h3 class="gcard__title">Duolingo: Profile Redesign</h3>
-            <p class="gcard__desc">Wrote a user persona, then redesigned the profile pages around it so progress and key stats are easier to find. Shown before and after.</p>
-          </figcaption>
-        </figure>
+            <li class="slide" role="group" aria-roledescription="slide" aria-label="2 of 6">
+              <figure class="slide__inner">
+                <div class="slide__media">
+                  <img src="../images/Duolingo-Redesign.png" alt="Duolingo user persona and before/after profile page redesign created in Figma" />
+                </div>
+                <figcaption class="slide__body">
+                  <h3 class="slide__title">Duolingo: Profile Redesign</h3>
+                  <p class="slide__desc">Wrote a user persona, then redesigned the profile pages around it so progress and key stats are easier to find. Shown before and after.</p>
+                </figcaption>
+              </figure>
+            </li>
 
-        <figure class="gcard">
-          <div class="gcard__media">
-            <img src="../images/Etsy-Checkout.png" alt="Redesigned Etsy checkout screen built with Auto Layout in Figma, shown before and after" loading="lazy" />
-          </div>
-          <figcaption class="gcard__body">
-            <h3 class="gcard__title">Etsy: Checkout Redesign</h3>
-            <p class="gcard__desc">Rebuilt the desktop checkout in Figma with Auto Layout for a cleaner structure. Shown next to the original as a before and after.</p>
-          </figcaption>
-        </figure>
+            <li class="slide" role="group" aria-roledescription="slide" aria-label="3 of 6">
+              <figure class="slide__inner">
+                <div class="slide__media">
+                  <img src="../images/Etsy-Checkout.png" alt="Redesigned Etsy checkout screen built with Auto Layout in Figma, shown before and after" />
+                </div>
+                <figcaption class="slide__body">
+                  <h3 class="slide__title">Etsy: Checkout Redesign</h3>
+                  <p class="slide__desc">Rebuilt the desktop checkout in Figma with Auto Layout for a cleaner structure. Shown next to the original as a before and after.</p>
+                </figcaption>
+              </figure>
+            </li>
 
-        <figure class="gcard">
-          <div class="gcard__media">
-            <img src="../images/Etsy-ResponsiveDesign.png" alt="Etsy checkout adapted from a desktop layout to a mobile phone layout in Figma" loading="lazy" />
-          </div>
-          <figcaption class="gcard__body">
-            <h3 class="gcard__title">Etsy Checkout: Responsive Design</h3>
-            <p class="gcard__desc">Adapted my desktop checkout design for mobile, reflowing the cart and payment summary into a single-column phone layout.</p>
-          </figcaption>
-        </figure>
+            <li class="slide" role="group" aria-roledescription="slide" aria-label="4 of 6">
+              <figure class="slide__inner">
+                <div class="slide__media">
+                  <img src="../images/Etsy-ResponsiveDesign.png" alt="Etsy checkout adapted from a desktop layout to a mobile phone layout in Figma" />
+                </div>
+                <figcaption class="slide__body">
+                  <h3 class="slide__title">Etsy Checkout: Responsive Design</h3>
+                  <p class="slide__desc">Adapted my desktop checkout design for mobile, reflowing the cart and payment summary into a single-column phone layout.</p>
+                </figcaption>
+              </figure>
+            </li>
 
-        <figure class="gcard">
-          <div class="gcard__media">
-            <img src="../images/Pinterest-Prototype.png" alt="Pinterest onboarding prototype showing the login, interest quiz, and category-selection flow in Figma" loading="lazy" />
-          </div>
-          <figcaption class="gcard__body">
-            <h3 class="gcard__title">Pinterest: Onboarding Prototype</h3>
-            <p class="gcard__desc">Designed the login flow and category-selection experience, mapping how a new user moves from sign-in through an interest quiz to a personalized feed.</p>
-          </figcaption>
-        </figure>
+            <li class="slide" role="group" aria-roledescription="slide" aria-label="5 of 6">
+              <figure class="slide__inner">
+                <div class="slide__media">
+                  <img src="../images/Pinterest-Prototype.png" alt="Pinterest onboarding prototype showing the login, interest quiz, and category-selection flow in Figma" />
+                </div>
+                <figcaption class="slide__body">
+                  <h3 class="slide__title">Pinterest: Onboarding Prototype</h3>
+                  <p class="slide__desc">Designed the login flow and category-selection experience, mapping how a new user moves from sign-in through an interest quiz to a personalized feed.</p>
+                </figcaption>
+              </figure>
+            </li>
 
-        <figure class="gcard">
-          <div class="gcard__media">
-            <img src="../images/LetterBoxd-SearchPage.png" alt="Letterboxd search page redesign with filters and search results, designed in Figma" loading="lazy" />
-          </div>
-          <figcaption class="gcard__body">
-            <h3 class="gcard__title">Letterboxd: Search UI Redesign</h3>
-            <p class="gcard__desc">Created an updated search page with filters and a more cohesive interface, from the empty search state to filtered results.</p>
-          </figcaption>
-        </figure>
+            <li class="slide" role="group" aria-roledescription="slide" aria-label="6 of 6">
+              <figure class="slide__inner">
+                <div class="slide__media">
+                  <img src="../images/LetterBoxd-SearchPage.png" alt="Letterboxd search page redesign with filters and search results, designed in Figma" />
+                </div>
+                <figcaption class="slide__body">
+                  <h3 class="slide__title">Letterboxd: Search UI Redesign</h3>
+                  <p class="slide__desc">Created an updated search page with filters and a more cohesive interface, from the empty search state to filtered results.</p>
+                </figcaption>
+              </figure>
+            </li>
 
+          </ul>
+        </div>
+
+        <button class="carousel__arrow carousel__arrow--prev" id="carouselPrev" type="button" aria-label="Previous project">
+          <span aria-hidden="true">&#8249;</span>
+        </button>
+        <button class="carousel__arrow carousel__arrow--next" id="carouselNext" type="button" aria-label="Next project">
+          <span aria-hidden="true">&#8250;</span>
+        </button>
+
+        <div class="carousel__dots" id="carouselDots" role="tablist" aria-label="Choose project"></div>
       </section>
+
+      <!-- No-JS fallback: a simple stacked list so content is never hidden -->
+      <noscript>
+        <style>
+          .carousel__viewport { overflow: visible; }
+          .carousel__track { display: block; }
+          .slide { width: 100% !important; scroll-snap-align: none; }
+          .carousel__arrow, .carousel__dots { display: none; }
+          .slide + .slide { margin-top: 20px; }
+        </style>
+      </noscript>
 
       <div class="detail__star">
         <div class="star__item">
@@ -141,5 +177,86 @@
     </div>
   </footer>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+  <!-- Design carousel: arrows, dots, keyboard, and swipe (scroll-snap) -->
+  <script>
+  (function () {
+    "use strict";
+    var root = document.getElementById("designCarousel");
+    if (!root) return;
+    var track = document.getElementById("carouselTrack");
+    var slides = Array.prototype.slice.call(track.querySelectorAll(".slide"));
+    var prev = document.getElementById("carouselPrev");
+    var next = document.getElementById("carouselNext");
+    var dotsWrap = document.getElementById("carouselDots");
+    if (!slides.length) return;
+
+    var index = 0;
+
+    // Build dot indicators
+    var dots = slides.map(function (slide, i) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("role", "tab");
+      b.setAttribute("aria-label", "Go to project " + (i + 1));
+      b.addEventListener("click", function () { goTo(i); });
+      dotsWrap.appendChild(b);
+      return b;
+    });
+
+    function clamp(i) { return Math.max(0, Math.min(slides.length - 1, i)); }
+
+    function update() {
+      dots.forEach(function (d, i) {
+        d.setAttribute("aria-selected", i === index ? "true" : "false");
+      });
+      slides.forEach(function (s, i) {
+        s.setAttribute("aria-hidden", i === index ? "false" : "true");
+      });
+      prev.disabled = index === 0;
+      next.disabled = index === slides.length - 1;
+    }
+
+    function goTo(i) {
+      index = clamp(i);
+      // Scroll the track so the target slide is in view (snap handles the rest).
+      track.scrollTo({ left: slides[index].offsetLeft - track.offsetLeft, behavior: "smooth" });
+      update();
+    }
+
+    prev.addEventListener("click", function () { goTo(index - 1); });
+    next.addEventListener("click", function () { goTo(index + 1); });
+
+    // Keyboard arrows when the carousel has focus
+    root.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") { e.preventDefault(); goTo(index - 1); }
+      else if (e.key === "ArrowRight") { e.preventDefault(); goTo(index + 1); }
+    });
+
+    // Keep the active dot/arrows in sync when the user swipes/scrolls (touch).
+    var scrollTimer = null;
+    track.addEventListener("scroll", function () {
+      if (scrollTimer) window.clearTimeout(scrollTimer);
+      scrollTimer = window.setTimeout(function () {
+        var mid = track.scrollLeft + track.clientWidth / 2;
+        var nearest = 0;
+        var best = Infinity;
+        slides.forEach(function (s, i) {
+          var center = s.offsetLeft - track.offsetLeft + s.offsetWidth / 2;
+          var dist = Math.abs(center - mid);
+          if (dist < best) { best = dist; nearest = i; }
+        });
+        if (nearest !== index) { index = nearest; update(); }
+      }, 90);
+    }, { passive: true });
+
+    // Re-center the current slide if the viewport is resized.
+    window.addEventListener("resize", function () {
+      track.scrollTo({ left: slides[index].offsetLeft - track.offsetLeft, behavior: "auto" });
+    });
+
+    update();
+  })();
+  </script>
 </body>
 </html>
