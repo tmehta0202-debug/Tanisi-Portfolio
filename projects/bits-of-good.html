@@ -31,52 +31,73 @@
     <div class="wrap">
       <p class="detail__pitch">
         A design bootcamp at Georgia Tech where I practice interface design in Figma each week. The
-        work below is where I apply it: <strong>redesigning real product screens</strong> and
+        gallery below is where I apply it: <strong>redesigning real product screens</strong> and
         studying how strong interfaces are put together.
       </p>
 
-      <!-- Apple: image LEFT, description RIGHT -->
-      <section class="case">
-        <figure class="case__media">
-          <img src="../images/Figma-AppleDesign.png" alt="Apple-inspired interface design created in Figma during the Bits of Good bootcamp" />
-        </figure>
-        <div class="case__text">
-          <p class="case__caption">
-            <strong>Apple design study.</strong> I rebuilt an Apple-style interface in Figma to study
-            how its layouts handle spacing, hierarchy, and consistency. Recreating it closely made me
-            pay attention to the small decisions that make an interface feel calm and organized.
-          </p>
-        </div>
-      </section>
+      <!-- Design gallery: one card per project (screenshot + title + short description) -->
+      <section class="gallery" aria-label="Design projects">
 
-      <!-- Duolingo: description LEFT, image RIGHT -->
-      <section class="case case--flip">
-        <figure class="case__media">
-          <img src="../images/Duolingo-Redesign.png" alt="Duolingo user persona and before/after profile page redesign created in Figma" />
+        <figure class="gcard">
+          <div class="gcard__media">
+            <img src="../images/Figma-AppleDesign.png" alt="Apple-inspired interface design created in Figma during the Bits of Good bootcamp" loading="lazy" />
+          </div>
+          <figcaption class="gcard__body">
+            <h3 class="gcard__title">Apple Design Study</h3>
+            <p class="gcard__desc">Rebuilt an Apple-style interface in Figma to study how its spacing, hierarchy, and consistency hold a layout together.</p>
+          </figcaption>
         </figure>
-        <div class="case__text">
-          <p class="case__caption">
-            <strong>Duolingo profile redesign.</strong> I wrote a user persona first, then redesigned
-            Duolingo's profile pages around it. The before and after shows how I reorganized the
-            layout and hierarchy so a user's progress and key stats are easier to find. Starting from
-            the persona kept the changes tied to what that user actually needs to see.
-          </p>
-        </div>
-      </section>
 
-      <!-- Etsy: image LEFT, description RIGHT -->
-      <section class="case">
-        <figure class="case__media">
-          <img src="../images/Etsy-Checkout.png" alt="Redesigned Etsy checkout screen built with Auto Layout in Figma, before and after" />
+        <figure class="gcard">
+          <div class="gcard__media">
+            <img src="../images/Duolingo-Redesign.png" alt="Duolingo user persona and before/after profile page redesign created in Figma" loading="lazy" />
+          </div>
+          <figcaption class="gcard__body">
+            <h3 class="gcard__title">Duolingo: Profile Redesign</h3>
+            <p class="gcard__desc">Wrote a user persona, then redesigned the profile pages around it so progress and key stats are easier to find. Shown before and after.</p>
+          </figcaption>
         </figure>
-        <div class="case__text">
-          <p class="case__caption">
-            <strong>Etsy checkout redesign.</strong> I rebuilt an Etsy checkout screen in Figma using
-            Auto Layout so the components stay responsive and easy to adjust. The result is a cleaner
-            checkout with clearer structure, shown next to the original. Auto Layout kept the spacing
-            consistent as I iterated.
-          </p>
-        </div>
+
+        <figure class="gcard">
+          <div class="gcard__media">
+            <img src="../images/Etsy-Checkout.png" alt="Redesigned Etsy checkout screen built with Auto Layout in Figma, shown before and after" loading="lazy" />
+          </div>
+          <figcaption class="gcard__body">
+            <h3 class="gcard__title">Etsy: Checkout Redesign</h3>
+            <p class="gcard__desc">Rebuilt the desktop checkout in Figma with Auto Layout for a cleaner structure. Shown next to the original as a before and after.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="gcard">
+          <div class="gcard__media">
+            <img src="../images/Etsy-ResponsiveDesign.png" alt="Etsy checkout adapted from a desktop layout to a mobile phone layout in Figma" loading="lazy" />
+          </div>
+          <figcaption class="gcard__body">
+            <h3 class="gcard__title">Etsy Checkout: Responsive Design</h3>
+            <p class="gcard__desc">Adapted my desktop checkout design for mobile, reflowing the cart and payment summary into a single-column phone layout.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="gcard">
+          <div class="gcard__media">
+            <img src="../images/Pinterest-Prototype.png" alt="Pinterest onboarding prototype showing the login, interest quiz, and category-selection flow in Figma" loading="lazy" />
+          </div>
+          <figcaption class="gcard__body">
+            <h3 class="gcard__title">Pinterest: Onboarding Prototype</h3>
+            <p class="gcard__desc">Designed the login flow and category-selection experience, mapping how a new user moves from sign-in through an interest quiz to a personalized feed.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="gcard">
+          <div class="gcard__media">
+            <img src="../images/LetterBoxd-SearchPage.png" alt="Letterboxd search page redesign with filters and search results, designed in Figma" loading="lazy" />
+          </div>
+          <figcaption class="gcard__body">
+            <h3 class="gcard__title">Letterboxd: Search UI Redesign</h3>
+            <p class="gcard__desc">Created an updated search page with filters and a more cohesive interface, from the empty search state to filtered results.</p>
+          </figcaption>
+        </figure>
+
       </section>
 
       <div class="detail__star">
@@ -90,19 +111,20 @@
         </div>
         <div class="star__item">
           <span class="star__label">Action</span>
-          <p>I recreated an Apple-style interface, redesigned Duolingo's profile pages from a user persona, and rebuilt an Etsy checkout with Auto Layout, while following current UI patterns.</p>
+          <p>I recreated an Apple-style interface, redesigned Duolingo's profile pages from a user persona, rebuilt an Etsy checkout with Auto Layout and adapted it for mobile, prototyped a Pinterest onboarding flow, and redesigned the Letterboxd search page.</p>
         </div>
         <div class="star__item">
           <span class="star__label">Outcome</span>
-          <p>A set of interface redesigns that show cleaner layouts and clearer hierarchy, and a stronger grasp of how to structure a design in Figma.</p>
+          <p>A gallery of interface redesigns that show cleaner layouts and clearer hierarchy, and a stronger grasp of how to structure a design in Figma.</p>
         </div>
       </div>
 
       <ul class="detail__highlights">
         <li>🍎 Recreated an Apple-style interface to study layout and hierarchy</li>
         <li>🦉 Redesigned Duolingo profile pages from a user persona (before and after)</li>
-        <li>🛒 Rebuilt an Etsy checkout screen using Auto Layout</li>
-        <li>🔎 Applied current UI patterns from the weekly exercises</li>
+        <li>🛒 Rebuilt an Etsy checkout with Auto Layout and adapted it for mobile</li>
+        <li>📌 Prototyped a Pinterest onboarding and category-selection flow</li>
+        <li>🎬 Redesigned the Letterboxd search page with filters</li>
       </ul>
 
       <div class="detail__nav">
