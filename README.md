@@ -1,18 +1,19 @@
-# Tanisi Mehta — Portfolio
+# Tanisi Mehta · Portfolio
 
-A single-page, professional portfolio website for **Tanisi Mehta**, Computational Media student at
-Georgia Tech. Built with plain **HTML, CSS, and JavaScript** — no build step, no dependencies,
-ready to host on **GitHub Pages**.
+A single-page portfolio website for **Tanisi Mehta**, a Computational Media student at
+Georgia Tech. Built with plain **HTML, CSS, and JavaScript**, with no build step and no
+dependencies, so it's ready to host on **GitHub Pages**.
 
 ## Highlights
 
-- Modern, attractive design (plum + violet + coral on warm cream) with the **Fraunces** display font
+- Modern, tech-focused design using light blue and soft green accents on white, over a dark
+  navy and slate text palette, with **Space Grotesk** for headings and **Inter** for body text
 - Sticky navigation with a mobile hamburger menu and active-link scroll-spy highlighting
-- Smooth scrolling, animated hero, and scroll-reveal sections
+- Smooth scrolling, an animated hero, and scroll-reveal sections
 - Fully **responsive** (desktop → tablet → phone) and **accessible** (keyboard nav, skip link,
   focus rings, reduced-motion support)
-- Every project told in **STAR format** — Situation, Task, Action, Outcome
-- The **ER FastTrack (ER Triage)** project is featured, noting it was built with **Kiro AI**
+- Every project covers the situation, the task, the actions Tanisi took, and the outcome
+- The **ER FastTrack** project is featured, noting it was built with **Kiro**
 
 ## Project structure
 
@@ -31,8 +32,8 @@ TanisiPortfolio/
 ## Add Tanisi's photo
 
 1. Save the photo as **`tanisi.jpg`** inside the **`images/`** folder
-   (a portrait / vertical crop looks best — roughly 4:5 ratio, e.g. 800×1000px).
-2. That's it — the hero automatically uses it.
+   (a portrait / vertical crop looks best, roughly 4:5 ratio, e.g. 800×1000px).
+2. That's it. The hero automatically uses it.
    If the file is missing, the site gracefully shows a **"TM" monogram** instead, so the page
    never looks broken.
 3. To use a different filename or `.png`, update this line in `index.html`:
@@ -78,7 +79,7 @@ python3 -m http.server 8000
 
 All text lives in `index.html` and is clearly grouped by section
 (`Hero`, `About`, `Skills`, `Projects`, `Experience`, `Education`, `Contact`).
-Colors and fonts are defined once at the top of `css/styles.css` under `:root` — change them there
+Colors and fonts are defined once at the top of `css/styles.css` under `:root`; change them there
 to re-theme the whole site.
 
 ---
