@@ -23,6 +23,9 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <!-- Subtle cursor-following glow (decorative; toggled on by JS, disabled for reduced motion / touch) -->
+  <div id="cursorGlow" class="cursor-glow" aria-hidden="true"></div>
+
   <!-- ============ NAV ============ -->
   <header class="nav" id="nav">
     <div class="nav__inner">
@@ -60,17 +63,18 @@
         <div class="hero__text reveal">
           <p class="hero__eyebrow">Computational Media · Georgia Tech</p>
           <h1 class="hero__title">
-            Hi, I'm <span class="grad">Tanisi Mehta</span>.<br />
-            I build
-            <span class="type" aria-live="polite">
-              <span class="type__text" id="typeText">software people can use.</span><span class="type__caret" aria-hidden="true"></span>
-            </span>
+            Hi, I'm <span class="grad">Tanisi Mehta</span>.
           </h1>
+          <p class="hero__lede hero__typeline">
+            I'm interested in
+            <span class="type" aria-live="polite">
+              <span class="type__text" id="typeText">building things people find useful.</span><span class="type__caret" aria-hidden="true"></span>
+            </span>
+          </p>
           <p class="hero__lede">
-            I'm an aspiring <strong>software and product engineer</strong> with a strong interest in
-            <strong>interaction design</strong>. I like understanding how a system really works, then
-            turning that into something people find easier and clearer to use, from an ER intake tool
-            to a 2D platformer.
+            A Computational Media student at Georgia Tech, I like understanding how a system really
+            works, then turning that into something people find easier and clearer to use, from an ER
+            intake tool to a 2D platformer.
           </p>
           <div class="hero__cta">
             <a href="#projects" class="btn btn--primary">View my work</a>
@@ -100,7 +104,7 @@
     </section>
 
     <!-- ============ ABOUT ============ -->
-    <section class="section" id="about">
+    <section class="section section-reveal" id="about">
       <div class="wrap">
         <p class="section__kicker reveal">01 / About</p>
         <h2 class="section__title reveal">I like building things that are useful, and getting the details right.</h2>
@@ -145,7 +149,7 @@
     </section>
 
     <!-- ============ SKILLS ============ -->
-    <section class="section section--tint" id="skills">
+    <section class="section section--tint section-reveal" id="skills">
       <div class="wrap">
         <p class="section__kicker reveal">02 / Skills</p>
         <h2 class="section__title reveal">What I work with.</h2>
@@ -162,7 +166,6 @@
               <li>Java</li>
               <li>GameMaker (GML)</li>
             </ul>
-            <p class="skillcard__note">Languages I write and debug myself.</p>
           </article>
 
           <article class="skillcard reveal">
@@ -186,7 +189,6 @@
               <li>Prototyping</li>
               <li>Learning as I build</li>
             </ul>
-            <p class="skillcard__note">I direct the build and review the output; the web code is AI-generated.</p>
           </article>
 
           <article class="skillcard reveal">
@@ -205,7 +207,7 @@
     </section>
 
     <!-- ============ PROJECTS ============ -->
-    <section class="section" id="projects">
+    <section class="section section-reveal" id="projects">
       <div class="wrap">
         <p class="section__kicker reveal">03 / Projects</p>
         <h2 class="section__title reveal">Selected work.</h2>
@@ -303,7 +305,7 @@
     </section>
 
     <!-- ============ EXPERIENCE ============ -->
-    <section class="section section--tint" id="experience">
+    <section class="section section--tint section-reveal" id="experience">
       <div class="wrap">
         <p class="section__kicker reveal">04 / Experience</p>
         <h2 class="section__title reveal">Where I've been building.</h2>
@@ -345,7 +347,7 @@
     </section>
 
     <!-- ============ EDUCATION & HONORS ============ -->
-    <section class="section" id="education">
+    <section class="section section-reveal" id="education">
       <div class="wrap">
         <p class="section__kicker reveal">05 / Education &amp; Honors</p>
         <h2 class="section__title reveal">Education and credentials.</h2>
@@ -378,7 +380,7 @@
     </section>
 
     <!-- ============ CONTACT ============ -->
-    <section class="section section--cta" id="contact">
+    <section class="section section--cta section-reveal" id="contact">
       <div class="wrap wrap--narrow">
         <p class="section__kicker section__kicker--light reveal">06 / Contact</p>
         <h2 class="section__title section__title--light reveal">Let's work on something.</h2>
