@@ -1,35 +1,36 @@
 /* ============================================================
    Tanisi Mehta · Portfolio Design System
-   Palette: light blue + soft green accents, white surfaces,
-   dark navy/slate ink. Tech-forward, calm, and readable.
+   Palette: white surfaces, light blue + soft green accents,
+   clean blue-slate ink. No purple. Google / Microsoft inspired:
+   calm, minimal, professional.
    Fonts: Space Grotesk (display) + Inter (UI).
    Accessible, responsive, motion-respecting.
    ============================================================ */
 
 :root {
   /* Surfaces */
-  --bg:          #f6f9fc;   /* cool near-white */
+  --bg:          #f7fafc;   /* clean near-white */
   --surface:     #ffffff;
-  --tint:        #eaf2fb;   /* light blue tint */
-  --tint-green:  #e7f4ee;   /* soft green tint */
+  --tint:        #e8f1fb;   /* light blue tint */
+  --tint-green:  #e6f4ee;   /* soft green tint */
 
-  /* Ink (navy / slate) */
-  --ink:         #0f2540;   /* deep navy */
-  --ink-2:       #3d5370;   /* slate */
-  --ink-3:       #6b7f97;   /* muted slate */
-  --line:        #dde7f1;
+  /* Ink (blue-slate, no indigo) */
+  --ink:         #0d2436;   /* deep blue-slate */
+  --ink-2:       #38536b;   /* slate */
+  --ink-3:       #637c92;   /* muted slate */
+  --line:        #dce7f0;
 
   /* Brand */
-  --blue:        #2f7de1;   /* primary light-ish blue */
-  --blue-deep:   #1d5bb0;
-  --sky:         #5fa8f0;
-  --green:       #2bb783;   /* soft green accent */
-  --green-deep:  #1f9a6d;
-  --navy:        #0f2540;
-  --slate:       #1b3353;
+  --blue:        #1a73e8;   /* primary blue (Google-style) */
+  --blue-deep:   #1558b0;
+  --sky:         #4a94ec;
+  --green:       #1aa06a;   /* soft green accent */
+  --green-deep:  #15855a;
+  --navy:        #10324f;   /* dark blue header/footer (not navy-indigo) */
+  --slate:       #1b3a57;
 
-  --grad:     linear-gradient(120deg, #2f7de1 0%, #44a7d4 55%, #2bb783 100%);
-  --grad-cta: linear-gradient(135deg, #0f2540 0%, #1d5bb0 65%, #2f7de1 100%);
+  --grad:     linear-gradient(120deg, #1a73e8 0%, #2f9ad4 52%, #1aa06a 100%);
+  --grad-cta: linear-gradient(135deg, #10324f 0%, #1558b0 60%, #1a73e8 100%);
 
   --font-ui:   "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-disp: "Space Grotesk", "Inter", system-ui, sans-serif;
