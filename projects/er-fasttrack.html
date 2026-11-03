@@ -36,67 +36,100 @@
         need a faster look. <strong>It never diagnoses or ranks patients on its own.</strong>
       </p>
 
+      <div class="cs-meta">
+        <div class="cs-meta__item"><span class="cs-meta__label">Role</span><span class="cs-meta__value">Research, design &amp; build (solo)</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Tools</span><span class="cs-meta__value">HTML, CSS, JavaScript, Kiro</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Type</span><span class="cs-meta__value">Web app prototype · Healthcare UX</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Timeline</span><span class="cs-meta__value">September 2026</span></div>
+      </div>
+
       <p class="detail__actions">
         <a class="btn btn--primary" href="https://github.com/tmehta0202-debug/er-fasttrack" target="_blank" rel="noopener">View on GitHub ↗</a>
       </p>
 
-      <figure class="detail__media">
-        <img src="../images/ER-ss.png" alt="Screenshot of the ER FastTrack triage-support prototype interface" />
+      <figure class="cs-figure cs-figure--plain">
+        <div class="cs-figure__frame"><img src="../images/ER-ss.png" alt="Screenshot of the ER FastTrack triage-support prototype interface" /></div>
+        <figcaption class="cs-figure__cap"><strong>The prototype.</strong> ER FastTrack running as a single-page web app with separate patient and clinician views.</figcaption>
       </figure>
 
-      <div class="detail__star">
-        <div class="star__item">
-          <span class="star__label">Situation</span>
-          <p>
-            Emergency rooms lose time to repeated information gathering, and patients are not good
-            judges of their own urgency. Research I read put it at roughly
-            <strong>65% who overestimate</strong> and <strong>8% who underestimate</strong> how
-            serious their condition is. The question was how to give staff better information
-            sooner without letting software make calls it isn't qualified to make.
-          </p>
+      <section class="cs-section">
+        <p class="cs-section__kicker">The problem</p>
+        <h2 class="cs-section__title">Better information, without overstepping</h2>
+        <p class="cs-prose">
+          Emergency rooms lose time to repeated information gathering, and patients are not good
+          judges of their own urgency. The research I read put it at roughly
+          <strong>65% who overestimate</strong> and <strong>8% who underestimate</strong> how serious
+          their condition is. That creates a hard line to walk: software can help staff get better
+          information sooner, but it must not make clinical calls it isn't qualified to make.
+        </p>
+        <div class="cs-stats">
+          <div class="cs-stat"><div class="cs-stat__num">~65%</div><div class="cs-stat__lbl">of patients overestimate how serious their condition is</div></div>
+          <div class="cs-stat"><div class="cs-stat__num">~8%</div><div class="cs-stat__lbl">underestimate it, which is the more dangerous case</div></div>
+          <div class="cs-stat"><div class="cs-stat__num cs-stat__num--green">0</div><div class="cs-stat__lbl">diagnoses made by the software, by design</div></div>
         </div>
-        <div class="star__item">
-          <span class="star__label">Task</span>
-          <p>
-            Research how ER triage actually works, then design and build a working, accessible web
-            app that helps staff organize and prioritize incoming patients while keeping every
-            clinical decision with qualified staff.
-          </p>
-        </div>
-        <div class="star__item">
-          <span class="star__label">Action</span>
-          <p>
-            I read triage protocols and clinical references (ESI high-risk vital signs and NCBI
-            thresholds) and used them to ground the design. With <strong>Kiro</strong> helping me
-            move faster, I built a single-page app with three views: a <strong>patient</strong>
-            intake, a <strong>clinician</strong> dashboard, and a <strong>case study</strong>. The
-            intake asks one question per screen, a <strong>flagging engine</strong> explains why
-            something was flagged, and the dashboard keeps <em>patient-reported</em> data visually
-            separate from <em>measured</em> data. Accessibility was built in from the start: 56px
-            touch targets, high contrast, plain language, keyboard navigation, ARIA live regions,
-            and never relying on color alone to signal meaning.
-          </p>
-        </div>
-        <div class="star__item">
-          <span class="star__label">Outcome</span>
-          <p>
-            A working prototype with no dependencies that shows a safe triage-support model: flags
-            come with plain-language reasons, patients can't assign their own priority, and the tool
-            never invents a measurement. It demonstrates the full path from
-            <strong>research to design decisions to an accessible build.</strong>
-          </p>
-        </div>
-      </div>
+      </section>
 
-      <ul class="detail__highlights">
-        <li>🩺 A non-diagnostic "review recommended" engine that explains its reasons</li>
-        <li>♿ Accessibility first: keyboard, screen reader, and reduced-motion support</li>
-        <li>🤖 Built quickly with Kiro while keeping the design decisions my own</li>
-        <li>🧠 Grounded in real clinical research and cited sources</li>
-      </ul>
+      <section class="cs-section">
+        <p class="cs-section__kicker">The model</p>
+        <h2 class="cs-section__title">Patients report, software organizes, staff decide</h2>
+        <p class="cs-prose">
+          The whole design follows one chain of responsibility. The patient supplies information, the
+          software structures it and flags what may deserve a faster look, and a qualified clinician
+          makes every real decision. The tool never collapses those roles into one.
+        </p>
+        <div class="cs-flow">
+          <div class="cs-flow__step"><h4>Patients report</h4><p>An adaptive intake asks one question per screen and collects structured, patient-reported information.</p></div>
+          <div class="cs-flow__arrow" aria-hidden="true">→</div>
+          <div class="cs-flow__step"><h4>Software organizes</h4><p>A non-diagnostic flagging engine surfaces what may need review and explains, in plain language, why.</p></div>
+          <div class="cs-flow__arrow" aria-hidden="true">→</div>
+          <div class="cs-flow__step"><h4>Clinicians decide</h4><p>A nurse dashboard presents it clearly; every priority and clinical call stays with qualified staff.</p></div>
+        </div>
+      </section>
+
+      <section class="cs-section">
+        <p class="cs-section__kicker">Process &amp; build</p>
+        <h2 class="cs-section__title">From triage research to a working app</h2>
+        <p class="cs-prose">
+          I grounded the design in how triage actually works before building anything, then used
+          <strong>Kiro</strong> to move quickly from those decisions to a working, dependency-free
+          app, keeping the design choices my own.
+        </p>
+        <ol class="cs-steps">
+          <li><h4>Researched real triage protocols</h4><p>Read clinical references including ESI high-risk vital signs and NCBI thresholds, and used them to ground every design decision.</p></li>
+          <li><h4>Designed three views</h4><p>A patient intake, a clinician dashboard, and a case study, so the tool tells its own story as well as doing the job.</p></li>
+          <li><h4>Built a non-diagnostic flagging engine</h4><p>It marks information as "review recommended" and always explains the reason, rather than scoring or ranking the patient.</p></li>
+          <li><h4>Separated reported from measured data</h4><p>The dashboard keeps patient-reported answers visually distinct from measured values, and never invents a measurement it doesn't have.</p></li>
+        </ol>
+      </section>
+
+      <section class="cs-section">
+        <p class="cs-section__kicker">Accessibility</p>
+        <h2 class="cs-section__title">Built to be usable under stress</h2>
+        <p class="cs-prose">
+          An ER tool has to work for stressed patients and busy staff, so accessibility was part of
+          the design from the start, not a pass at the end.
+        </p>
+        <div class="cs-grid">
+          <div class="cs-grid__item"><h4>Large touch targets</h4><p>56px targets so the intake is easy to use quickly and accurately.</p></div>
+          <div class="cs-grid__item"><h4>High contrast &amp; plain language</h4><p>Readable text and plain wording instead of medical jargon.</p></div>
+          <div class="cs-grid__item"><h4>Keyboard &amp; screen reader</h4><p>Full keyboard navigation and ARIA live regions for assistive tech.</p></div>
+          <div class="cs-grid__item"><h4>Never color alone</h4><p>Flags use text and icons, not just color, so meaning is never lost.</p></div>
+        </div>
+      </section>
+
+      <div class="cs-outcome">
+        <p class="cs-prose">
+          <strong>Outcome.</strong> A working prototype that demonstrates a safe triage-support model:
+          flags come with plain-language reasons, patients can't assign their own priority, and the
+          tool never invents a measurement. It shows the full path from
+          <strong>research to design decisions to an accessible, shippable build</strong>, and the
+          code is public on GitHub.
+        </p>
+      </div>
 
       <div class="detail__nav">
         <a class="btn btn--ghost" href="../index.html#projects">← All projects</a>
+        <a class="btn btn--ghost" href="https://github.com/tmehta0202-debug/er-fasttrack" target="_blank" rel="noopener">View on GitHub ↗</a>
         <a class="btn btn--primary" href="../index.html#contact">Get in touch</a>
       </div>
     </div>

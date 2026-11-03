@@ -30,39 +30,89 @@
   <main id="main" class="detail">
     <div class="wrap">
       <p class="detail__pitch">
-        A 2D platformer with a bunny protagonist that I'm building on my own in GameMaker. The goal
-        is a <strong>complete game</strong>, not just a movement demo: levels, hazards, collectibles,
-        dialogue, and a consistent look.
+        A 2D platformer I'm building on my own in GameMaker, starring a bunny named
+        <strong>Ruby</strong>. It's an ongoing project where I'm learning game development by making
+        a real game end to end, writing the gameplay systems and drawing the art and UI myself
+        rather than following a single tutorial.
       </p>
 
-      <figure class="detail__media">
-        <img src="../images/TheFlowerGame-ss.png" alt="Screenshot from The Flower 2D platformer game" />
-      </figure>
-
-      <div class="detail__star">
-        <div class="star__item">
-          <span class="star__label">Situation</span>
-          <p>I wanted to build a full 2D platformer from scratch to learn game development past the tutorial stage, including the parts that usually get skipped like art and UI.</p>
-        </div>
-        <div class="star__item">
-          <span class="star__label">Task</span>
-          <p>Design and build a bunny-protagonist platformer with real levels: interactive environments, collectibles, hazards, dialogue, and transitions between levels.</p>
-        </div>
-        <div class="star__item">
-          <span class="star__label">Action</span>
-          <p>I wrote the core systems in GameMaker, including movement, double jump, collisions, slopes, moving platforms, and damage and death states, and I made the tiles, animations, and UI so the game has one consistent style.</p>
-        </div>
-        <div class="star__item">
-          <span class="star__label">Outcome</span>
-          <p>A playable platformer that keeps growing. It's taught me how the gameplay systems, art, and interface have to fit together for a game to feel finished.</p>
-        </div>
+      <div class="cs-meta">
+        <div class="cs-meta__item"><span class="cs-meta__label">Role</span><span class="cs-meta__value">Solo developer &amp; artist</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Tools</span><span class="cs-meta__value">GameMaker, GML, pixel art</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Timeline</span><span class="cs-meta__value">Sept 2026 – Present</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Status</span><span class="cs-meta__value">In progress (early build)</span></div>
       </div>
 
-      <ul class="detail__highlights">
-        <li>🎮 Platformer systems: movement, double jump, slopes, and moving platforms</li>
-        <li>🎨 Custom tiles, animations, and UI for one consistent look</li>
-        <li>🐰 A bunny protagonist with dialogue, collectibles, hazards, and level transitions</li>
-      </ul>
+      <section class="cs-section">
+        <p class="cs-section__kicker">Overview</p>
+        <h2 class="cs-section__title">Learning game development by shipping the whole thing</h2>
+        <p class="cs-prose">
+          I started The Flower to get past tutorial-sized projects and build something complete. That
+          meant owning the parts that are easy to skip: not just making the character move, but
+          giving the game a health system, collectibles, hazards, and a protagonist with a
+          consistent look. Working solo means every system and every sprite is a decision I have to
+          make and connect to the rest of the game.
+        </p>
+        <p class="cs-prose">
+          The project is still early, but it's already playable, and building it has shown me how
+          closely the code and the art depend on each other for a game to feel finished.
+        </p>
+      </section>
+
+      <section class="cs-section">
+        <p class="cs-section__kicker">Protagonist</p>
+        <h2 class="cs-section__title">Ruby, drawn frame by frame</h2>
+        <p class="cs-prose">
+          Ruby's walk is a six-frame pixel-art cycle I drew and wired to her movement in GameMaker,
+          so the animation speed matches how fast she actually moves. The sprite below is the real
+          in-game sheet, running live.
+        </p>
+        <div class="sprite-demo">
+          <span class="sprite" role="img" aria-label="Ruby the bunny walk-cycle animation"></span>
+          <p class="sprite-demo__note"><strong>Ruby walk cycle.</strong> Six 32&times;32 frames played in sequence. Drawing the animation myself made me think about timing and weight, not just the code that triggers it.</p>
+        </div>
+      </section>
+
+      <section class="cs-section">
+        <p class="cs-section__kicker">Systems</p>
+        <h2 class="cs-section__title">What's built so far</h2>
+        <p class="cs-prose">
+          Each of these is implemented in GML and wired together in the current build. They're the
+          foundation I'm expanding levels and content on top of.
+        </p>
+        <div class="cs-grid">
+          <div class="cs-grid__item"><h4>Movement &amp; animation</h4><p>Responsive run and jump for Ruby, with the walk cycle synced to her speed.</p></div>
+          <div class="cs-grid__item"><h4>Double jump</h4><p>A second mid-air jump that gives platforming more range and control.</p></div>
+          <div class="cs-grid__item"><h4>Heart-based health</h4><p>A health system tracked in hearts, so damage and survival are easy to read at a glance.</p></div>
+          <div class="cs-grid__item"><h4>Carrot collection</h4><p>Collectible carrots placed through the levels as the game's pickups.</p></div>
+          <div class="cs-grid__item"><h4>Hazards</h4><p>Obstacles that damage Ruby, creating risk and pacing in each level.</p></div>
+          <div class="cs-grid__item"><h4>Slope physics</h4><p>Basic slope handling so Ruby moves naturally over uneven ground, not just flat tiles.</p></div>
+        </div>
+      </section>
+
+      <section class="cs-section">
+        <p class="cs-section__kicker">In the game</p>
+        <h2 class="cs-section__title">Current build</h2>
+        <figure class="cs-figure">
+          <div class="cs-figure__frame">
+            <img src="../images/TheFlowerGame-ss.png" alt="Gameplay screenshot from The Flower showing Ruby, carrots, and the level tiles" style="max-width:420px" />
+          </div>
+          <figcaption class="cs-figure__cap">
+            <strong>Gameplay.</strong> Ruby in a level with collectible carrots and the hand-made
+            tileset. The art and the systems share one consistent pixel style so the world reads as
+            a single game.
+          </figcaption>
+        </figure>
+      </section>
+
+      <div class="cs-outcome">
+        <p class="cs-prose">
+          <strong>Where it's going.</strong> The core feels good, so the next work is content and
+          polish: more levels built on these systems, a story for Ruby, and dialogue and level
+          transitions to tie it together. Building solo has been the point, it's taught me how
+          movement, art, UI, and level design all have to agree for a game to feel whole.
+        </p>
+      </div>
 
       <div class="detail__nav">
         <a class="btn btn--ghost" href="../index.html#projects">← All projects</a>

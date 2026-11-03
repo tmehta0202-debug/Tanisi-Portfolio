@@ -701,3 +701,176 @@ a { color: inherit; text-decoration: none; }
   .carousel__track { scroll-behavior: auto; }
   .carousel__arrow { transition: none; }
 }
+
+/* ============================================================
+   Case-study system (project detail pages)
+   Reusable, project-specific building blocks that extend the
+   existing .detail system: an at-a-glance meta bar, section
+   headers, prose, annotated figures, feature grids, stat
+   callouts, a process flow, and an outcome block.
+   ============================================================ */
+
+/* At-a-glance meta bar: role / timeline / tools / team */
+.cs-meta {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px; background: var(--line); border: 1px solid var(--line);
+  border-radius: var(--r-md); overflow: hidden; margin: 0 0 40px;
+}
+.cs-meta__item { background: var(--surface); padding: 16px 20px; }
+.cs-meta__label {
+  display: block; font-size: .7rem; font-weight: 600; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink-3); margin-bottom: 6px;
+}
+.cs-meta__value { font-size: .96rem; font-weight: 500; color: var(--ink); line-height: 1.4; }
+
+/* Section header with a kicker, used to break the page into chapters */
+.cs-section { margin: 52px 0 0; }
+.cs-section:first-of-type { margin-top: 0; }
+.cs-section__kicker {
+  position: relative; padding-left: 30px; font-weight: 600; letter-spacing: .14em;
+  text-transform: uppercase; font-size: .74rem; color: var(--green-deep); margin-bottom: 12px;
+}
+.cs-section__kicker::before {
+  content: ""; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+  width: 22px; height: 2px; background: var(--green); border-radius: 2px;
+}
+.cs-section__title {
+  font-family: var(--font-disp); font-weight: 600; font-size: clamp(1.4rem, 2.6vw, 1.8rem);
+  line-height: 1.2; letter-spacing: -.02em; color: var(--navy); margin-bottom: 16px;
+}
+.cs-prose { color: var(--ink-2); font-size: 1.05rem; line-height: 1.75; max-width: 70ch; }
+.cs-prose + .cs-prose { margin-top: 16px; }
+.cs-prose strong { color: var(--ink); font-weight: 600; }
+.cs-prose em { color: var(--blue-deep); font-style: italic; }
+
+/* Annotated figure: a real screenshot/slide with a caption underneath */
+.cs-figure {
+  margin: 24px 0 0; border: 1px solid var(--line); border-radius: var(--r-md);
+  overflow: hidden; background: var(--surface); box-shadow: var(--shadow-1);
+}
+.cs-figure__frame {
+  display: flex; align-items: center; justify-content: center;
+  background: var(--tint); padding: 16px;
+}
+.cs-figure__frame img, .cs-figure__frame video {
+  max-width: 100%; height: auto; display: block; border-radius: 8px;
+}
+.cs-figure--plain .cs-figure__frame { background: var(--surface); padding: 0; }
+.cs-figure__cap {
+  padding: 14px 20px; font-size: .9rem; line-height: 1.55; color: var(--ink-2);
+  border-top: 1px solid var(--line);
+}
+.cs-figure__cap strong { color: var(--navy); font-weight: 600; }
+
+/* Feature / systems grid: titled cards for real features */
+.cs-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 16px; margin-top: 22px;
+}
+.cs-grid__item {
+  background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--blue);
+  border-radius: var(--r-sm); padding: 18px 20px;
+}
+.cs-grid__item:nth-child(3n+2) { border-left-color: var(--green); }
+.cs-grid__item:nth-child(3n+3) { border-left-color: var(--sky); }
+.cs-grid__item h4 {
+  font-family: var(--font-disp); font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 6px;
+}
+.cs-grid__item p { font-size: .92rem; line-height: 1.55; color: var(--ink-2); }
+
+/* Stat callouts: pull real numbers forward */
+.cs-stats {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px; margin-top: 22px;
+}
+.cs-stat {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md);
+  padding: 22px; box-shadow: var(--shadow-1);
+}
+.cs-stat__num { font-family: var(--font-disp); font-weight: 700; font-size: 2rem; line-height: 1; color: var(--blue); }
+.cs-stat__num--green { color: var(--green-deep); }
+.cs-stat__lbl { margin-top: 8px; font-size: .9rem; color: var(--ink-2); line-height: 1.45; }
+
+/* Quote strip: real user quotes */
+.cs-quotes { display: grid; gap: 14px; margin-top: 22px; }
+@media (min-width: 720px) { .cs-quotes { grid-template-columns: repeat(2, 1fr); } }
+.cs-quote {
+  background: var(--tint); border-radius: var(--r-md); padding: 20px 22px;
+  font-size: .98rem; line-height: 1.6; color: var(--ink); position: relative;
+}
+.cs-quote::before {
+  content: "\201C"; font-family: var(--font-disp); font-size: 2.4rem; line-height: .6;
+  color: var(--sky); display: block; margin-bottom: 6px;
+}
+
+/* Process flow: left-to-right steps (e.g. patients -> software -> clinicians) */
+.cs-flow {
+  display: flex; flex-wrap: wrap; align-items: stretch; gap: 10px; margin-top: 22px;
+}
+.cs-flow__step {
+  flex: 1 1 180px; background: var(--surface); border: 1px solid var(--line);
+  border-top: 3px solid var(--blue); border-radius: var(--r-sm); padding: 18px 20px;
+}
+.cs-flow__step:nth-child(3) { border-top-color: var(--sky); }
+.cs-flow__step:nth-child(5) { border-top-color: var(--green); }
+.cs-flow__step h4 { font-family: var(--font-disp); font-size: .98rem; color: var(--navy); margin-bottom: 6px; }
+.cs-flow__step p { font-size: .88rem; line-height: 1.5; color: var(--ink-2); }
+.cs-flow__arrow {
+  flex: 0 0 auto; align-self: center; color: var(--ink-3); font-size: 1.4rem; font-weight: 700;
+}
+@media (max-width: 640px) {
+  .cs-flow { flex-direction: column; }
+  .cs-flow__arrow { transform: rotate(90deg); align-self: center; }
+}
+
+/* Timeline of steps / process */
+.cs-steps { list-style: none; counter-reset: step; margin-top: 22px; padding: 0; display: grid; gap: 14px; }
+.cs-steps li {
+  position: relative; background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--r-sm); padding: 16px 20px 16px 58px;
+}
+.cs-steps li::before {
+  counter-increment: step; content: counter(step);
+  position: absolute; left: 16px; top: 16px; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--grad); color: #fff; display: grid; place-items: center;
+  font-family: var(--font-disp); font-weight: 700; font-size: .9rem;
+}
+.cs-steps h4 { font-size: .98rem; font-weight: 600; color: var(--navy); margin-bottom: 3px; }
+.cs-steps p { font-size: .92rem; line-height: 1.55; color: var(--ink-2); }
+
+/* Outcome / learnings block */
+.cs-outcome {
+  margin-top: 26px; background: var(--tint-green); border: 1px solid #cfe9dd;
+  border-radius: var(--r-md); padding: 24px 26px;
+}
+.cs-outcome .cs-prose { max-width: none; color: var(--slate); }
+.cs-outcome .cs-prose strong { color: var(--green-deep); }
+
+/* Two-up figure row (e.g. toggle states, before/after) */
+.cs-duo { display: grid; gap: 16px; margin-top: 22px; }
+@media (min-width: 640px) { .cs-duo { grid-template-columns: 1fr 1fr; } }
+
+@media (max-width: 560px) {
+  .cs-section { margin-top: 40px; }
+  .cs-prose { font-size: 1rem; }
+}
+
+/* ---- The Flower: animated Ruby sprite (6-frame walk cycle, 32x32 each) ---- */
+.sprite-demo {
+  display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+  margin-top: 22px; padding: 22px 24px; background: var(--surface);
+  border: 1px solid var(--line); border-radius: var(--r-md); box-shadow: var(--shadow-1);
+}
+.sprite {
+  width: 32px; height: 32px; image-rendering: pixelated;
+  background-image: url("../images/RubyWalk_strip6.png");
+  background-repeat: no-repeat; background-size: 192px 32px;
+  transform: scale(3); transform-origin: left center; margin-right: 40px;
+  animation: ruby-walk .7s steps(6) infinite;
+}
+@keyframes ruby-walk { from { background-position: 0 0; } to { background-position: -192px 0; } }
+.sprite-demo__note { font-size: .92rem; color: var(--ink-2); line-height: 1.55; flex: 1 1 260px; }
+.sprite-demo__note strong { color: var(--navy); font-weight: 600; }
+@media (prefers-reduced-motion: reduce) {
+  .sprite { animation: none; background-position: 0 0; }
+}

@@ -30,69 +30,115 @@
   <main id="main" class="detail">
     <div class="wrap">
       <p class="detail__pitch">
-        An onboarding portal that pulls the tasks, resources, and information new Georgia Tech
-        students need out of scattered emails and platforms and puts them in
-        <strong>one place they can follow</strong>.
+        A student onboarding portal built at the <strong>Georgia Tech IGNITE Hackathon</strong>. It
+        pulls the tasks, resources, and deadlines new students are handed across scattered systems
+        into <strong>one place they can actually follow</strong>. We started from a survey, found a
+        clear problem, and designed the portal as the answer to it.
       </p>
 
-      <!-- Demo video: enlarged, media on top, description below -->
-      <section class="case case--feature">
-        <figure class="case__media">
-          <video controls preload="metadata" playsinline aria-label="Ignition Portal student onboarding demo video">
-            <source src="../images/Website-Demo.mp4" type="video/mp4" />
-            Your browser doesn't support embedded video.
-            <a href="../images/Website-Demo.mp4">Download the demo video</a>.
-          </video>
-        </figure>
-        <div class="case__text">
-          <p class="case__caption">
-            <strong>Portal demo.</strong> This walkthrough shows the onboarding portal our team built
-            during the hackathon. It collects the required tasks and resources new Georgia Tech
-            students are handed across different systems and presents them as a single, ordered
-            checklist, so the first few weeks are easier to follow and less overwhelming.
-          </p>
-        </div>
-      </section>
-
-      <!-- Survey/research: description LEFT, image RIGHT -->
-      <section class="case case--flip">
-        <figure class="case__media">
-          <img src="../images/IGNITE-Survey.png" alt="Survey results chart showing the biggest onboarding struggles for Ignition Portal students" />
-        </figure>
-        <div class="case__text">
-          <p class="case__caption">
-            <strong>Onboarding survey.</strong> I ran a short survey to find out what new students
-            struggle with most when they arrive. The responses gave us real needs to design against
-            instead of guesses, and we used them to decide what the portal should surface first.
-          </p>
-        </div>
-      </section>
-
-      <div class="detail__star">
-        <div class="star__item">
-          <span class="star__label">Situation</span>
-          <p>New Georgia Tech students have to track required tasks and resources spread across many platforms and emails during their first weeks.</p>
-        </div>
-        <div class="star__item">
-          <span class="star__label">Task</span>
-          <p>Work with a team to design an onboarding portal that brings everything an incoming student needs into one place, within a hackathon weekend.</p>
-        </div>
-        <div class="star__item">
-          <span class="star__label">Action</span>
-          <p>I ran the onboarding survey, helped shape the user flow from those findings, and used <strong>Claude</strong> to speed up brainstorming and planning while we worked against the clock.</p>
-        </div>
-        <div class="star__item">
-          <span class="star__label">Outcome</span>
-          <p>A working portal that turns fragmented onboarding information into one student-friendly checklist, backed by what students told us they needed.</p>
-        </div>
+      <div class="cs-meta">
+        <div class="cs-meta__item"><span class="cs-meta__label">Role</span><span class="cs-meta__value">Research, UI design, user flows, AI-assisted prototyping</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Team</span><span class="cs-meta__value">3 members</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Tools</span><span class="cs-meta__value">Figma, Claude</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Event</span><span class="cs-meta__value">GT IGNITE Hackathon · July 2026</span></div>
       </div>
 
-      <ul class="detail__highlights">
-        <li>🚀 Built as a team over a hackathon weekend</li>
-        <li>📊 Ran a survey to learn what new students actually struggle with</li>
-        <li>🧭 Brings scattered onboarding steps into one ordered flow</li>
-        <li>🤖 Used Claude to speed up brainstorming and planning</li>
-      </ul>
+      <section class="cs-section">
+        <p class="cs-section__kicker">01 · Research</p>
+        <h2 class="cs-section__title">We started by asking students</h2>
+        <p class="cs-prose">
+          Rather than guess at what onboarding needed, I ran a survey of incoming IGNITE students to
+          learn what actually made the start of college hard. With <strong>44 responses</strong>, one
+          answer dominated: the sheer number of separate platforms, sites, and checklists students
+          had to juggle.
+        </p>
+        <div class="cs-stats">
+          <div class="cs-stat"><div class="cs-stat__num">44</div><div class="cs-stat__lbl">Survey responses from incoming students</div></div>
+          <div class="cs-stat"><div class="cs-stat__num">66%</div><div class="cs-stat__lbl">Named "too many platforms" as their biggest struggle</div></div>
+          <div class="cs-stat"><div class="cs-stat__num cs-stat__num--green">1</div><div class="cs-stat__lbl">The fix students wanted: one place to follow</div></div>
+        </div>
+        <div class="cs-quotes">
+          <p class="cs-quote">The most stressful part of Ignite was learning all the Georgia Tech websites and systems.</p>
+          <p class="cs-quote">Overwhelming amount of emails that often didn't have the information I felt was important.</p>
+        </div>
+        <figure class="cs-figure cs-figure--plain">
+          <div class="cs-figure__frame"><img src="../images/Ignition-Survey.png" alt="Survey results: 'Biggest Onboarding Struggles for GT Ignite Students' pie chart with student quotes" /></div>
+          <figcaption class="cs-figure__cap">
+            <strong>Survey findings.</strong> Of 44 responses, "too many platforms" led at 65.9% (29
+            students), ahead of adjusting to a new city (11.4%) and registration (9.1%). The quotes
+            pointed at the same thing: onboarding was scattered.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="cs-section">
+        <p class="cs-section__kicker">02 · Problem</p>
+        <h2 class="cs-section__title">Georgia Tech onboarding is fragmented</h2>
+        <p class="cs-prose">
+          The survey confirmed the real problem: incoming students have to bounce between Canvas,
+          Housing, OSCAR, the IGNITE portal, and a stream of emails, each with its own checklist and
+          login. There's no single view of what's done and what's left, so the first weeks feel
+          overwhelming before classes even begin.
+        </p>
+        <figure class="cs-figure cs-figure--plain">
+          <div class="cs-figure__frame"><img src="../images/Ignition-Problem.png" alt="Problem slide showing Georgia Tech onboarding scattered across Canvas, Housing, OSCAR, and the IGNITE portal" /></div>
+          <figcaption class="cs-figure__cap">
+            <strong>The fragmentation.</strong> Students are expected to track tasks across several
+            unconnected Georgia Tech systems at once, with no shared sense of progress.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="cs-section">
+        <p class="cs-section__kicker">03 · Solution</p>
+        <h2 class="cs-section__title">The Ignition Portal: one guided hub</h2>
+        <p class="cs-prose">
+          Our answer was a personalized onboarding hub that walks a student through every required
+          step in one place. I helped shape the user flow and designed the interface around four
+          things students told us they needed.
+        </p>
+        <div class="cs-grid">
+          <div class="cs-grid__item"><h4>Personalized checklist</h4><p>Every onboarding task in one view, instead of scattered across platforms.</p></div>
+          <div class="cs-grid__item"><h4>Task completion</h4><p>Check tasks off as they're finished, with due dates surfaced up front.</p></div>
+          <div class="cs-grid__item"><h4>Progress tracking</h4><p>A visual progress bar and milestones so students can see how far along they are.</p></div>
+          <div class="cs-grid__item"><h4>Announcements</h4><p>Important updates collected in one spot instead of buried in email.</p></div>
+        </div>
+        <figure class="cs-figure cs-figure--plain">
+          <div class="cs-figure__frame"><img src="../images/Ignition-Solution.png" alt="Solution slide showing the Ignition Portal with a personalized checklist and progress bar" /></div>
+          <figcaption class="cs-figure__cap">
+            <strong>The portal.</strong> A single dashboard with a personalized checklist, due dates,
+            and a progress bar, so the scattered steps become one clear path.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="cs-section">
+        <p class="cs-section__kicker">Demo</p>
+        <h2 class="cs-section__title">Walkthrough</h2>
+        <figure class="cs-figure">
+          <div class="cs-figure__frame cs-figure__frame--plain" style="padding:0;background:var(--surface)">
+            <video controls preload="metadata" playsinline aria-label="Ignition Portal student onboarding demo video" style="width:100%;border-radius:0">
+              <source src="../images/Website-Demo.mp4" type="video/mp4" />
+              Your browser doesn't support embedded video.
+              <a href="../images/Website-Demo.mp4">Download the demo video</a>.
+            </video>
+          </div>
+          <figcaption class="cs-figure__cap">
+            <strong>Prototype demo.</strong> A walkthrough of the working portal our team built over
+            the hackathon, turning the required onboarding steps into a single ordered checklist.
+          </figcaption>
+        </figure>
+      </section>
+
+      <div class="cs-outcome">
+        <p class="cs-prose">
+          <strong>Outcome.</strong> In a hackathon weekend, our three-person team took Ignition from a
+          survey finding to a working prototype. I owned the research and helped drive the UI and user
+          flows, and we used <strong>Claude</strong> to move quickly from ideas to a prototype under
+          time pressure. It's the clearest example of how I like to work: find the real problem first,
+          then design directly against it.
+        </p>
+      </div>
 
       <div class="detail__nav">
         <a class="btn btn--ghost" href="../index.html#projects">← All projects</a>
