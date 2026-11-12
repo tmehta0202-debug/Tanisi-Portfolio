@@ -879,3 +879,114 @@ a { color: inherit; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   .sprite { animation: none; background-position: 0 0; }
 }
+
+/* ============================================================
+   Homepage overhaul: nav indicator, hero particles, magnetic
+   headline, featured tiles, compact skill tabs, liquid/mask
+   image reveals, and small layout helpers.
+   Palette unchanged (blue / green / white). Motion-respecting.
+   ============================================================ */
+
+/* ---- Animated nav indicator (desktop) ---- */
+.nav__links { position: relative; }
+.nav__indicator {
+  position: absolute; top: 50%; left: 0; height: 34px; width: 0;
+  transform: translateY(-50%); border-radius: var(--r-pill);
+  background: var(--tint); opacity: 0; z-index: 0;
+  transition: left .32s cubic-bezier(.22,.61,.36,1), width .32s cubic-bezier(.22,.61,.36,1), opacity .2s ease;
+  pointer-events: none;
+}
+.nav__link { position: relative; z-index: 1; }
+
+/* ---- Hero particles canvas (generative floating shapes) ---- */
+.hero__particles { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+/* ---- Magnetic headline ---- */
+.magnetic-line { display: inline-block; will-change: transform; }
+.hero__title .char {
+  display: inline-block; will-change: transform;
+  transition: transform .25s cubic-bezier(.22,.61,.36,1);
+}
+.hero__title .char--space { width: .28em; }
+
+/* ---- Featured tiles: 3-up, a touch larger ---- */
+.tiles--featured { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 920px) { .tiles--featured { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .tiles--featured { grid-template-columns: 1fr; } }
+
+.section__more { margin-top: 34px; }
+
+/* ---- Liquid image reveal + hover (mask + subtle ripple) ---- */
+/* Each tile image starts clipped, then wipes open when revealed. */
+.tile__media img, .tile__media video {
+  clip-path: inset(0 0 0 0);
+}
+.tile.reveal .tile__media img,
+.tile.reveal .tile__media video { }
+.tile.mask-hidden .tile__media img,
+.tile.mask-hidden .tile__media video {
+  clip-path: inset(0 0 100% 0);
+}
+.tile.mask-shown .tile__media img,
+.tile.mask-shown .tile__media video {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path .7s cubic-bezier(.76,0,.24,1), transform .4s ease;
+}
+/* Liquid sheen that sweeps across the image on hover */
+.tile__media::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.28) 48%, rgba(74,148,236,.12) 56%, transparent 74%);
+  background-size: 250% 100%; background-position: 150% 0; opacity: 0;
+  transition: opacity .2s ease;
+}
+.tile:hover .tile__media::after { opacity: 1; animation: sheen 1.1s ease forwards; }
+@keyframes sheen { from { background-position: 150% 0; } to { background-position: -120% 0; } }
+
+/* ---- Compact, interactive skills ---- */
+.skills { margin-top: 14px; }
+.skills__tabs {
+  position: relative; display: inline-flex; gap: 4px; padding: 5px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-pill);
+  box-shadow: var(--shadow-1); flex-wrap: wrap;
+}
+.skills__tab {
+  position: relative; z-index: 1; border: 0; background: transparent; cursor: pointer;
+  font-family: var(--font-ui); font-weight: 600; font-size: .95rem; color: var(--ink-2);
+  padding: 10px 20px; border-radius: var(--r-pill); transition: color .2s ease;
+}
+.skills__tab.is-active { color: #fff; }
+.skills__tabline {
+  position: absolute; top: 5px; bottom: 5px; left: 5px; width: 0;
+  border-radius: var(--r-pill); background: var(--grad); z-index: 0;
+  transition: left .3s cubic-bezier(.22,.61,.36,1), width .3s cubic-bezier(.22,.61,.36,1);
+}
+.skills__panels { margin-top: 22px; min-height: 48px; }
+.skills__panel { display: none; }
+.skills__panel.is-active { display: flex; animation: panel-in .35s ease; }
+@keyframes panel-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.skills .chips li { font-size: .92rem; padding: 9px 16px; }
+.chip-note { color: var(--ink-3); font-weight: 400; font-size: .82em; }
+@media (prefers-reduced-motion: reduce) {
+  .skills__panel.is-active { animation: none; }
+  .skills__tabline, .nav__indicator { transition: none; }
+}
+
+/* ---- Short about + link arrow ---- */
+.about__short { max-width: 70ch; }
+.about__short p { color: var(--ink-2); font-size: 1.08rem; line-height: 1.75; margin-bottom: 16px; }
+.about__short strong { color: var(--ink); font-weight: 600; }
+.link-arrow {
+  display: inline-flex; align-items: center; gap: 6px; font-weight: 600; color: var(--blue-deep);
+  position: relative;
+}
+.link-arrow::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px;
+  background: var(--green); transform: scaleX(0); transform-origin: left; transition: transform .22s ease;
+}
+.link-arrow:hover::after { transform: scaleX(1); }
+
+/* Hide the desktop nav indicator on mobile (vertical panel) */
+@media (max-width: 720px) {
+  .nav__indicator { display: none; }
+  .tiles--featured { grid-template-columns: 1fr; }
+}
