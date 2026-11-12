@@ -908,6 +908,14 @@ a { color: inherit; text-decoration: none; }
   transition: transform .25s cubic-bezier(.22,.61,.36,1);
 }
 .hero__title .char--space { width: .28em; }
+/* When the magnetic script splits the gradient name into per-letter spans,
+   each letter must carry the gradient itself (background does not inherit),
+   otherwise the transparent-clipped letters render invisible. */
+.hero__title .grad .char {
+  background: var(--grad);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
 
 /* ---- Featured tiles: 3-up, a touch larger ---- */
 .tiles--featured { grid-template-columns: repeat(3, 1fr); }
