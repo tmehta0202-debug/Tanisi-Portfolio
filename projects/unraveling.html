@@ -46,22 +46,39 @@
         <p class="cs-section__kicker">Overview</p>
         <h2 class="cs-section__title">Designing UI that fits a paranoid mood</h2>
         <p class="cs-prose">
-          On a game this size, the interface can easily feel bolted on. My aim is the opposite: menus,
+          On a game this size, the interface can easily feel bolted on, a layer of generic menus
+          floating over a world that has nothing to do with them. My aim is the opposite: menus,
           screens, and controls that belong to Unraveling's dark, on-edge tone, so the UI adds to the
-          atmosphere instead of breaking it. The constant tension is mood versus clarity, a screen can
-          look unsettling, but a player still has to understand it instantly mid-game.
+          atmosphere instead of breaking it. Every screen is a chance to keep the player inside the
+          game's headspace, even when they've paused to change a setting or pick a level.
         </p>
         <p class="cs-prose">
-          I design in <strong>Figma</strong> and work inside a 100+ member team, which means my pieces
-          have to match a shared visual direction and hold up to feedback from other designers and
-          developers. I resolve the tension by keeping the <em>styling</em> dark and tense while the
-          <em>structure</em>, layout, labels, and states, stays simple and readable.
+          The constant tension is <strong>mood versus clarity</strong>. A screen can look unsettling,
+          washed in red light and visual noise, but a player still has to parse it instantly in the
+          middle of a tense moment. If a menu is beautiful but confusing, it pulls people out of the
+          experience as fast as a menu that's clear but generic. So I treat legibility as a hard
+          constraint and the paranoid styling as the layer I build on top of it, rather than the other
+          way around.
+        </p>
+        <p class="cs-prose">
+          I design in <strong>Figma</strong> and work inside a <strong>100+ member team</strong>, which
+          changes how I work as much as what I make. My pieces have to match a shared visual direction,
+          slot in next to other designers' screens without looking like a different game, and hold up
+          to rounds of feedback from both designers and developers. I resolve the mood-versus-clarity
+          tension by keeping the <em>styling</em> dark and tense while the <em>structure</em>, the
+          layout, labels, hierarchy, and states, stays simple, consistent, and readable.
         </p>
       </section>
 
       <section class="cs-section">
         <p class="cs-section__kicker">Contributions</p>
         <h2 class="cs-section__title">What I've designed</h2>
+        <p class="cs-prose">
+          My work spans the moments a player meets the interface most: the first screens on launch, the
+          menus they return to between runs, the elements that sit on screen during play, and the
+          atmospheric touches that keep the tension alive even in the UI. Each piece below had to earn
+          its place in the game's look while staying effortless to use.
+        </p>
         <div class="cs-grid">
           <div class="cs-grid__item"><h4>Start screens</h4><p>Entry screens that set the game's tone the moment it opens.</p></div>
           <div class="cs-grid__item"><h4>Menus</h4><p>Navigation and settings laid out to stay legible against the dark theme.</p></div>
@@ -75,9 +92,13 @@
         <p class="cs-section__kicker">Menus &amp; screens</p>
         <h2 class="cs-section__title">Settings and level select</h2>
         <p class="cs-prose">
-          Full-screen menus that carry the game's dark, uneasy tone while staying easy to read. The
-          settings panel keeps its controls simple against the mood, and the level select frames each
-          stage without losing the atmosphere.
+          These are the full-screen menus players spend the most time in, so they're where the
+          mood-versus-clarity balance matters most. Both carry the game's dark, uneasy tone while
+          staying easy to scan. In the settings panel I kept the controls to familiar slider patterns
+          so people can adjust music, brightness, sensitivity, and SFX without hunting, letting the
+          red-lit background do the atmospheric work instead of the controls themselves. The level
+          select frames each stage as a clear preview card, so choosing where to go stays obvious even
+          as the room behind it keeps the player on edge.
         </p>
         <figure class="cs-figure">
           <div class="cs-figure__frame"><img src="../images/Settings-Unravel.png" alt="Unraveling settings menu with Music, Brightness, Sensitivity, and SFX sliders over the dark game background" /></div>
@@ -98,6 +119,14 @@
       <section class="cs-section">
         <p class="cs-section__kicker">Atmosphere</p>
         <h2 class="cs-section__title">The paranoia overlay</h2>
+        <p class="cs-prose">
+          The overlay is the clearest example of UI doing emotional work rather than just conveying
+          information. Its only job is to make the player feel watched and on edge as they move through
+          the game. The hard part was designing something that reads as unsettling without ever
+          obscuring what's happening underneath it, so I built it to sit inside the game's dark visual
+          language and hold up over whatever is on screen at the time, light rooms or dark, calm beats
+          or chaos.
+        </p>
         <figure class="cs-figure">
           <div class="cs-figure__frame"><img src="../images/Overlay-Unraveling.png" alt="Paranoia-themed UI overlay designed for the Unraveling game" /></div>
           <figcaption class="cs-figure__cap">
@@ -112,9 +141,12 @@
         <p class="cs-section__kicker">Interaction</p>
         <h2 class="cs-section__title">Music toggle: two clear states</h2>
         <p class="cs-prose">
-          For the in-game music control I designed both states so a player can tell at a glance
-          whether sound is playing. Keeping the on and muted states visually consistent makes the
-          control easy to read and keeps it in step with the rest of the interface.
+          A small control, but a good test of the whole approach. For the in-game music toggle I
+          designed both states so a player can tell at a glance whether sound is playing, no guessing,
+          no accidental double-taps. Keeping the on and muted states visually consistent, same shape
+          and placement, only the state changing, makes it instantly readable and keeps it in step with
+          the rest of the interface. It's the kind of detail that's invisible when it works and
+          annoying the moment it doesn't, which is exactly why it was worth getting right.
         </p>
         <div class="cs-duo">
           <figure class="cs-figure">
@@ -130,10 +162,13 @@
 
       <div class="cs-outcome">
         <p class="cs-prose">
-          <strong>What I'm taking from it.</strong> Designing inside a large team taught me to make UI
-          that serves both the mood and the player, and to revise my work based on feedback so it fits
-          a shared direction rather than just my own. The result is a set of interface pieces that look
-          like they belong in Unraveling and still give players clear, immediate feedback.
+          <strong>What I'm taking from it.</strong> Designing inside a 100+ person team taught me to
+          make UI that serves both the mood and the player, and to treat feedback as part of the craft,
+          revising my work so it fits a shared direction rather than just my own taste. It also pushed
+          me to hold a clear principle under pressure: atmosphere is the styling layer, legibility is
+          non-negotiable. The result is a set of interface pieces, start screens, menus, the paranoia
+          overlay, and the music toggle, that look like they belong in Unraveling while still giving
+          players clear, immediate feedback the instant they need it.
         </p>
       </div>
 
