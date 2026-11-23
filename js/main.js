@@ -393,7 +393,7 @@
     var ctx = canvas.getContext("2d");
     var hero = canvas.closest(".hero");
     var particles = [];
-    var colors = ["rgba(26,115,232,0.14)", "rgba(26,160,106,0.13)", "rgba(74,148,236,0.12)"];
+    var colors = ["rgba(232,167,184,0.20)", "rgba(239,231,246,0.22)", "rgba(252,239,227,0.20)", "rgba(214,112,138,0.14)"];
     var running = true;
 
     function size() {
