@@ -1005,59 +1005,83 @@ a { color: inherit; text-decoration: none; }
    main focus with large screenshots. Minimal chrome.
    ============================================================ */
 
-/* Cover image under the pitch */
-.cs-cover { margin: 8px 0 40px; }
-.cs-cover img {
-  width: 100%; height: auto; display: block; border-radius: var(--r-md);
+/* ============================================================
+   Gather composition: medium, centered images and a varied
+   rhythm instead of a column of full-width giants. A shared
+   "plate" treatment keeps proportions, borders, and radius
+   consistent across cover, research, evolution, and hi-fi.
+   ============================================================ */
+:root { --cs-img: 760px; }   /* medium image column, narrower than the text wrap */
+
+/* Gather only: a tighter content column so text and medium images share
+   one aligned measure, plus more breathing room between chapters. */
+.detail--gather .wrap { max-width: 860px; }
+.detail--gather .cs-section { margin-top: 84px; }
+.detail--gather .cs-section:first-of-type { margin-top: 8px; }
+@media (max-width: 560px) { .detail--gather .cs-section { margin-top: 60px; } }
+
+.cs-plate {
+  display: block; width: 100%; height: auto; border-radius: var(--r-md);
   box-shadow: 0 0 0 1px var(--line);
 }
 
-/* ---- Evolution (secondary): balanced mid-fi | hi-fi pairs + short note ---- */
-.evo { margin-top: 24px; }
-.evo__row { margin-top: 40px; }
-.evo__row:first-child { margin-top: 28px; }
+/* Cover: medium, centered, not a full-bleed band */
+.cs-cover { margin: 8px auto 44px; max-width: var(--cs-img); }
+.cs-cover img { width: 100%; height: auto; display: block; border-radius: var(--r-md); box-shadow: 0 0 0 1px var(--line); }
 
-.evo__pair {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;
-}
-@media (max-width: 560px) { .evo__pair { grid-template-columns: 1fr; gap: 24px; } }
+/* Research figures: contained to the medium column and centered */
+.cs-section .cs-figure { max-width: var(--cs-img); margin-left: auto; margin-right: auto; }
+
+/* ---- Evolution (secondary): compact mid-fi | hi-fi pairs + short note ---- */
+.evo { margin-top: 26px; }
+.evo__row { margin-top: 44px; }
+.evo__row:first-child { margin-top: 30px; }
+
+.evo__pair { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
+@media (max-width: 560px) { .evo__pair { grid-template-columns: 1fr; gap: 22px; } }
 .evo__shot { margin: 0; }
 .evo__shot img {
   width: 100%; height: auto; display: block; border-radius: 12px;
   box-shadow: 0 0 0 1px var(--line);
 }
 .evo__shot figcaption {
-  margin-top: 8px; font-family: var(--font-ui); font-size: .72rem; font-weight: 600;
-  letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3);
+  margin-top: 8px; font-family: var(--font-ui); font-size: .7rem; font-weight: 600;
+  letter-spacing: .09em; text-transform: uppercase; color: var(--ink-3);
 }
-
 .evo__note { margin-top: 16px; }
 .evo__title {
-  font-family: var(--font-disp); font-weight: 600; font-size: 1.08rem;
+  font-family: var(--font-disp); font-weight: 600; font-size: 1.05rem;
   color: var(--navy); letter-spacing: -.01em; margin-bottom: 6px;
 }
-.evo__note p {
-  font-size: .98rem; line-height: 1.65; color: var(--ink-2); max-width: 68ch;
-}
+.evo__note p { font-size: .95rem; line-height: 1.6; color: var(--ink-2); max-width: 60ch; }
 
-/* Side-by-side note on wider screens keeps each row compact */
+/* On wider screens: pair stays the focus, note sits compact to the side */
 @media (min-width: 880px) {
   .evo__row {
-    display: grid; grid-template-columns: minmax(0, 1.9fr) minmax(220px, 1fr);
+    display: grid; grid-template-columns: minmax(0, 2fr) minmax(200px, .85fr);
     column-gap: 40px; align-items: center;
   }
   .evo__note { margin-top: 0; }
 }
 
-/* ---- Hi-fi gallery (primary focus): large screenshots, caption under ---- */
-.hifi { margin: 0 0 64px; }
-.hifi:first-of-type { margin-top: 28px; }
+/* ---- Hi-fi gallery (primary focus): medium, centered, varied rhythm ---- */
+.hifi { margin: 0 auto 56px; max-width: var(--cs-img); }
+.hifi:first-of-type { margin-top: 30px; }
 .hifi img {
   width: 100%; height: auto; display: block; border-radius: var(--r-md);
   box-shadow: 0 0 0 1px var(--line);
 }
 .hifi figcaption {
-  margin-top: 16px; font-size: 1.02rem; line-height: 1.65; color: var(--ink-2);
-  max-width: 72ch;
+  margin-top: 14px; font-size: .98rem; line-height: 1.65; color: var(--ink-2);
+  max-width: 64ch;
 }
 .hifi figcaption strong { color: var(--navy); font-weight: 600; }
+
+/* Two squarer feature screens shown as a balanced side-by-side group */
+.hifi-duo {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+  max-width: var(--cs-img); margin: 0 auto 56px; align-items: start;
+}
+.hifi-duo .hifi { margin: 0; max-width: none; }
+.hifi-duo .hifi figcaption { font-size: .92rem; }
+@media (max-width: 640px) { .hifi-duo { grid-template-columns: 1fr; gap: 40px; } }
