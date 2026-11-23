@@ -1013,54 +1013,21 @@ a { color: inherit; text-decoration: none; }
    the rest of the system.
    ============================================================ */
 
-/* ---- Mid-Fi to Hi-Fi evolution ------------------------------------- */
-/* Each row: an intro note, then a mid-fi / hi-fi pair shown side by side.
-   Frames match .cs-figure (surface, hairline --line border, --r-md radius,
-   --shadow-1), so they read as part of the same template. */
-.evo { margin-top: 24px; }
-.evo__row { margin-top: 40px; }
-.evo__row:first-child { margin-top: 24px; }
-
-.evo__note {
-  background: var(--surface); border: 1px solid var(--line);
-  border-left: 3px solid var(--blue); border-radius: var(--r-md);
-  padding: 18px 20px; margin-bottom: 20px; box-shadow: var(--shadow-1);
-}
-.evo__title {
-  font-family: var(--font-disp); font-weight: 600; font-size: 1.05rem;
-  color: var(--navy); letter-spacing: -.01em; margin-bottom: 9px;
-}
-.evo__note p { font-size: .95rem; line-height: 1.72; color: var(--ink-2); }
-
-.evo__pair { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
-@media (max-width: 600px) { .evo__pair { grid-template-columns: 1fr; gap: 22px; } }
-.evo__shot { margin: 0; }
-/* Mid-fi and hi-fi render as identical-size frames: a fixed height with
-   object-fit: contain, so both are the same size with nothing stretched
-   or cropped (the pair's screenshots have slightly different ratios). */
-.evo__shot img {
-  width: 100%; height: 280px; object-fit: contain; object-position: center;
-  display: block; padding: 14px;
-  border-radius: var(--r-md); overflow: hidden;
-  border: 1px solid var(--line); box-shadow: var(--shadow-1); background: var(--surface);
-}
-@media (max-width: 600px) { .evo__shot img { height: 220px; } }
-.evo__shot figcaption {
-  margin-top: 10px; font-family: var(--font-ui); font-size: .72rem; font-weight: 600;
-  letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3);
-}
-
-/* ---- Hi-fi gallery -------------------------------------------------- */
-/* Full-width screenshots with a caption below, framed like .cs-figure. */
-.hifi { margin: 24px 0 0; }
+/* ---- Screenshot gallery (Mid-Fi and Hi-Fi sections) ----------------
+   One shared layout for both sections: each screen is a full-width,
+   stacked figure (never side by side), framed like .cs-figure (surface,
+   hairline --line border, --r-md radius, --shadow-1), with a labelled
+   caption block below. This keeps width, alignment, borders, spacing,
+   and typography identical across both sections. */
+.hifi { margin: 44px 0 0; }
+.hifi:first-of-type { margin-top: 24px; }
 .hifi img {
   width: 100%; height: auto; display: block;
   border-radius: var(--r-md); overflow: hidden;
   border: 1px solid var(--line); box-shadow: var(--shadow-1); background: var(--surface);
 }
-/* Caption block: a small index number, a clear heading, and a readable
-   description. A soft green accent bar on the left ties each screen to the
-   next and lifts the captions above a plain run of sentences. */
+/* Caption block: a label/index, a clear heading, and a readable
+   description, set off by a soft green accent bar on the left. */
 .hifi__cap {
   margin-top: 16px; padding-left: 16px; border-left: 2px solid var(--green);
 }
@@ -1068,15 +1035,14 @@ a { color: inherit; text-decoration: none; }
   display: inline-block; font-family: var(--font-disp); font-weight: 700;
   font-size: .78rem; letter-spacing: .08em; color: var(--green-deep); margin-bottom: 4px;
 }
+/* Mid-Fi badge: a neutral slate chip, so it reads as context rather than
+   one of the numbered hi-fi screens. */
+.hifi__num--mid {
+  color: var(--ink-3); background: var(--tint); border-radius: var(--r-pill);
+  padding: 3px 10px; letter-spacing: .06em; text-transform: uppercase; font-size: .68rem;
+}
 .hifi__title {
   font-family: var(--font-disp); font-weight: 600; font-size: 1.14rem;
-  line-height: 1.25; letter-spacing: -.01em; color: var(--navy); margin: 2px 0 8px;
+  line-height: 1.25; letter-spacing: -.01em; color: var(--navy); margin: 6px 0 8px;
 }
 .hifi__desc { font-size: 1rem; line-height: 1.7; color: var(--ink-2); margin: 0; }
-
-/* Two squarer feature screens as a balanced side-by-side pair. */
-.hifi-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 24px; align-items: start; }
-.hifi-duo .hifi { margin: 0; }
-.hifi-duo .hifi .hifi__title { font-size: 1.06rem; }
-.hifi-duo .hifi .hifi__desc { font-size: .95rem; }
-@media (max-width: 680px) { .hifi-duo { grid-template-columns: 1fr; gap: 24px; } }
