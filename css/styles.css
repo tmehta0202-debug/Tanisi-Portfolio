@@ -1000,31 +1000,66 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ============================================================
-   Gather: mid-fi to hi-fi before/after comparison.
-   Reuses the case-study figure look; labels and a short "why".
+   Gather: mid-fi to hi-fi, editorial layout.
+   Large hi-fi screenshots lead; mid-fi shown small as a quiet
+   reference. Minimal chrome: whitespace and hierarchy do the work.
    ============================================================ */
-.ba { margin-top: 26px; }
-.ba + .ba { margin-top: 34px; }
-.ba__head { font-family: var(--font-disp); font-weight: 600; font-size: 1.05rem; color: var(--navy); margin-bottom: 4px; }
-.ba__pair { display: grid; gap: 16px; margin-top: 14px; }
-@media (min-width: 760px) { .ba__pair { grid-template-columns: 1fr 1fr; align-items: start; } }
-.ba__item { margin: 0; }
-.ba__label {
-  display: inline-block; font-size: .7rem; font-weight: 600; letter-spacing: .08em;
-  text-transform: uppercase; padding: 4px 10px; border-radius: var(--r-pill); margin-bottom: 8px;
+.evo { margin-top: 10px; }
+.evo__step { margin-top: 72px; }
+.evo__step:first-child { margin-top: 40px; }
+
+.evo__overline {
+  font-family: var(--font-disp); font-weight: 600; font-size: 1.15rem;
+  color: var(--navy); letter-spacing: -.01em; margin-bottom: 20px;
 }
-.ba__label--before { color: var(--ink-3); background: var(--line); }
-.ba__label--after { color: var(--green-deep); background: var(--tint-green); }
-.ba__frame {
-  border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden;
-  background: var(--surface); box-shadow: var(--shadow-1);
+
+/* The star of each step: a large hi-fi screenshot, full content width. */
+.evo__shot { margin: 0; }
+.evo__shot img {
+  width: 100%; height: auto; display: block; border-radius: var(--r-md);
+  /* A hairline ring so near-white screenshots don't bleed into the page. */
+  box-shadow: 0 0 0 1px var(--line);
 }
-.ba__frame img { width: 100%; height: auto; display: block; } /* preserves aspect ratio */
-.ba__why {
-  margin-top: 14px; font-size: .95rem; line-height: 1.65; color: var(--ink-2);
-  border-left: 3px solid var(--blue); padding-left: 14px;
+.evo__shot figcaption {
+  margin-top: 14px; font-size: .98rem; line-height: 1.6; color: var(--ink-2);
+  max-width: 64ch;
 }
-.ba__why strong { color: var(--navy); font-weight: 600; }
-/* "New in hi-fi" additions: single screenshot, no fabricated before */
-.ba--new .ba__pair { grid-template-columns: 1fr; }
-@media (min-width: 760px) { .ba--new .ba__pair { grid-template-columns: 1fr; } }
+.evo__shot figcaption strong { color: var(--navy); font-weight: 600; }
+
+/* The "why" sits beside or under the hi-fi shot, as quiet prose. */
+.evo__why {
+  margin-top: 20px; font-size: 1.05rem; line-height: 1.75; color: var(--ink-2);
+  max-width: 62ch;
+}
+
+/* Mid-fi reference: deliberately small and muted, not a co-star. */
+.evo__ref { margin: 24px 0 0; max-width: 300px; }
+.evo__ref img {
+  width: 100%; height: auto; display: block; border-radius: 10px;
+  opacity: .85; filter: saturate(.92); box-shadow: 0 0 0 1px var(--line);
+}
+.evo__ref figcaption {
+  margin-top: 8px; font-size: .82rem; line-height: 1.5; color: var(--ink-3);
+}
+
+/* On wider screens, pair the "why" and the mid-fi reference to the side. */
+@media (min-width: 860px) {
+  .evo__step {
+    display: grid; column-gap: 48px; row-gap: 22px;
+    grid-template-columns: minmax(0, 1.6fr) minmax(220px, .9fr);
+    align-items: start;
+  }
+  .evo__overline { grid-column: 1 / -1; margin-bottom: 4px; }
+  .evo__shot { grid-column: 1; grid-row: 2 / 4; }
+  .evo__why { grid-column: 2; grid-row: 2; margin-top: 0; }
+  .evo__ref { grid-column: 2; grid-row: 3; margin-top: 4px; max-width: none; }
+}
+
+/* New-in-hi-fi additions: big screenshots stacked with air, caption under. */
+.evo__new { margin-top: 88px; }
+.evo__newhead {
+  font-family: var(--font-disp); font-weight: 600; font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  color: var(--navy); letter-spacing: -.02em; margin-bottom: 14px;
+}
+.evo__shot--solo { margin-top: 56px; }
+.evo__shot--solo figcaption { max-width: 70ch; }
