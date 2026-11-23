@@ -1035,11 +1035,16 @@ a { color: inherit; text-decoration: none; }
 .evo__pair { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
 @media (max-width: 600px) { .evo__pair { grid-template-columns: 1fr; gap: 22px; } }
 .evo__shot { margin: 0; }
+/* Mid-fi and hi-fi render as identical-size frames: a fixed height with
+   object-fit: contain, so both are the same size with nothing stretched
+   or cropped (the pair's screenshots have slightly different ratios). */
 .evo__shot img {
-  width: 100%; height: auto; display: block;
+  width: 100%; height: 280px; object-fit: contain; object-position: center;
+  display: block; padding: 14px;
   border-radius: var(--r-md); overflow: hidden;
   border: 1px solid var(--line); box-shadow: var(--shadow-1); background: var(--surface);
 }
+@media (max-width: 600px) { .evo__shot img { height: 220px; } }
 .evo__shot figcaption {
   margin-top: 10px; font-family: var(--font-ui); font-size: .72rem; font-weight: 600;
   letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3);
@@ -1053,13 +1058,25 @@ a { color: inherit; text-decoration: none; }
   border-radius: var(--r-md); overflow: hidden;
   border: 1px solid var(--line); box-shadow: var(--shadow-1); background: var(--surface);
 }
-.hifi figcaption {
-  margin-top: 14px; font-size: 1rem; line-height: 1.7; color: var(--ink-2);
+/* Caption block: a small index number, a clear heading, and a readable
+   description. A soft green accent bar on the left ties each screen to the
+   next and lifts the captions above a plain run of sentences. */
+.hifi__cap {
+  margin-top: 16px; padding-left: 16px; border-left: 2px solid var(--green);
 }
-.hifi figcaption strong { color: var(--navy); font-weight: 600; }
+.hifi__num {
+  display: inline-block; font-family: var(--font-disp); font-weight: 700;
+  font-size: .78rem; letter-spacing: .08em; color: var(--green-deep); margin-bottom: 4px;
+}
+.hifi__title {
+  font-family: var(--font-disp); font-weight: 600; font-size: 1.14rem;
+  line-height: 1.25; letter-spacing: -.01em; color: var(--navy); margin: 2px 0 8px;
+}
+.hifi__desc { font-size: 1rem; line-height: 1.7; color: var(--ink-2); margin: 0; }
 
 /* Two squarer feature screens as a balanced side-by-side pair. */
 .hifi-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 24px; align-items: start; }
 .hifi-duo .hifi { margin: 0; }
-.hifi-duo .hifi figcaption { font-size: .95rem; }
+.hifi-duo .hifi .hifi__title { font-size: 1.06rem; }
+.hifi-duo .hifi .hifi__desc { font-size: .95rem; }
 @media (max-width: 680px) { .hifi-duo { grid-template-columns: 1fr; gap: 24px; } }
