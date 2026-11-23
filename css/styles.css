@@ -1012,16 +1012,16 @@ a { color: inherit; text-decoration: none; }
    ============================================================ */
 
 :root {
-  --cs-img:    1200px;  /* wide image column: wide screenshots read large */
-  --cs-text:   880px;   /* comfortable text measure */
+  --cs-img:    100%;    /* image column fills the wrap: wide, not narrow */
+  --cs-text:   1000px;  /* comfortable but wide text measure */
   --cs-gap:    120px;   /* space between chapters */
   --cs-figure: 40px;    /* space around figures within a chapter */
   --cs-radius: 16px;    /* one radius for every screenshot plate */
 }
 
-/* Overall page: open content width, roomy top/bottom padding. */
+/* Overall page: open content width, slimmer side margins, roomy top/bottom. */
 .detail--gather { padding: 56px 0 96px; }
-.detail--gather .wrap { max-width: 1240px; }
+.detail--gather .wrap { max-width: 1320px; padding: 0 32px; }
 
 /* Lead pitch: slightly larger, centered to the text measure. */
 .detail--gather .detail__pitch {
@@ -1069,7 +1069,7 @@ a { color: inherit; text-decoration: none; }
 /* Research figures reuse the plate; neutralize the old inner frame so the
    outer plate is the single, consistent border. Caption sits on surface. */
 .detail--gather .cs-figure {
-  max-width: var(--cs-img); margin: var(--cs-figure) auto 0;
+  max-width: 1120px; margin: var(--cs-figure) auto 0;
   padding: 0; /* frame + caption provide their own padding */
 }
 .detail--gather .cs-figure__frame { background: var(--tint); padding: 20px; }
@@ -1082,29 +1082,30 @@ a { color: inherit; text-decoration: none; }
   padding: 16px 22px; font-size: .95rem; line-height: 1.65; color: var(--ink-2);
 }
 
-/* ---- Research insight grid: even, tinted cards ---------------------- */
+/* ---- Research insight grid: four even, tinted cards in one row ------ */
 .detail--gather .cs-grid {
-  max-width: var(--cs-text); margin: 28px auto 0; gap: 18px;
-  grid-template-columns: repeat(2, 1fr);
+  max-width: var(--cs-img); margin: 28px auto 0; gap: 18px;
+  grid-template-columns: repeat(4, 1fr);
 }
-@media (max-width: 600px) { .detail--gather .cs-grid { grid-template-columns: 1fr; } }
+@media (max-width: 860px) { .detail--gather .cs-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .detail--gather .cs-grid { grid-template-columns: 1fr; } }
 .detail--gather .cs-grid__item { padding: 20px 22px; }
 .detail--gather .cs-grid__item h4 { font-size: 1.02rem; margin-bottom: 8px; }
 .detail--gather .cs-grid__item p { font-size: .95rem; line-height: 1.6; }
 
 /* ---- Mid-Fi to Hi-Fi Evolution -------------------------------------- */
-/* The screenshots here are wide (roughly 3:1), so a halved side-by-side
-   made them tiny. Each comparison now gives every screenshot the full
-   image column, stacked and clearly labelled, so both read large. */
+/* The whole block (note + mid-fi/hi-fi pair) shares one width so the note,
+   mid-fi, and hi-fi all line up on the same left/right edges. */
 .evo { margin-top: 48px; max-width: var(--cs-img); margin-left: auto; margin-right: auto; }
 .evo__row { margin-top: 72px; }
 .evo__row:first-child { margin-top: 40px; }
 
-/* Note: a subtle, well-padded text container introducing each comparison. */
+/* Note: a subtle, well-padded text container, full block width so its edges
+   align with the mid-fi / hi-fi screenshots below it. */
 .evo__note {
   background: var(--surface); border: 1px solid var(--line);
   border-left: 3px solid var(--sky); border-radius: var(--r-md);
-  padding: 22px 26px; margin-bottom: 28px; max-width: var(--cs-text);
+  padding: 22px 26px; margin-bottom: 28px; max-width: none;
 }
 .evo__title {
   font-family: var(--font-disp); font-weight: 600; font-size: 1.2rem;
@@ -1112,9 +1113,19 @@ a { color: inherit; text-decoration: none; }
 }
 .evo__note p { font-size: 1.02rem; line-height: 1.7; color: var(--ink-2); max-width: none; }
 
-/* Stacked comparison: full-width plates with even vertical spacing. */
-.evo__pair { display: grid; grid-template-columns: 1fr; gap: 28px; }
+/* Mid-fi | Hi-fi side by side: two equal columns, identical plate size.
+   A fixed plate height makes both screenshots the same size; each image is
+   centered and contained inside so neither is stretched or cropped. */
+.evo__pair { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
 .evo__shot { margin: 0; }
+.detail--gather .evo__shot img {
+  width: 100%; height: 300px; object-fit: contain; object-position: center;
+  padding: 20px;
+}
+@media (max-width: 600px) {
+  .evo__pair { grid-template-columns: 1fr; gap: 28px; }
+  .detail--gather .evo__shot img { height: auto; }
+}
 .evo__shot figcaption {
   margin-top: 14px; font-family: var(--font-ui); font-size: .74rem; font-weight: 600;
   letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3);
