@@ -1019,7 +1019,9 @@ a { color: inherit; text-decoration: none; }
    hairline --line border, --r-md radius, --shadow-1), with a labelled
    caption block below. This keeps width, alignment, borders, spacing,
    and typography identical across both sections. */
-.hifi { margin: 44px 0 0; }
+/* Figures are capped below full content width and centered, so the
+   screenshots sit in balance with the text rather than overpowering it. */
+.hifi { margin: 44px auto 0; max-width: 760px; }
 .hifi:first-of-type { margin-top: 24px; }
 .hifi img {
   width: 100%; height: auto; display: block;
