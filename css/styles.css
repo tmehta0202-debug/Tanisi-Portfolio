@@ -3,7 +3,7 @@
    Palette: white surfaces, light blue + soft green accents,
    clean blue-slate ink. No purple. Google / Microsoft inspired:
    calm, minimal, professional.
-   Fonts: Bricolage Grotesque (display) + Instrument Sans (UI).
+   Fonts: Space Grotesk (display) + Inter (UI).
    Accessible, responsive, motion-respecting.
    ============================================================ */
 
@@ -32,10 +32,8 @@
   --grad:     linear-gradient(120deg, #1a73e8 0%, #2f9ad4 52%, #1aa06a 100%);
   --grad-cta: linear-gradient(135deg, #10324f 0%, #1558b0 60%, #1a73e8 100%);
 
-  /* Typography: Bricolage Grotesque (display, with personality) +
-     Instrument Sans (clean editorial neo-grotesque body). */
-  --font-ui:   "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-disp: "Bricolage Grotesque", "Instrument Sans", system-ui, sans-serif;
+  --font-ui:   "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-disp: "Space Grotesk", "Inter", system-ui, sans-serif;
 
   --r-sm: 10px; --r-md: 16px; --r-lg: 24px; --r-pill: 999px;
   --shadow-1: 0 1px 3px rgba(15,37,64,.05), 0 8px 24px rgba(15,37,64,.06);
@@ -54,10 +52,8 @@ body {
   font-family: var(--font-ui);
   color: var(--ink);
   background: var(--bg);
-  line-height: 1.68;
-  letter-spacing: -.003em;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
 
@@ -1123,68 +1119,3 @@ a { color: inherit; text-decoration: none; }
   .detail--gather .reveal.is-visible { opacity: 1; transform: none; transition: none; }
   .hifi img { transition: none; }
 }
-
-/* ============================================================
-   Typography refinement (Bricolage Grotesque + Instrument Sans)
-   Weight / letter-spacing / line-height tuning only — no layout,
-   color, size-structure, or content changes. Applied consistently
-   across hero, sections, nav, project cards, and case studies.
-   ============================================================ */
-
-/* Display headings: Bricolage has real presence; a slightly heavier
-   weight and tighter tracking give it a confident, editorial feel. */
-.hero__title {
-  font-weight: 700; letter-spacing: -.035em; line-height: 1.02;
-}
-.section__title,
-.detail-hero__title {
-  font-weight: 700; letter-spacing: -.03em;
-}
-.detail-hero__title { line-height: 1.08; }
-
-/* Mid-level display headings (cards, timeline, education, case-study
-   section titles, carousel, sprite note) — balanced weight + tracking. */
-.tile__title,
-.project__title,
-.timeline__row h3,
-.edu__card h3,
-.edu__subhead,
-.skillcard h3,
-.cs-section__title,
-.carousel .slide__title {
-  font-weight: 600; letter-spacing: -.015em;
-}
-
-/* Nav brand/wordmark and the small "T" mark read best a touch tighter. */
-.nav__brand { letter-spacing: -.01em; }
-.nav__name { font-family: var(--font-disp); font-weight: 600; }
-
-/* Body / UI text: Instrument Sans. Keep nav and buttons crisp with a
-   hair of negative tracking; keep long-form prose comfortable. */
-.nav__link,
-.btn,
-.tile__meta,
-.section__kicker,
-.detail-hero__tag { letter-spacing: -.005em; }
-
-.hero__lede,
-.section__intro,
-.detail__pitch,
-.cs-prose,
-.tile__desc,
-.project__pitch,
-.timeline__body li,
-.contact__lede { line-height: 1.72; }
-
-/* Eyebrows / kickers / labels: Instrument Sans at a confident uppercase
-   tracking so small caps-style labels feel deliberate. */
-.hero__eyebrow,
-.section__kicker,
-.detail-hero__tag,
-.cs-section__kicker,
-.star__label,
-.cs-meta__label { letter-spacing: .14em; }
-
-/* Numeric display accents (stats) look sharp in the display face. */
-.hero__stat-num,
-.cs-stat__num { font-weight: 700; letter-spacing: -.02em; }
