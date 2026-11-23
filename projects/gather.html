@@ -100,81 +100,59 @@
       </section>
 
       <section class="cs-section">
-        <p class="cs-section__kicker">02 · Evolution</p>
-        <h2 class="cs-section__title">Mid-Fi to Hi-Fi</h2>
+        <p class="cs-section__kicker">02 · Mid-Fidelity</p>
+        <h2 class="cs-section__title">Mid-Fidelity Designs</h2>
         <p class="cs-prose">
-          The mid-fidelity flow existed to test one question: does personalized, prompt-driven visual
-          search actually feel better than keyword guesswork? Once that held up, the high-fidelity pass
-          was about making it feel like a product someone would reach for, with real content, real
-          sourcing, and a layout that explains itself. Three changes carried the most weight, and each
-          one traces back to a specific finding from the research rather than a styling preference.
+          The mid-fidelity screens were the first wireframes, early layout explorations meant to test
+          whether prompt-driven visual search felt better than keyword guesswork before investing in a
+          polished interface. They proved the core idea, but deliberately left a lot out. Navigation was
+          basic, search was a single box with no clear modes, filtering relied on a plain wall of
+          dropdowns, and the discovery features, attribution, saved artists, and collections, were still
+          placeholders. This section is the starting point; the high-fidelity designs that follow are
+          where those gaps get resolved.
         </p>
 
-        <div class="evo">
-          <div class="evo__row">
-            <div class="evo__note">
-              <h3 class="evo__title">Search &amp; Navigation</h3>
-              <p>The mid-fi screen was a single search box floating on an empty page: it proved the core
-              idea but gave no sense of where you were or where you could go next. The hi-fi version turns
-              it into a real application. A persistent sidebar holds recent searches and saved collections
-              so your context travels with you, and search splits into two clear modes, AI Search for
-              describing what you want in plain language and General Search for the familiar keyword flow.
-              That split came straight from the research: people switch between open browsing and
-              goal-driven searching, so forcing one box to do both was the mid-fi version's weakest point.</p>
-            </div>
-          <div class="evo__pair">
-              <figure class="evo__shot"><img src="../images/SearchPage_AIFiltering-Gather.png" alt="Mid-fi Gather search page" loading="lazy" /><figcaption>Mid-fi</figcaption></figure>
-              <figure class="evo__shot"><img src="../images/Gather-AISearch_General-HIFI.png" alt="Hi-fi Gather search page with navigation and search modes" loading="lazy" /><figcaption>Hi-fi</figcaption></figure>
-            </div>
-            </div>
+        <figure class="hifi">
+          <img src="../images/SearchPage_AIFiltering-Gather.png" alt="Mid-fidelity Gather search page" loading="lazy" />
+          <figcaption class="hifi__cap">
+            <span class="hifi__num hifi__num--mid">Mid-Fi</span>
+            <h3 class="hifi__title">Search &amp; Filtering</h3>
+            <p class="hifi__desc">A single search box with an early take on filtering. It was enough to validate the concept, but gave no sense of place, no persistent navigation, and no distinction between the different ways someone might want to search.</p>
+          </figcaption>
+        </figure>
 
-          <div class="evo__row">
-            <div class="evo__note">
-              <h3 class="evo__title">Refining a Search</h3>
-              <p>Mid-fi used a wall of fixed dropdowns, the standard filter pattern, but it put the work
-              on the user to know which controls mattered before they had even seen a result. The hi-fi
-              pass flips that around with prompt-based filtering. You describe the direction you want in
-              a phrase like "bright sunny day," and the AI interprets it and surfaces only the controls
-              that fit, such as lighting, mood, and color, instead of every possible option at once. It
-              keeps manual controls for people who want precision while removing the upfront guesswork
-              for people who don't, directly addressing the finding that recommendations and filters
-              often miss the mark when they aren't tied to what the person actually means.</p>
-            </div>
-          <div class="evo__pair">
-              <figure class="evo__shot"><img src="../images/FilterChoice_Results-Gather.png" alt="Mid-fi Gather filter choices" loading="lazy" /><figcaption>Mid-fi</figcaption></figure>
-              <figure class="evo__shot"><img src="../images/Gather-Filtering-HIFI.png" alt="Hi-fi Gather prompt-based refining filters" loading="lazy" /><figcaption>Hi-fi</figcaption></figure>
-            </div>
-            </div>
+        <figure class="hifi">
+          <img src="../images/FilterChoice_Results-Gather.png" alt="Mid-fidelity Gather filter choices and results" loading="lazy" />
+          <figcaption class="hifi__cap">
+            <span class="hifi__num hifi__num--mid">Mid-Fi</span>
+            <h3 class="hifi__title">Filter Choices</h3>
+            <p class="hifi__desc">Refining a search meant working through a fixed set of dropdowns shown all at once. It followed the standard pattern but asked the user to know which controls mattered before they had seen a single result.</p>
+          </figcaption>
+        </figure>
 
-          <div class="evo__row">
-            <div class="evo__note">
-              <h3 class="evo__title">Results &amp; Attribution</h3>
-              <p>In mid-fi, selecting a result opened a placeholder detail panel, enough to test the
-              layout but empty of the information that actually builds trust. The hi-fi design fills it
-              with real sourcing. Each result shows a match percentage and a short reason it was
-              surfaced, so the ranking is transparent rather than a black box, and opening an image
-              reveals the true creator, license, and a ready-to-use citation. This was the single most
-              important change: attribution came up again and again in research as a genuine pain, with
-              users worried about stolen or AI-generated work, so making the creator and license part
-              of every result, not an afterthought, is where the concept earns its keep.</p>
-            </div>
-          <div class="evo__pair">
-              <figure class="evo__shot"><img src="../images/ImageSelection_Attribution-Gather.png" alt="Mid-fi Gather results with a placeholder detail panel" loading="lazy" /><figcaption>Mid-fi</figcaption></figure>
-              <figure class="evo__shot"><img src="../images/Gather-SearchResults_HIFI.png" alt="Hi-fi Gather results with match percentages and a real citation" loading="lazy" /><figcaption>Hi-fi</figcaption></figure>
-            </div>
-            </div>
-        </div>
+        <figure class="hifi">
+          <img src="../images/ImageSelection_Attribution-Gather.png" alt="Mid-fidelity Gather result with a placeholder detail panel" loading="lazy" />
+          <figcaption class="hifi__cap">
+            <span class="hifi__num hifi__num--mid">Mid-Fi</span>
+            <h3 class="hifi__title">Result Detail</h3>
+            <p class="hifi__desc">Selecting a result opened a placeholder detail panel. The layout was in place, but the sourcing information, the part that actually builds trust, was still empty.</p>
+          </figcaption>
+        </figure>
       </section>
 
       <section class="cs-section">
-        <p class="cs-section__kicker">03 · High-Fidelity Design</p>
-        <h2 class="cs-section__title">The Finished Experience</h2>
+        <p class="cs-section__kicker">03 · High-Fidelity</p>
+        <h2 class="cs-section__title">High-Fidelity Designs</h2>
         <p class="cs-prose">
-          These are the final high-fidelity designs, walked through in the order a real session tends
-          to follow, from the first search to saving a reference you can come back to. Each screen maps
-          to a need the research surfaced, so the gallery doubles as a check that the four insight
-          clusters, finding references, browsing versus searching, trust and attribution, and managing
-          what you find, each landed in something concrete.
+          The high-fidelity pass turned those early wireframes into a product someone would actually
+          reach for, with real content, real sourcing, and a layout that explains itself. The
+          improvements concentrate where the research pointed: <strong>expanded navigation</strong> with
+          Explore, Artists, and Collections; <strong>AI-powered search and prompt-based filters</strong>
+          that read intent instead of making people guess at controls; <strong>search results with match
+          percentages and short relevance explanations</strong>; <strong>image details with real
+          creators, licenses, and citations</strong>; and <strong>improved saving and collection
+          management</strong> so references stay organized. The screens below walk through that finished
+          experience in the order a real session tends to follow.
         </p>
 
         <figure class="hifi">
@@ -182,46 +160,54 @@
           <figcaption class="hifi__cap">
             <span class="hifi__num">01</span>
             <h3 class="hifi__title">Search</h3>
-            <p class="hifi__desc">Two ways to look, side by side. AI Search takes a plain-language prompt and reads intent; General Search keeps the familiar keyword flow for when you know exactly what you want. The persistent sidebar keeps Explore, Artists, and Collections one click away, so searching never feels like a dead end.</p>
+            <p class="hifi__desc">Two ways to look, offered side by side so the tool adapts to the user instead of the other way around. AI Search takes a plain-language prompt and reads the intent behind it, which suits the moments when you can describe a feeling but not the exact keyword. General Search keeps the familiar keyword flow for when you already know precisely what you want. The persistent left sidebar carries recent searches and saved collections across the whole app, so you never lose your place, and navigation to Explore, Artists, and Collections stays one click away. The result is a starting screen that makes the product's range obvious the moment you land on it, rather than a single box that hides everything it can do.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="hifi">
+          <img src="../images/Gather-Filtering-HIFI.png" alt="Gather prompt-based refining filters" loading="lazy" />
+          <figcaption class="hifi__cap">
+            <span class="hifi__num">02</span>
+            <h3 class="hifi__title">Prompt-Based Filters</h3>
+            <p class="hifi__desc">Instead of a wall of dropdowns, refining a search starts with a plain-language prompt like "bright sunny day." The AI interprets it and surfaces only the controls that fit, such as lighting, mood, and color, while still leaving manual controls for anyone who wants to fine-tune. It removes the upfront guesswork of knowing which filters matter before seeing any results.</p>
           </figcaption>
         </figure>
 
         <figure class="hifi">
           <img src="../images/Gather-SearchResults_HIFI.png" alt="Gather search results with match percentages and an image details panel" loading="lazy" />
           <figcaption class="hifi__cap">
-            <span class="hifi__num">02</span>
+            <span class="hifi__num">03</span>
             <h3 class="hifi__title">Results &amp; Attribution</h3>
-            <p class="hifi__desc">Every result carries a match percentage and a short reason it surfaced, so the ranking is never a black box. Opening an image reveals the real creator, source, license, and a ready-to-use citation, turning the research team's biggest pain, trustworthy attribution, into a built-in part of each result.</p>
+            <p class="hifi__desc">Every result carries a match percentage and a short reason it surfaced, so the ranking is never a black box. Opening an image reveals the real creator, source, license, and a ready-to-use citation, turning the research team's biggest pain, trustworthy attribution, into a built-in part of each result rather than an afterthought.</p>
           </figcaption>
         </figure>
 
         <figure class="hifi">
           <img src="../images/Gather-Artists_HIFI.png" alt="Gather Find Artists and Saved Artists views" loading="lazy" />
           <figcaption class="hifi__cap">
-            <span class="hifi__num">03</span>
+            <span class="hifi__num">04</span>
             <h3 class="hifi__title">Artist Discovery</h3>
             <p class="hifi__desc">Find creators by style, see their work gathered in one view, and save the ones worth following. It shifts Gather from a one-off image search toward an ongoing relationship with the artists behind the references you keep coming back to.</p>
           </figcaption>
         </figure>
 
-        <div class="hifi-duo">
-          <figure class="hifi">
-            <img src="../images/Gather-Explore_HIFI.png" alt="Gather Explore feed of visual references" loading="lazy" />
-            <figcaption class="hifi__cap">
-              <span class="hifi__num">04</span>
-              <h3 class="hifi__title">Explore</h3>
-              <p class="hifi__desc">A For You and New feed for open-ended browsing, built for the moments when you have no fixed idea yet and just want to wander into inspiration before committing to a search.</p>
-            </figcaption>
-          </figure>
-          <figure class="hifi">
-            <img src="../images/Gather-Collections_HIFI.png" alt="Gather Collections grid with item counts, a pin, and a menu" loading="lazy" />
-            <figcaption class="hifi__cap">
-              <span class="hifi__num">05</span>
-              <h3 class="hifi__title">Collections</h3>
-              <p class="hifi__desc">Save, name, delete, and pin boards so references stay organized instead of scattered across tabs and apps. It answers the research finding that people lose track of inspiration as fast as they find it.</p>
-            </figcaption>
-          </figure>
-        </div>
+        <figure class="hifi">
+          <img src="../images/Gather-Explore_HIFI.png" alt="Gather Explore feed of visual references" loading="lazy" />
+          <figcaption class="hifi__cap">
+            <span class="hifi__num">05</span>
+            <h3 class="hifi__title">Explore</h3>
+            <p class="hifi__desc">A For You and New feed for open-ended browsing, built for the moments when you have no fixed idea yet and just want to wander into inspiration before committing to a search. It gives the "browsing without a goal" behavior from the research a home of its own.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="hifi">
+          <img src="../images/Gather-Collections_HIFI.png" alt="Gather Collections grid with item counts, a pin, and a menu" loading="lazy" />
+          <figcaption class="hifi__cap">
+            <span class="hifi__num">06</span>
+            <h3 class="hifi__title">Collections</h3>
+            <p class="hifi__desc">Save, name, delete, and pin boards so references stay organized instead of scattered across tabs and apps. It answers the research finding that people lose track of inspiration as fast as they find it, and closes the loop from first search to a reference you can reliably return to.</p>
+          </figcaption>
+        </figure>
       </section>
 
       <div class="cs-outcome">
