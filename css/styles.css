@@ -1000,66 +1000,64 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ============================================================
-   Gather: mid-fi to hi-fi, editorial layout.
-   Large hi-fi screenshots lead; mid-fi shown small as a quiet
-   reference. Minimal chrome: whitespace and hierarchy do the work.
+   Gather: cover, mid-fi to hi-fi evolution, and hi-fi gallery.
+   Evolution is compact and secondary; the hi-fi gallery is the
+   main focus with large screenshots. Minimal chrome.
    ============================================================ */
-.evo { margin-top: 10px; }
-.evo__step { margin-top: 72px; }
-.evo__step:first-child { margin-top: 40px; }
 
-.evo__overline {
-  font-family: var(--font-disp); font-weight: 600; font-size: 1.15rem;
-  color: var(--navy); letter-spacing: -.01em; margin-bottom: 20px;
+/* Cover image under the pitch */
+.cs-cover { margin: 8px 0 40px; }
+.cs-cover img {
+  width: 100%; height: auto; display: block; border-radius: var(--r-md);
+  box-shadow: 0 0 0 1px var(--line);
 }
 
-/* The star of each step: a large hi-fi screenshot, full content width. */
+/* ---- Evolution (secondary): balanced mid-fi | hi-fi pairs + short note ---- */
+.evo { margin-top: 24px; }
+.evo__row { margin-top: 40px; }
+.evo__row:first-child { margin-top: 28px; }
+
+.evo__pair {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;
+}
+@media (max-width: 560px) { .evo__pair { grid-template-columns: 1fr; gap: 24px; } }
 .evo__shot { margin: 0; }
 .evo__shot img {
-  width: 100%; height: auto; display: block; border-radius: var(--r-md);
-  /* A hairline ring so near-white screenshots don't bleed into the page. */
+  width: 100%; height: auto; display: block; border-radius: 12px;
   box-shadow: 0 0 0 1px var(--line);
 }
 .evo__shot figcaption {
-  margin-top: 14px; font-size: .98rem; line-height: 1.6; color: var(--ink-2);
-  max-width: 64ch;
-}
-.evo__shot figcaption strong { color: var(--navy); font-weight: 600; }
-
-/* The "why" sits beside or under the hi-fi shot, as quiet prose. */
-.evo__why {
-  margin-top: 20px; font-size: 1.05rem; line-height: 1.75; color: var(--ink-2);
-  max-width: 62ch;
+  margin-top: 8px; font-family: var(--font-ui); font-size: .72rem; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3);
 }
 
-/* Mid-fi reference: deliberately small and muted, not a co-star. */
-.evo__ref { margin: 24px 0 0; max-width: 300px; }
-.evo__ref img {
-  width: 100%; height: auto; display: block; border-radius: 10px;
-  opacity: .85; filter: saturate(.92); box-shadow: 0 0 0 1px var(--line);
+.evo__note { margin-top: 16px; }
+.evo__title {
+  font-family: var(--font-disp); font-weight: 600; font-size: 1.08rem;
+  color: var(--navy); letter-spacing: -.01em; margin-bottom: 6px;
 }
-.evo__ref figcaption {
-  margin-top: 8px; font-size: .82rem; line-height: 1.5; color: var(--ink-3);
+.evo__note p {
+  font-size: .98rem; line-height: 1.65; color: var(--ink-2); max-width: 68ch;
 }
 
-/* On wider screens, pair the "why" and the mid-fi reference to the side. */
-@media (min-width: 860px) {
-  .evo__step {
-    display: grid; column-gap: 48px; row-gap: 22px;
-    grid-template-columns: minmax(0, 1.6fr) minmax(220px, .9fr);
-    align-items: start;
+/* Side-by-side note on wider screens keeps each row compact */
+@media (min-width: 880px) {
+  .evo__row {
+    display: grid; grid-template-columns: minmax(0, 1.9fr) minmax(220px, 1fr);
+    column-gap: 40px; align-items: center;
   }
-  .evo__overline { grid-column: 1 / -1; margin-bottom: 4px; }
-  .evo__shot { grid-column: 1; grid-row: 2 / 4; }
-  .evo__why { grid-column: 2; grid-row: 2; margin-top: 0; }
-  .evo__ref { grid-column: 2; grid-row: 3; margin-top: 4px; max-width: none; }
+  .evo__note { margin-top: 0; }
 }
 
-/* New-in-hi-fi additions: big screenshots stacked with air, caption under. */
-.evo__new { margin-top: 88px; }
-.evo__newhead {
-  font-family: var(--font-disp); font-weight: 600; font-size: clamp(1.3rem, 2.4vw, 1.7rem);
-  color: var(--navy); letter-spacing: -.02em; margin-bottom: 14px;
+/* ---- Hi-fi gallery (primary focus): large screenshots, caption under ---- */
+.hifi { margin: 0 0 64px; }
+.hifi:first-of-type { margin-top: 28px; }
+.hifi img {
+  width: 100%; height: auto; display: block; border-radius: var(--r-md);
+  box-shadow: 0 0 0 1px var(--line);
 }
-.evo__shot--solo { margin-top: 56px; }
-.evo__shot--solo figcaption { max-width: 70ch; }
+.hifi figcaption {
+  margin-top: 16px; font-size: 1.02rem; line-height: 1.65; color: var(--ink-2);
+  max-width: 72ch;
+}
+.hifi figcaption strong { color: var(--navy); font-weight: 600; }
