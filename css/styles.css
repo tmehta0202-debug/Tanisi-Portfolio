@@ -1012,16 +1012,17 @@ a { color: inherit; text-decoration: none; }
    ============================================================ */
 
 :root {
-  --cs-img:    100%;    /* image column fills the wrap: wide, not narrow */
-  --cs-text:   1000px;  /* comfortable but wide text measure */
+  --cs-col:    1000px;  /* shared column width: text and images align edge-to-edge */
+  --cs-img:    var(--cs-col);  /* image column matches the text column */
+  --cs-text:   var(--cs-col);  /* text measure matches the image column */
   --cs-gap:    120px;   /* space between chapters */
   --cs-figure: 40px;    /* space around figures within a chapter */
   --cs-radius: 16px;    /* one radius for every screenshot plate */
 }
 
-/* Overall page: open content width, slimmer side margins, roomy top/bottom. */
+/* Overall page: content sits in one shared column with balanced margins. */
 .detail--gather { padding: 56px 0 96px; }
-.detail--gather .wrap { max-width: 1320px; padding: 0 32px; }
+.detail--gather .wrap { max-width: 1060px; padding: 0 30px; }
 
 /* Lead pitch: slightly larger, centered to the text measure. */
 .detail--gather .detail__pitch {
@@ -1069,7 +1070,7 @@ a { color: inherit; text-decoration: none; }
 /* Research figures reuse the plate; neutralize the old inner frame so the
    outer plate is the single, consistent border. Caption sits on surface. */
 .detail--gather .cs-figure {
-  max-width: 1120px; margin: var(--cs-figure) auto 0;
+  max-width: var(--cs-col); margin: var(--cs-figure) auto 0;
   padding: 0; /* frame + caption provide their own padding */
 }
 .detail--gather .cs-figure__frame { background: var(--tint); padding: 20px; }
