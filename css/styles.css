@@ -352,9 +352,14 @@ a { color: inherit; text-decoration: none; }
 
 .tile__media {
   position: relative; aspect-ratio: 16 / 10; overflow: hidden;
-  background:
-    radial-gradient(120% 120% at 70% -10%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 60%),
-    var(--accent-soft);
+  background: var(--accent-soft); /* fallback for no color-mix support */
+}
+@supports (background: color-mix(in srgb, red, blue)) {
+  .tile__media {
+    background:
+      radial-gradient(120% 120% at 70% -10%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 60%),
+      var(--accent-soft);
+  }
 }
 .tile__media img, .tile__media video { width: 100%; height: 100%; object-fit: cover; display: block; }
 /* A soft accent glow that blooms from a corner on hover. */
@@ -537,8 +542,10 @@ a { color: inherit; text-decoration: none; }
 .footer__made { color: rgba(255,255,255,.55); }
 
 /* ---------------- Reveal animation ---------------- */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1); }
 .reveal.is-visible { opacity: 1; transform: none; }
+/* Staggered reveal for tiles in a grid, so projects cascade in. */
+.tiles .tile.reveal { transition-delay: calc((var(--i, 0)) * 90ms); }
 
 /* ---------------- Responsive ---------------- */
 @media (max-width: 940px) {

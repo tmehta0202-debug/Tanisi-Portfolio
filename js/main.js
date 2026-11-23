@@ -387,6 +387,33 @@
     navLinksList.forEach(function (l) { navObserver.observe(l, { attributes: true, attributeFilter: ["class"] }); });
   }
 
+  /* ---- Staggered tile reveal: set a per-tile index for CSS delay ---- */
+  Array.prototype.slice.call(document.querySelectorAll(".tiles")).forEach(function (grid) {
+    Array.prototype.slice.call(grid.querySelectorAll(".tile")).forEach(function (t, i) {
+      t.style.setProperty("--i", i);
+    });
+  });
+
+  /* ---- Subtle hero parallax: drift the decorative layers on scroll ---- */
+  /* Drift the oversized ghost word and the portrait as you scroll. The
+     blobs keep their own CSS float animation, so we don't touch them. */
+  var heroEl = document.querySelector(".hero");
+  var ghost = document.querySelector(".hero__ghostword");
+  var heroPortrait = document.querySelector(".hero__portrait");
+  if (heroEl && !reduceMotion && (ghost || heroPortrait)) {
+    var pTicking = false;
+    function parallax() {
+      var y = window.scrollY;
+      if (ghost) ghost.style.transform = "translateY(" + (y * 0.14).toFixed(1) + "px)";
+      if (heroPortrait) heroPortrait.style.transform = "translateY(" + (y * -0.05).toFixed(1) + "px)";
+      pTicking = false;
+    }
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > window.innerHeight + 200) return;
+      if (!pTicking) { pTicking = true; window.requestAnimationFrame(parallax); }
+    }, { passive: true });
+  }
+
   /* ---- Generative hero particles (gentle floating shapes) ---- */
   var canvas = document.getElementById("heroParticles");
   if (canvas && canvas.getContext && !reduceMotion) {
