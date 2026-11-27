@@ -518,10 +518,15 @@
     expanded = false;
     if (content) content.classList.remove("is-expanded");
     if (layout) layout.classList.remove("is-open");
-    pins.forEach(function (pin) { pin.classList.remove("is-active"); pin.setAttribute("aria-selected", "false"); });
-    if (progress) progress.textContent = "Pick a stage";
-    // Route progress returns to empty when nothing is selected.
-    if (routeProg) routeProg.style.setProperty("--p", "0");
+    // Return to the resting state: pin 01 shown as the current location.
+    pins.forEach(function (pin, i) {
+      pin.classList.toggle("is-active", i === 0);
+      pin.classList.remove("is-done");
+      pin.setAttribute("aria-selected", i === 0 ? "true" : "false");
+    });
+    current = 0;
+    paintRoute(0);
+    if (progress) progress.textContent = "Tap a stage to open it";
   }
 
   function select(index, focusPin) {
@@ -576,10 +581,16 @@
     window.addEventListener("resize", function () { computeRoute(); paintRoute(current); });
   }
 
-  // Collapsed initial state: route only, no stage opened yet.
-  pins.forEach(function (pin) { pin.classList.remove("is-active"); pin.setAttribute("aria-selected", "false"); });
+  // Resting state: content collapsed, but the first pin reads as the current
+  // location so the route looks intentional (highlighted pin + marker at 01).
+  pins.forEach(function (pin, i) {
+    pin.classList.toggle("is-active", i === 0);
+    pin.setAttribute("aria-selected", i === 0 ? "true" : "false");
+  });
   panels.forEach(function (panel) { panel.setAttribute("hidden", ""); });
-  if (progress) progress.textContent = "Pick a stage";
+  current = 0;
+  paintRoute(0);
+  if (progress) progress.textContent = "Tap a stage to open it";
 
   // Collapse controls: close button, click outside the panel, Escape.
   var collapseBtn = document.getElementById("cs2Collapse");
