@@ -1513,9 +1513,10 @@ a { color: inherit; text-decoration: none; }
 .cs2d2__stage img[hidden] { display: none; }
 /* Anchored highlight: percentage box over the image, fades/moves smoothly. */
 .cs2d2__hl {
-  position: absolute; border: 2px solid var(--blue); border-radius: 8px;
-  background: rgba(26,115,232,.12); box-shadow: 0 0 0 9999px rgba(255,255,255,.34);
-  opacity: 0; transition: all .35s cubic-bezier(.22,.61,.36,1); pointer-events: none;
+  position: absolute; border: 2.5px solid var(--blue); border-radius: 8px;
+  background: rgba(26,115,232,.14); box-shadow: 0 0 0 2px rgba(255,255,255,.9), 0 6px 18px rgba(26,115,232,.3);
+  opacity: 0; transition: left .35s cubic-bezier(.22,.61,.36,1), top .35s cubic-bezier(.22,.61,.36,1), width .35s cubic-bezier(.22,.61,.36,1), height .35s cubic-bezier(.22,.61,.36,1), opacity .25s ease;
+  pointer-events: none; z-index: 2;
 }
 .cs2d2__hl.is-on { opacity: 1; }
 @media (prefers-reduced-motion: reduce) { .cs2d2__hl { transition: opacity .2s; } }
