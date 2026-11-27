@@ -171,46 +171,52 @@
         </p>
 
         <div class="cs2 reveal" id="caseStudy">
-          <!-- Map-style journey nav (left ~1/3) + stage content (right ~2/3) -->
+          <!-- Horizontal journey route nav on top; stage content below -->
           <div class="cs2__layout">
 
-            <!-- ===== JOURNEY ROUTE NAV ===== -->
+            <!-- ===== JOURNEY ROUTE NAV (horizontal) ===== -->
             <nav class="cs2map" aria-label="How I Work stages" id="cs2Map">
               <p class="cs2map__label">The route</p>
-              <div class="cs2map__inner">
-                <svg class="cs2map__svg" viewBox="0 0 120 440" preserveAspectRatio="xMidYMin meet" aria-hidden="true">
-                  <path id="cs2Route" class="cs2map__road" d="M60 26 C 20 70, 100 108, 60 152 S 20 236, 60 280 S 100 364, 60 408" />
-                  <path id="cs2RouteProgress" class="cs2map__road-progress" d="M60 26 C 20 70, 100 108, 60 152 S 20 236, 60 280 S 100 364, 60 408" />
-                  <circle id="cs2Marker" class="cs2map__marker" cx="60" cy="26" r="8" />
-                  <circle id="cs2MarkerPulse" class="cs2map__marker-pulse" cx="60" cy="26" r="8" />
-                </svg>
+              <div class="cs2map__scroll">
+                <div class="cs2map__inner">
+                  <svg class="cs2map__svg" viewBox="0 0 880 120" preserveAspectRatio="none" aria-hidden="true">
+                    <path id="cs2Route" class="cs2map__road" d="M40 60 C 150 18, 260 102, 333 60 S 520 18, 587 60 S 760 102, 840 60" />
+                    <path id="cs2RouteProgress" class="cs2map__road-progress" d="M40 60 C 150 18, 260 102, 333 60 S 520 18, 587 60 S 760 102, 840 60" />
+                    <circle id="cs2Marker" class="cs2map__marker" cx="40" cy="60" r="9" />
+                    <circle id="cs2MarkerPulse" class="cs2map__marker-pulse" cx="40" cy="60" r="9" />
+                  </svg>
 
-                <ol class="cs2map__pins">
-                  <li>
-                    <button class="cs2map__pin is-active" role="tab" aria-selected="true" aria-controls="cs2-panel-understand" id="cs2-tab-understand" data-stage="0" style="top:5.9%">
-                      <span class="cs2map__pinmark" aria-hidden="true"></span>
-                      <span class="cs2map__pintext"><span class="cs2map__pinnum">01</span>Understand</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button class="cs2map__pin" role="tab" aria-selected="false" aria-controls="cs2-panel-design" id="cs2-tab-design" data-stage="1" style="top:34.5%">
-                      <span class="cs2map__pinmark" aria-hidden="true"></span>
-                      <span class="cs2map__pintext"><span class="cs2map__pinnum">02</span>Design</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button class="cs2map__pin" role="tab" aria-selected="false" aria-controls="cs2-panel-build" id="cs2-tab-build" data-stage="2" style="top:63.6%">
-                      <span class="cs2map__pinmark" aria-hidden="true"></span>
-                      <span class="cs2map__pintext"><span class="cs2map__pinnum">03</span>Build</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button class="cs2map__pin" role="tab" aria-selected="false" aria-controls="cs2-panel-improve" id="cs2-tab-improve" data-stage="3" style="top:92.7%">
-                      <span class="cs2map__pinmark" aria-hidden="true"></span>
-                      <span class="cs2map__pintext"><span class="cs2map__pinnum">04</span>Improve</span>
-                    </button>
-                  </li>
-                </ol>
+                  <ol class="cs2map__pins">
+                    <li>
+                      <button class="cs2map__pin is-active" role="tab" aria-selected="true" aria-controls="cs2-panel-understand" id="cs2-tab-understand" data-stage="0" style="left:4.5%">
+                        <span class="cs2map__pinmark" aria-hidden="true"></span>
+                        <span class="cs2map__pintext"><span class="cs2map__pinnum">01</span><span class="cs2map__pinname">Understand</span></span>
+                        <span class="cs2map__pindesc">Pin down the real problem and who it's for.</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="cs2map__pin" role="tab" aria-selected="false" aria-controls="cs2-panel-design" id="cs2-tab-design" data-stage="1" style="left:37.8%">
+                        <span class="cs2map__pinmark" aria-hidden="true"></span>
+                        <span class="cs2map__pintext"><span class="cs2map__pinnum">02</span><span class="cs2map__pinname">Design</span></span>
+                        <span class="cs2map__pindesc">Turn research into interface decisions.</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="cs2map__pin" role="tab" aria-selected="false" aria-controls="cs2-panel-build" id="cs2-tab-build" data-stage="2" style="left:66.7%">
+                        <span class="cs2map__pinmark" aria-hidden="true"></span>
+                        <span class="cs2map__pintext"><span class="cs2map__pinnum">03</span><span class="cs2map__pinname">Build</span></span>
+                        <span class="cs2map__pindesc">Make it real, solo and on teams.</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="cs2map__pin" role="tab" aria-selected="false" aria-controls="cs2-panel-improve" id="cs2-tab-improve" data-stage="3" style="left:95.5%">
+                        <span class="cs2map__pinmark" aria-hidden="true"></span>
+                        <span class="cs2map__pintext"><span class="cs2map__pinnum">04</span><span class="cs2map__pinname">Improve</span></span>
+                        <span class="cs2map__pindesc">Reflect, weigh tradeoffs, plan next steps.</span>
+                      </button>
+                    </li>
+                  </ol>
+                </div>
               </div>
             </nav>
 
