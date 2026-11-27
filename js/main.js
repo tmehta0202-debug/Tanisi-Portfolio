@@ -494,3 +494,89 @@
 
   select(0);
 })();
+
+/* ============================================================
+   "How I Work" — stage-specific interactions.
+   Understand (project switch), Design (annotated hotspots),
+   Build (project picker). Scoped; each guards its own presence.
+   ============================================================ */
+(function () {
+  "use strict";
+
+  /* ---- Understand: switch project (visual + caption + steps) ---- */
+  var u = document.querySelector("[data-cs2u]");
+  if (u) {
+    var uPicks = Array.prototype.slice.call(u.querySelectorAll("[data-cs2u-pick]"));
+    function uShow(key) {
+      uPicks.forEach(function (b) {
+        var on = b.getAttribute("data-cs2u-pick") === key;
+        b.classList.toggle("is-active", on);
+        b.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      ["img", "cap", "panel"].forEach(function (kind) {
+        u.querySelectorAll("[data-cs2u-" + kind + "]").forEach(function (el) {
+          if (el.getAttribute("data-cs2u-" + kind) === key) el.removeAttribute("hidden");
+          else el.setAttribute("hidden", "");
+        });
+      });
+    }
+    uPicks.forEach(function (b) {
+      b.addEventListener("click", function () { uShow(b.getAttribute("data-cs2u-pick")); });
+    });
+  }
+
+  /* ---- Design: switch screen + annotation hotspots ---- */
+  var d = document.querySelector("[data-cs2d]");
+  if (d) {
+    var dThumbs = Array.prototype.slice.call(d.querySelectorAll("[data-cs2d-pick]"));
+    var dShots = Array.prototype.slice.call(d.querySelectorAll("[data-cs2d-shot]"));
+    var dNotes = Array.prototype.slice.call(d.querySelectorAll("[data-cs2d-text]"));
+
+    function dNote(id) {
+      dNotes.forEach(function (p) {
+        var on = p.getAttribute("data-cs2d-text") === id;
+        if (on) { p.removeAttribute("hidden"); p.classList.add("is-active"); }
+        else { p.setAttribute("hidden", ""); p.classList.remove("is-active"); }
+      });
+      d.querySelectorAll(".cs2d__dot").forEach(function (dot) {
+        dot.classList.toggle("is-active", dot.getAttribute("data-cs2d-note") === id);
+      });
+    }
+    function dShow(index) {
+      dThumbs.forEach(function (t, i) {
+        var on = i === index;
+        t.classList.toggle("is-active", on);
+        t.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      dShots.forEach(function (s, i) {
+        if (i === index) s.removeAttribute("hidden"), s.classList.add("is-active");
+        else s.setAttribute("hidden", ""), s.classList.remove("is-active");
+      });
+      // Default to the first annotation of the chosen screen.
+      dNote(index + "-0");
+    }
+    dThumbs.forEach(function (t, i) { t.addEventListener("click", function () { dShow(i); }); });
+    d.querySelectorAll(".cs2d__dot").forEach(function (dot) {
+      dot.addEventListener("click", function () { dNote(dot.getAttribute("data-cs2d-note")); });
+    });
+    dShow(0);
+  }
+
+  /* ---- Build: select a project contribution ---- */
+  var b = document.querySelector("[data-cs2b]");
+  if (b) {
+    var bItems = Array.prototype.slice.call(b.querySelectorAll("[data-cs2b-pick]"));
+    function bShow(key) {
+      bItems.forEach(function (it) {
+        var on = it.getAttribute("data-cs2b-pick") === key;
+        it.classList.toggle("is-active", on);
+        it.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      b.querySelectorAll("[data-cs2b-shot]").forEach(function (s) {
+        if (s.getAttribute("data-cs2b-shot") === key) s.removeAttribute("hidden"), s.classList.add("is-active");
+        else s.setAttribute("hidden", ""), s.classList.remove("is-active");
+      });
+    }
+    bItems.forEach(function (it) { it.addEventListener("click", function () { bShow(it.getAttribute("data-cs2b-pick")); }); });
+  }
+})();

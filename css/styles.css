@@ -1282,3 +1282,115 @@ a { color: inherit; text-decoration: none; }
   .cs2__insight { flex-direction: column; }
   .cs2__map-row--2 { grid-template-columns: 1fr; gap: 6px; }
 }
+
+/* ============================================================
+   "How I Work" — stage-specific interactions (decision trail)
+   cs2u = Understand (project switch + expandable steps + big visual)
+   cs2d = Design (annotated gallery with clickable hotspots)
+   cs2b = Build (selectable project list + large visual)
+   cs2i = Improve (per-project reflection cards)
+   All scoped, palette-consistent, responsive.
+   ============================================================ */
+
+/* ---- Shared project-switch pills ---- */
+.cs2u__switch, .cs2d__thumbs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.cs2u__pick, .cs2d__thumb {
+  cursor: pointer; background: transparent; border: 1px solid var(--line);
+  border-radius: var(--r-pill); padding: 8px 16px; font-family: var(--font-ui);
+  font-weight: 600; font-size: .88rem; color: var(--ink-2);
+  transition: border-color .2s, color .2s, background .2s;
+}
+.cs2u__pick:hover, .cs2d__thumb:hover { border-color: var(--blue); color: var(--blue-deep); }
+.cs2u__pick.is-active, .cs2d__thumb.is-active { background: var(--blue); border-color: var(--blue); color: #fff; }
+
+/* ---- Understand: big visual + expandable steps ---- */
+.cs2u__body { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: start; }
+.cs2u__visual { margin: 0; }
+.cs2u__visual img {
+  width: 100%; height: auto; display: block; border-radius: var(--r-md);
+  border: 1px solid var(--line); box-shadow: var(--shadow-1); background: var(--tint);
+}
+.cs2u__visual figcaption { margin-top: 10px; font-size: .86rem; color: var(--ink-3); line-height: 1.5; }
+.cs2u__proj { font-family: var(--font-disp); font-weight: 600; font-size: 1.14rem; color: var(--navy); margin-bottom: 14px; }
+.cs2u__step { border: 1px solid var(--line); border-radius: var(--r-sm); margin-bottom: 10px; background: var(--surface); overflow: hidden; }
+.cs2u__step summary {
+  cursor: pointer; padding: 14px 18px; font-weight: 600; color: var(--navy); font-size: .96rem;
+  list-style: none; position: relative; transition: background .2s;
+}
+.cs2u__step summary::-webkit-details-marker { display: none; }
+.cs2u__step summary::after { content: "+"; position: absolute; right: 18px; color: var(--blue-deep); font-weight: 700; }
+.cs2u__step[open] summary::after { content: "\2212"; }
+.cs2u__step summary:hover { background: var(--tint); }
+.cs2u__step[open] summary { border-bottom: 1px solid var(--line); }
+.cs2u__step > p, .cs2u__step > ul { padding: 14px 18px; color: var(--ink-2); font-size: .94rem; line-height: 1.7; margin: 0; }
+.cs2u__step--key { border-left: 4px solid var(--green); }
+.cs2u__step--key summary { color: var(--green-deep); }
+.cs2u__clusters { padding: 14px 18px 14px 34px; margin: 0; color: var(--ink-2); font-size: .92rem; line-height: 1.6; }
+.cs2u__clusters li { margin-bottom: 8px; }
+.cs2u__clusters strong { color: var(--ink); }
+
+/* ---- Design: annotated gallery ---- */
+.cs2d { display: grid; grid-template-columns: 1fr; gap: 20px; }
+.cs2d__stage { position: relative; }
+.cs2d__shot { margin: 0; position: relative; }
+.cs2d__shot[hidden] { display: none; }
+.cs2d__shot img {
+  width: 100%; height: auto; display: block; border-radius: var(--r-md);
+  border: 1px solid var(--line); box-shadow: var(--shadow-1); background: var(--tint);
+}
+.cs2d__dot {
+  position: absolute; width: 30px; height: 30px; border-radius: 50%; transform: translate(-50%, -50%);
+  background: var(--blue); color: #fff; border: 2px solid #fff; cursor: pointer;
+  font-family: var(--font-disp); font-weight: 700; font-size: .9rem; box-shadow: var(--shadow-1);
+  transition: transform .18s ease, background .2s;
+}
+.cs2d__dot:hover { transform: translate(-50%, -50%) scale(1.12); }
+.cs2d__dot.is-active { background: var(--green-deep); }
+.cs2d__panel-note { border: 1px solid var(--line); border-left: 4px solid var(--blue); border-radius: var(--r-sm); padding: 18px 20px; background: var(--surface); min-height: 72px; }
+.cs2d__panel-note p { margin: 0; color: var(--ink-2); font-size: .96rem; line-height: 1.7; }
+.cs2d__panel-note p[hidden] { display: none; }
+.cs2d__panel-note strong { color: var(--navy); }
+
+/* ---- Build: selectable list + large visual ---- */
+.cs2b { display: grid; grid-template-columns: .8fr 2fr; gap: 24px; align-items: start; }
+.cs2b__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.cs2b__item {
+  width: 100%; text-align: left; cursor: pointer; background: var(--surface);
+  border: 1px solid var(--line); border-left: 4px solid var(--line); border-radius: var(--r-sm);
+  padding: 14px 16px; display: flex; flex-direction: column; gap: 3px; transition: border-color .2s, background .2s, transform .15s;
+}
+.cs2b__item:hover { transform: translateX(3px); border-left-color: var(--blue); }
+.cs2b__item.is-active { border-color: var(--blue); border-left-color: var(--blue); background: var(--tint); }
+.cs2b__name { font-family: var(--font-disp); font-weight: 600; font-size: 1.02rem; color: var(--navy); }
+.cs2b__sub { font-size: .8rem; color: var(--ink-3); }
+.cs2b__shot { margin: 0; }
+.cs2b__shot[hidden] { display: none; }
+.cs2b__shot img {
+  width: 100%; height: auto; display: block; border-radius: var(--r-md);
+  border: 1px solid var(--line); box-shadow: var(--shadow-1); background: var(--tint);
+}
+.cs2b__shot figcaption { margin-top: 14px; color: var(--ink-2); font-size: .95rem; line-height: 1.7; }
+.cs2b__shot figcaption strong { color: var(--navy); }
+.cs2b__shot figcaption a, .cs2d__demonstrates a { color: var(--blue-deep); font-weight: 600; }
+
+/* ---- Improve: reflection cards ---- */
+.cs2i { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.cs2i__card { border: 1px solid var(--line); border-radius: var(--r-md); padding: 20px 22px; background: var(--surface); }
+.cs2i__card h4 { font-family: var(--font-disp); font-weight: 600; font-size: 1.08rem; color: var(--navy); margin-bottom: 12px; }
+.cs2i__did { color: var(--ink-2); font-size: .92rem; line-height: 1.65; margin: 0 0 14px; }
+.cs2i__did strong { color: var(--ink); }
+.cs2i__next { color: var(--ink-2); font-size: .92rem; line-height: 1.65; margin: 0; padding: 12px 14px; background: var(--tint-green); border-radius: var(--r-sm); }
+.cs2i__flag {
+  display: inline-block; font-size: .66rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--green-deep); background: #fff; border: 1px solid #cfe9dd; padding: 3px 9px; border-radius: var(--r-pill); margin-right: 8px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 760px) {
+  .cs2u__body { grid-template-columns: 1fr; }
+  .cs2b { grid-template-columns: 1fr; }
+  .cs2b__list { flex-direction: row; flex-wrap: wrap; }
+  .cs2b__item { flex: 1 1 auto; }
+  .cs2i { grid-template-columns: 1fr; }
+  .cs2d__dot { width: 26px; height: 26px; font-size: .8rem; }
+}
