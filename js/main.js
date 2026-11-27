@@ -444,139 +444,216 @@
 })();
 
 /* ============================================================
-   "From User Insight to Product Decision" — interactive mini
-   case study. Scoped to #caseStudy: stage tabs + prev/next +
-   keyboard nav + progress. Independent of the main IIFE above.
+   "How I Work" — map-style journey navigation + stage interactions.
+   Scoped to #caseStudy. Moving location marker travels the SVG route;
+   pins mark destinations; completed stages get a done state.
    ============================================================ */
 (function () {
   "use strict";
   var root = document.getElementById("caseStudy");
   if (!root) return;
 
-  var tabs = Array.prototype.slice.call(root.querySelectorAll(".cs2__step"));
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ----- Stage navigation via map pins ----- */
+  var pins = Array.prototype.slice.call(root.querySelectorAll(".cs2map__pin"));
   var panels = Array.prototype.slice.call(root.querySelectorAll(".cs2__panel"));
   var prevBtn = document.getElementById("cs2Prev");
   var nextBtn = document.getElementById("cs2Next");
   var progress = document.getElementById("cs2Progress");
-  if (!tabs.length || tabs.length !== panels.length) return;
+  var routePath = document.getElementById("cs2Route");
+  var routeProg = document.getElementById("cs2RouteProgress");
+  var marker = document.getElementById("cs2Marker");
+  var markerPulse = document.getElementById("cs2MarkerPulse");
 
   var current = 0;
+  var routeLen = 0;
+  var stagePos = []; // {offset, x, y} per stage along the path
 
-  function select(index, focusTab) {
-    index = Math.max(0, Math.min(tabs.length - 1, index));
+  function computeRoute() {
+    if (!routePath || !routePath.getTotalLength) return;
+    routeLen = routePath.getTotalLength();
+    // Distribute the four stages evenly along the route length.
+    stagePos = [];
+    for (var i = 0; i < pins.length; i++) {
+      var off = (pins.length === 1) ? 0 : (routeLen * i) / (pins.length - 1);
+      var pt = routePath.getPointAtLength(off);
+      stagePos.push({ offset: off, x: pt.x, y: pt.y });
+    }
+    if (routeProg) { routeProg.style.strokeDasharray = routeLen; routeProg.style.strokeDashoffset = routeLen; }
+  }
+
+  function paintRoute(index) {
+    if (!stagePos.length) return;
+    var pos = stagePos[index];
+    if (marker) { marker.setAttribute("cx", pos.x); marker.setAttribute("cy", pos.y); }
+    if (markerPulse) { markerPulse.setAttribute("cx", pos.x); markerPulse.setAttribute("cy", pos.y); }
+    if (routeProg) routeProg.style.strokeDashoffset = (routeLen - pos.offset);
+  }
+
+  function select(index, focusPin) {
+    index = Math.max(0, Math.min(pins.length - 1, index));
     current = index;
-    tabs.forEach(function (tab, i) {
-      var active = i === index;
-      tab.classList.toggle("is-active", active);
-      tab.setAttribute("aria-selected", active ? "true" : "false");
-      if (active && focusTab) tab.focus();
+    pins.forEach(function (pin, i) {
+      pin.classList.toggle("is-active", i === index);
+      pin.classList.toggle("is-done", i < index);
+      pin.setAttribute("aria-selected", i === index ? "true" : "false");
+      if (i === index && focusPin) pin.focus();
     });
     panels.forEach(function (panel, i) {
       if (i === index) panel.removeAttribute("hidden");
       else panel.setAttribute("hidden", "");
     });
     if (prevBtn) prevBtn.disabled = index === 0;
-    if (nextBtn) nextBtn.disabled = index === tabs.length - 1;
-    if (progress) progress.textContent = "Stage " + (index + 1) + " of " + tabs.length;
+    if (nextBtn) nextBtn.disabled = index === pins.length - 1;
+    if (progress) progress.textContent = "Stage " + (index + 1) + " of " + pins.length;
+    paintRoute(index);
   }
 
-  tabs.forEach(function (tab, i) {
-    tab.addEventListener("click", function () { select(i); });
-    tab.addEventListener("keydown", function (e) {
-      if (e.key === "ArrowRight") { e.preventDefault(); select(i + 1, true); }
-      else if (e.key === "ArrowLeft") { e.preventDefault(); select(i - 1, true); }
+  pins.forEach(function (pin, i) {
+    pin.addEventListener("click", function () { select(i); });
+    pin.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowDown" || e.key === "ArrowRight") { e.preventDefault(); select(i + 1, true); }
+      else if (e.key === "ArrowUp" || e.key === "ArrowLeft") { e.preventDefault(); select(i - 1, true); }
       else if (e.key === "Home") { e.preventDefault(); select(0, true); }
-      else if (e.key === "End") { e.preventDefault(); select(tabs.length - 1, true); }
+      else if (e.key === "End") { e.preventDefault(); select(pins.length - 1, true); }
     });
   });
   if (prevBtn) prevBtn.addEventListener("click", function () { select(current - 1); });
   if (nextBtn) nextBtn.addEventListener("click", function () { select(current + 1); });
 
+  // Recompute route geometry once laid out, and on resize.
+  function initRoute() { computeRoute(); paintRoute(current); }
+  if (routePath) {
+    requestAnimationFrame(initRoute);
+    window.addEventListener("resize", function () { computeRoute(); paintRoute(current); });
+  }
   select(0);
-})();
 
-/* ============================================================
-   "How I Work" — stage-specific interactions.
-   Understand (project switch), Design (annotated hotspots),
-   Build (project picker). Scoped; each guards its own presence.
-   ============================================================ */
-(function () {
-  "use strict";
-
-  /* ---- Understand: switch project (visual + caption + steps) ---- */
-  var u = document.querySelector("[data-cs2u]");
+  /* ----- Understand: project switch + per-project step walkthrough ----- */
+  var u = root.querySelector("[data-cs2u]");
   if (u) {
     var uPicks = Array.prototype.slice.call(u.querySelectorAll("[data-cs2u-pick]"));
-    function uShow(key) {
+    var uProjects = Array.prototype.slice.call(u.querySelectorAll("[data-cs2u-project]"));
+
+    function uShowProject(key) {
       uPicks.forEach(function (b) {
         var on = b.getAttribute("data-cs2u-pick") === key;
         b.classList.toggle("is-active", on);
         b.setAttribute("aria-selected", on ? "true" : "false");
       });
-      ["img", "cap", "panel"].forEach(function (kind) {
-        u.querySelectorAll("[data-cs2u-" + kind + "]").forEach(function (el) {
-          if (el.getAttribute("data-cs2u-" + kind) === key) el.removeAttribute("hidden");
-          else el.setAttribute("hidden", "");
-        });
+      uProjects.forEach(function (p) {
+        if (p.getAttribute("data-cs2u-project") === key) p.removeAttribute("hidden");
+        else p.setAttribute("hidden", "");
       });
     }
     uPicks.forEach(function (b) {
-      b.addEventListener("click", function () { uShow(b.getAttribute("data-cs2u-pick")); });
+      b.addEventListener("click", function () { uShowProject(b.getAttribute("data-cs2u-pick")); });
+    });
+
+    // Per-project step buttons: update visual, caption, and text together.
+    uProjects.forEach(function (proj) {
+      var stepBtns = Array.prototype.slice.call(proj.querySelectorAll("[data-cs2u-step]"));
+      stepBtns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var key = btn.getAttribute("data-cs2u-step");
+          stepBtns.forEach(function (b2) {
+            var on = b2 === btn;
+            b2.classList.toggle("is-active", on);
+            b2.setAttribute("aria-selected", on ? "true" : "false");
+          });
+          proj.querySelectorAll("[data-cs2u-steptext]").forEach(function (el) {
+            if (el.getAttribute("data-cs2u-steptext") === key) { el.removeAttribute("hidden"); el.classList.add("is-active"); }
+            else { el.setAttribute("hidden", ""); el.classList.remove("is-active"); }
+          });
+          // Swap the matching visual + caption if this project has per-step images.
+          proj.querySelectorAll("[data-cs2u-img]").forEach(function (img) {
+            if (img.getAttribute("data-cs2u-img") === key) img.removeAttribute("hidden");
+            else img.setAttribute("hidden", "");
+          });
+          proj.querySelectorAll("[data-cs2u-cap]").forEach(function (cap) {
+            if (cap.getAttribute("data-cs2u-cap") === key) cap.removeAttribute("hidden");
+            else cap.setAttribute("hidden", "");
+          });
+        });
+      });
     });
   }
 
-  /* ---- Design: switch screen + annotation hotspots ---- */
-  var d = document.querySelector("[data-cs2d]");
+  /* ----- Design: screen switch + topic highlight anchored to the image ----- */
+  var d = root.querySelector("[data-cs2d2]");
   if (d) {
-    var dThumbs = Array.prototype.slice.call(d.querySelectorAll("[data-cs2d-pick]"));
-    var dShots = Array.prototype.slice.call(d.querySelectorAll("[data-cs2d-shot]"));
-    var dNotes = Array.prototype.slice.call(d.querySelectorAll("[data-cs2d-text]"));
+    var dScreens = Array.prototype.slice.call(d.querySelectorAll("[data-cs2d2-screen]"));
+    var dImgs = Array.prototype.slice.call(d.querySelectorAll("[data-cs2d2-img]"));
+    var dTopics = Array.prototype.slice.call(d.querySelectorAll("[data-cs2d2-topic]"));
+    var hl = d.querySelector("[data-cs2d2-hl]");
+    var stageFig = d.querySelector(".cs2d2__stage");
+    var activeScreen = "0";
 
-    function dNote(id) {
-      dNotes.forEach(function (p) {
-        var on = p.getAttribute("data-cs2d-text") === id;
-        if (on) { p.removeAttribute("hidden"); p.classList.add("is-active"); }
-        else { p.setAttribute("hidden", ""); p.classList.remove("is-active"); }
-      });
-      d.querySelectorAll(".cs2d__dot").forEach(function (dot) {
-        dot.classList.toggle("is-active", dot.getAttribute("data-cs2d-note") === id);
-      });
+    function placeHighlight(topic) {
+      if (!hl || !topic) return;
+      var hlData = topic.getAttribute("data-hl"); // "left,top,width,height" in %
+      if (!hlData) { hl.classList.remove("is-on"); return; }
+      var parts = hlData.split(",");
+      hl.style.left = parts[0] + "%";
+      hl.style.top = parts[1] + "%";
+      hl.style.width = parts[2] + "%";
+      hl.style.height = parts[3] + "%";
+      hl.classList.add("is-on");
     }
-    function dShow(index) {
-      dThumbs.forEach(function (t, i) {
-        var on = i === index;
-        t.classList.toggle("is-active", on);
-        t.setAttribute("aria-selected", on ? "true" : "false");
-      });
-      dShots.forEach(function (s, i) {
-        if (i === index) s.removeAttribute("hidden"), s.classList.add("is-active");
-        else s.setAttribute("hidden", ""), s.classList.remove("is-active");
-      });
-      // Default to the first annotation of the chosen screen.
-      dNote(index + "-0");
+
+    function showTopic(topic) {
+      dTopics.forEach(function (t) { t.classList.toggle("is-active", t === topic); });
+      placeHighlight(topic);
     }
-    dThumbs.forEach(function (t, i) { t.addEventListener("click", function () { dShow(i); }); });
-    d.querySelectorAll(".cs2d__dot").forEach(function (dot) {
-      dot.addEventListener("click", function () { dNote(dot.getAttribute("data-cs2d-note")); });
+
+    function showScreen(screen) {
+      activeScreen = screen;
+      dScreens.forEach(function (s) {
+        var on = s.getAttribute("data-cs2d2-screen") === screen;
+        s.classList.toggle("is-active", on);
+        s.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      dImgs.forEach(function (img) {
+        if (img.getAttribute("data-cs2d2-img") === screen) img.removeAttribute("hidden");
+        else img.setAttribute("hidden", "");
+      });
+      // Show only this screen's topics; activate the first one.
+      var first = null;
+      dTopics.forEach(function (t) {
+        var on = t.getAttribute("data-screen") === screen;
+        t.classList.toggle("is-visible", on);
+        if (on && !first) first = t;
+      });
+      showTopic(first);
+    }
+
+    dScreens.forEach(function (s) {
+      s.addEventListener("click", function () { showScreen(s.getAttribute("data-cs2d2-screen")); });
     });
-    dShow(0);
+    dTopics.forEach(function (t) {
+      t.addEventListener("click", function () { showTopic(t); });
+    });
+    showScreen("0");
   }
 
-  /* ---- Build: select a project contribution ---- */
-  var b = document.querySelector("[data-cs2b]");
+  /* ----- Build: select a project contribution ----- */
+  var b = root.querySelector("[data-cs2b]");
   if (b) {
     var bItems = Array.prototype.slice.call(b.querySelectorAll("[data-cs2b-pick]"));
-    function bShow(key) {
-      bItems.forEach(function (it) {
-        var on = it.getAttribute("data-cs2b-pick") === key;
-        it.classList.toggle("is-active", on);
-        it.setAttribute("aria-selected", on ? "true" : "false");
+    bItems.forEach(function (it) {
+      it.addEventListener("click", function () {
+        var key = it.getAttribute("data-cs2b-pick");
+        bItems.forEach(function (x) {
+          var on = x === it;
+          x.classList.toggle("is-active", on);
+          x.setAttribute("aria-selected", on ? "true" : "false");
+        });
+        b.querySelectorAll("[data-cs2b-shot]").forEach(function (s) {
+          if (s.getAttribute("data-cs2b-shot") === key) { s.removeAttribute("hidden"); s.classList.add("is-active"); }
+          else { s.setAttribute("hidden", ""); s.classList.remove("is-active"); }
+        });
       });
-      b.querySelectorAll("[data-cs2b-shot]").forEach(function (s) {
-        if (s.getAttribute("data-cs2b-shot") === key) s.removeAttribute("hidden"), s.classList.add("is-active");
-        else s.setAttribute("hidden", ""), s.classList.remove("is-active");
-      });
-    }
-    bItems.forEach(function (it) { it.addEventListener("click", function () { bShow(it.getAttribute("data-cs2b-pick")); }); });
+    });
   }
 })();
