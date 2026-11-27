@@ -180,8 +180,8 @@
               <div class="cs2map__scroll">
                 <div class="cs2map__inner">
                   <svg class="cs2map__svg" viewBox="0 0 880 72" preserveAspectRatio="none" aria-hidden="true">
-                    <path id="cs2Route" class="cs2map__road" d="M70 36 C 170 12, 250 60, 340 36 S 500 12, 580 36 S 730 60, 810 36" />
-                    <path id="cs2RouteProgress" class="cs2map__road-progress" d="M70 36 C 170 12, 250 60, 340 36 S 500 12, 580 36 S 730 60, 810 36" />
+                    <path id="cs2Route" class="cs2map__road" pathLength="100" d="M70 36 C 170 12, 250 60, 340 36 S 500 12, 580 36 S 730 60, 810 36" />
+                    <path id="cs2RouteProgress" class="cs2map__road-progress" pathLength="100" d="M70 36 C 170 12, 250 60, 340 36 S 500 12, 580 36 S 730 60, 810 36" />
                     <circle id="cs2Marker" class="cs2map__marker" cx="70" cy="36" r="8" />
                     <circle id="cs2MarkerPulse" class="cs2map__marker-pulse" cx="70" cy="36" r="8" />
                   </svg>
@@ -219,6 +219,7 @@
 
             <!-- ===== STAGE CONTENT ===== -->
             <div class="cs2__content">
+              <button class="cs2__collapse" id="cs2Collapse" aria-label="Collapse stage and return to the route">&times; Close</button>
               <div class="cs2__panels">
 
             <!-- 1. UNDERSTAND -->
