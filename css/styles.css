@@ -1526,3 +1526,55 @@ a { color: inherit; text-decoration: none; }
   .cs2u__body { grid-template-columns: 1fr; }
   .cs2d2__body { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   How I Work — full-width image-over-text layout (Understand + Design)
+   Screenshots take the full content width; supporting text, step
+   descriptions, and topic selectors sit BELOW the image. Aspect
+   ratios preserved (no crop/stretch); type-appropriate max-heights.
+   ============================================================ */
+
+/* ---- Understand: visual on top (full width), steps below ---- */
+.cs2u__body { display: block; }
+.cs2u__visual {
+  margin: 0 0 22px; display: flex; flex-direction: column; align-items: center;
+  background: var(--tint); border: 1px solid var(--line); border-radius: var(--r-md);
+  box-shadow: var(--shadow-1); padding: 16px; overflow: hidden;
+}
+.cs2u__visual img {
+  width: auto; max-width: 100%; height: auto; display: block;
+  border: 1px solid var(--line); border-radius: var(--r-sm); background: var(--surface); box-shadow: none;
+  /* Dense research boards / profiles: tall enough to stay readable. */
+  max-height: 560px; object-fit: contain;
+}
+.cs2u__visual figcaption { margin-top: 12px; text-align: center; }
+.cs2u__steps { max-width: none; }
+
+/* ---- Design: large screenshot on top (full width), topics below ---- */
+.cs2d2__body { display: block; }
+.cs2d2__stage {
+  position: relative; margin: 0 0 20px; display: flex; justify-content: center;
+  background: var(--tint); border: 1px solid var(--line); border-radius: var(--r-md);
+  box-shadow: var(--shadow-1); overflow: hidden; padding: 14px;
+}
+/* The wrapper shrink-wraps the currently-visible image, so the highlight box
+   (positioned relative to the wrapper with % coordinates) stays anchored to
+   the image at any size. Images keep their aspect ratio; a max-height guard
+   keeps unusually tall screens in view, and width caps wide screens to fit. */
+.cs2d2__imgwrap { position: relative; display: inline-block; line-height: 0; max-width: 100%; }
+.cs2d2__stage img {
+  max-width: 100%; width: auto; height: auto; display: block;
+  max-height: 560px; border-radius: var(--r-sm);
+}
+.cs2d2__topics {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+}
+@media (max-width: 600px) { .cs2d2__topics { grid-template-columns: 1fr; } }
+
+/* Keep the highlight box anchored over the image wrapper. */
+.cs2d2__hl { z-index: 2; }
+
+@media (max-width: 860px) {
+  .cs2u__visual img { max-height: 440px; }
+  .cs2d2__stage img { max-height: 480px; }
+}
