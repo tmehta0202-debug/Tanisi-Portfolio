@@ -474,14 +474,13 @@
   var routeLen = 0;
   var stagePos = []; // {offset, x, y} per stage along the path
   // Target x (in the 880-wide viewBox) under each pin, so the marker lands
-  // exactly beneath the pin it represents.
-  var TARGET_X = [40, 333, 587, 840];
+  // exactly beneath the pin it represents (matches the pins' inline left %).
+  var TARGET_X = [70, 340, 580, 810];
 
   function computeRoute() {
     if (!routePath || !routePath.getTotalLength) return;
     routeLen = routePath.getTotalLength();
     stagePos = [];
-    // Walk the path once, recording the length-offset closest to each pin's x.
     var samples = 400;
     for (var s = 0; s < pins.length; s++) {
       var targetX = TARGET_X[s] != null ? TARGET_X[s] : (880 * s) / (pins.length - 1);
@@ -492,9 +491,10 @@
         var d = Math.abs(pt.x - targetX);
         if (d < best.d) best = { d: d, off: off, x: pt.x, y: pt.y };
       }
+      // Normalized 0-100 position (pathLength=100) for the progress fill.
+      best.pct = (best.off / routeLen) * 100;
       stagePos.push(best);
     }
-    if (routeProg) { routeProg.style.strokeDasharray = routeLen; routeProg.style.strokeDashoffset = routeLen; }
   }
 
   function paintRoute(index) {
@@ -502,7 +502,8 @@
     var pos = stagePos[index];
     if (marker) { marker.setAttribute("cx", pos.x); marker.setAttribute("cy", pos.y); }
     if (markerPulse) { markerPulse.setAttribute("cx", pos.x); markerPulse.setAttribute("cy", pos.y); }
-    if (routeProg) routeProg.style.strokeDashoffset = (routeLen - pos.offset);
+    // Fill the solid green progress line from the start through this stage.
+    if (routeProg) routeProg.style.setProperty("--p", pos.pct.toFixed(2));
   }
 
   function expand() {
@@ -510,6 +511,17 @@
     expanded = true;
     if (content) content.classList.add("is-expanded");
     if (layout) layout.classList.add("is-open");
+  }
+
+  function collapse() {
+    if (!expanded) return;
+    expanded = false;
+    if (content) content.classList.remove("is-expanded");
+    if (layout) layout.classList.remove("is-open");
+    pins.forEach(function (pin) { pin.classList.remove("is-active"); pin.setAttribute("aria-selected", "false"); });
+    if (progress) progress.textContent = "Pick a stage";
+    // Route progress returns to empty when nothing is selected.
+    if (routeProg) routeProg.style.setProperty("--p", "0");
   }
 
   function select(index, focusPin) {
@@ -542,7 +554,11 @@
   }
 
   pins.forEach(function (pin, i) {
-    pin.addEventListener("click", function () { select(i); });
+    pin.addEventListener("click", function () {
+      // Clicking the already-active pin collapses back to the compact map.
+      if (expanded && current === i && pin.classList.contains("is-active")) collapse();
+      else select(i);
+    });
     pin.addEventListener("keydown", function (e) {
       if (e.key === "ArrowDown" || e.key === "ArrowRight") { e.preventDefault(); select(i + 1, true); }
       else if (e.key === "ArrowUp" || e.key === "ArrowLeft") { e.preventDefault(); select(i - 1, true); }
@@ -564,6 +580,25 @@
   pins.forEach(function (pin) { pin.classList.remove("is-active"); pin.setAttribute("aria-selected", "false"); });
   panels.forEach(function (panel) { panel.setAttribute("hidden", ""); });
   if (progress) progress.textContent = "Pick a stage";
+
+  // Collapse controls: close button, click outside the panel, Escape.
+  var collapseBtn = document.getElementById("cs2Collapse");
+  if (collapseBtn) collapseBtn.addEventListener("click", collapse);
+  document.addEventListener("click", function (e) {
+    if (!expanded) return;
+    // Ignore clicks inside the content, on the route nav, or on the lightbox.
+    if (content && content.contains(e.target)) return;
+    var mapNav = document.getElementById("cs2Map");
+    if (mapNav && mapNav.contains(e.target)) return;
+    var lbEl = document.getElementById("cs2Lightbox");
+    if (lbEl && lbEl.contains(e.target)) return;
+    if (root.contains(e.target)) collapse();
+  });
+  document.addEventListener("keydown", function (e) {
+    // Escape collapses the stage (unless the lightbox is open; it handles Esc).
+    var lbEl = document.getElementById("cs2Lightbox");
+    if (e.key === "Escape" && expanded && (!lbEl || lbEl.hidden)) collapse();
+  });
 
   /* ----- Understand: project switch + per-project step walkthrough ----- */
   var u = root.querySelector("[data-cs2u]");
