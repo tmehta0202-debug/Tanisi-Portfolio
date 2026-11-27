@@ -469,16 +469,26 @@
   var current = 0;
   var routeLen = 0;
   var stagePos = []; // {offset, x, y} per stage along the path
+  // Target x (in the 880-wide viewBox) under each pin, so the marker lands
+  // exactly beneath the pin it represents.
+  var TARGET_X = [40, 333, 587, 840];
 
   function computeRoute() {
     if (!routePath || !routePath.getTotalLength) return;
     routeLen = routePath.getTotalLength();
-    // Distribute the four stages evenly along the route length.
     stagePos = [];
-    for (var i = 0; i < pins.length; i++) {
-      var off = (pins.length === 1) ? 0 : (routeLen * i) / (pins.length - 1);
-      var pt = routePath.getPointAtLength(off);
-      stagePos.push({ offset: off, x: pt.x, y: pt.y });
+    // Walk the path once, recording the length-offset closest to each pin's x.
+    var samples = 400;
+    for (var s = 0; s < pins.length; s++) {
+      var targetX = TARGET_X[s] != null ? TARGET_X[s] : (880 * s) / (pins.length - 1);
+      var best = { d: Infinity, off: 0, x: 0, y: 0 };
+      for (var k = 0; k <= samples; k++) {
+        var off = (routeLen * k) / samples;
+        var pt = routePath.getPointAtLength(off);
+        var d = Math.abs(pt.x - targetX);
+        if (d < best.d) best = { d: d, off: off, x: pt.x, y: pt.y };
+      }
+      stagePos.push(best);
     }
     if (routeProg) { routeProg.style.strokeDasharray = routeLen; routeProg.style.strokeDashoffset = routeLen; }
   }
@@ -501,13 +511,22 @@
       if (i === index && focusPin) pin.focus();
     });
     panels.forEach(function (panel, i) {
-      if (i === index) panel.removeAttribute("hidden");
+      if (i === index) { panel.removeAttribute("hidden"); fadeIn(panel); }
       else panel.setAttribute("hidden", "");
     });
     if (prevBtn) prevBtn.disabled = index === 0;
     if (nextBtn) nextBtn.disabled = index === pins.length - 1;
     if (progress) progress.textContent = "Stage " + (index + 1) + " of " + pins.length;
     paintRoute(index);
+  }
+
+  // Short, subtle fade+slide used to coordinate content transitions.
+  function fadeIn(el) {
+    if (!el || reduce) return;
+    el.classList.remove("cs2-fade");
+    // reflow to restart the animation
+    void el.offsetWidth;
+    el.classList.add("cs2-fade");
   }
 
   pins.forEach(function (pin, i) {
@@ -543,7 +562,7 @@
         b.setAttribute("aria-selected", on ? "true" : "false");
       });
       uProjects.forEach(function (p) {
-        if (p.getAttribute("data-cs2u-project") === key) p.removeAttribute("hidden");
+        if (p.getAttribute("data-cs2u-project") === key) { p.removeAttribute("hidden"); fadeIn(p); }
         else p.setAttribute("hidden", "");
       });
     }
@@ -563,12 +582,12 @@
             b2.setAttribute("aria-selected", on ? "true" : "false");
           });
           proj.querySelectorAll("[data-cs2u-steptext]").forEach(function (el) {
-            if (el.getAttribute("data-cs2u-steptext") === key) { el.removeAttribute("hidden"); el.classList.add("is-active"); }
+            if (el.getAttribute("data-cs2u-steptext") === key) { el.removeAttribute("hidden"); el.classList.add("is-active"); fadeIn(el); }
             else { el.setAttribute("hidden", ""); el.classList.remove("is-active"); }
           });
           // Swap the matching visual + caption if this project has per-step images.
           proj.querySelectorAll("[data-cs2u-img]").forEach(function (img) {
-            if (img.getAttribute("data-cs2u-img") === key) img.removeAttribute("hidden");
+            if (img.getAttribute("data-cs2u-img") === key) { img.removeAttribute("hidden"); fadeIn(img); }
             else img.setAttribute("hidden", "");
           });
           proj.querySelectorAll("[data-cs2u-cap]").forEach(function (cap) {
@@ -615,7 +634,7 @@
         s.setAttribute("aria-selected", on ? "true" : "false");
       });
       dImgs.forEach(function (img) {
-        if (img.getAttribute("data-cs2d2-img") === screen) img.removeAttribute("hidden");
+        if (img.getAttribute("data-cs2d2-img") === screen) { img.removeAttribute("hidden"); fadeIn(img); }
         else img.setAttribute("hidden", "");
       });
       // Show only this screen's topics; activate the first one.
