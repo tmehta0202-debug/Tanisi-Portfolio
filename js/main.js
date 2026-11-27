@@ -442,3 +442,55 @@
     }
   }
 })();
+
+/* ============================================================
+   "From User Insight to Product Decision" — interactive mini
+   case study. Scoped to #caseStudy: stage tabs + prev/next +
+   keyboard nav + progress. Independent of the main IIFE above.
+   ============================================================ */
+(function () {
+  "use strict";
+  var root = document.getElementById("caseStudy");
+  if (!root) return;
+
+  var tabs = Array.prototype.slice.call(root.querySelectorAll(".cs2__step"));
+  var panels = Array.prototype.slice.call(root.querySelectorAll(".cs2__panel"));
+  var prevBtn = document.getElementById("cs2Prev");
+  var nextBtn = document.getElementById("cs2Next");
+  var progress = document.getElementById("cs2Progress");
+  if (!tabs.length || tabs.length !== panels.length) return;
+
+  var current = 0;
+
+  function select(index, focusTab) {
+    index = Math.max(0, Math.min(tabs.length - 1, index));
+    current = index;
+    tabs.forEach(function (tab, i) {
+      var active = i === index;
+      tab.classList.toggle("is-active", active);
+      tab.setAttribute("aria-selected", active ? "true" : "false");
+      if (active && focusTab) tab.focus();
+    });
+    panels.forEach(function (panel, i) {
+      if (i === index) panel.removeAttribute("hidden");
+      else panel.setAttribute("hidden", "");
+    });
+    if (prevBtn) prevBtn.disabled = index === 0;
+    if (nextBtn) nextBtn.disabled = index === tabs.length - 1;
+    if (progress) progress.textContent = "Stage " + (index + 1) + " of " + tabs.length;
+  }
+
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener("click", function () { select(i); });
+    tab.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { e.preventDefault(); select(i + 1, true); }
+      else if (e.key === "ArrowLeft") { e.preventDefault(); select(i - 1, true); }
+      else if (e.key === "Home") { e.preventDefault(); select(0, true); }
+      else if (e.key === "End") { e.preventDefault(); select(tabs.length - 1, true); }
+    });
+  });
+  if (prevBtn) prevBtn.addEventListener("click", function () { select(current - 1); });
+  if (nextBtn) nextBtn.addEventListener("click", function () { select(current + 1); });
+
+  select(0);
+})();

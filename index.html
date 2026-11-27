@@ -160,10 +160,190 @@
       </div>
     </section>
 
+    <!-- ============ 2. CASE STUDY: FROM USER INSIGHT TO PRODUCT DECISION ============ -->
+    <section class="section section-reveal" id="casestudy">
+      <div class="wrap">
+        <p class="section__kicker reveal">02 / Product Thinking</p>
+        <h2 class="section__title reveal">From User Insight to Product Decision</h2>
+        <p class="section__intro reveal">
+          A short walkthrough of how I move from research to a product call. Follow the four stages,
+          or jump to the one you care about.
+        </p>
+
+        <div class="cs2 reveal" id="caseStudy">
+          <p class="cs2__scenario">
+            <span class="cs2__scenario-label">Hypothetical scenario</span>
+            A student productivity app is getting plenty of signups, but most users stop opening it
+            within two weeks. Growth looks healthy; retention doesn't. Where would I start?
+          </p>
+
+          <!-- Stage navigation -->
+          <ol class="cs2__steps" role="tablist" aria-label="Case study stages">
+            <li>
+              <button class="cs2__step is-active" role="tab" aria-selected="true" aria-controls="cs2-panel-research" id="cs2-tab-research">
+                <span class="cs2__step-num">01</span>
+                <span class="cs2__step-name">Research</span>
+              </button>
+            </li>
+            <li>
+              <button class="cs2__step" role="tab" aria-selected="false" aria-controls="cs2-panel-synthesis" id="cs2-tab-synthesis">
+                <span class="cs2__step-num">02</span>
+                <span class="cs2__step-name">Synthesis</span>
+              </button>
+            </li>
+            <li>
+              <button class="cs2__step" role="tab" aria-selected="false" aria-controls="cs2-panel-priority" id="cs2-tab-priority">
+                <span class="cs2__step-num">03</span>
+                <span class="cs2__step-name">Prioritization</span>
+              </button>
+            </li>
+            <li>
+              <button class="cs2__step" role="tab" aria-selected="false" aria-controls="cs2-panel-validation" id="cs2-tab-validation">
+                <span class="cs2__step-num">04</span>
+                <span class="cs2__step-name">Validation</span>
+              </button>
+            </li>
+          </ol>
+
+          <!-- Stage panels -->
+          <div class="cs2__panels">
+
+            <!-- 1. RESEARCH -->
+            <div class="cs2__panel is-active" role="tabpanel" id="cs2-panel-research" aria-labelledby="cs2-tab-research">
+              <p class="cs2__lead">I started with five user interviews. Three insights kept recurring. Hover or tap each to see what the user said and what I noticed.</p>
+              <ul class="cs2__insights">
+                <li class="cs2__insight">
+                  <span class="cs2__insight-icon" aria-hidden="true">?</span>
+                  <div class="cs2__insight-body">
+                    <h4>Confusing features</h4>
+                    <p class="cs2__quote">&ldquo;I signed up, saw a bunch of buttons, and wasn't sure what to tap first.&rdquo;</p>
+                    <p class="cs2__note"><strong>What I noticed:</strong> the app showed its full feature set on day one, with no sense of a starting point.</p>
+                  </div>
+                </li>
+                <li class="cs2__insight">
+                  <span class="cs2__insight-icon" aria-hidden="true">!</span>
+                  <div class="cs2__insight-body">
+                    <h4>Forgotten reminders</h4>
+                    <p class="cs2__quote">&ldquo;It did remind me once, but at a time I couldn't do anything about it, so I ignored the rest.&rdquo;</p>
+                    <p class="cs2__note"><strong>What I noticed:</strong> reminders were generic and badly timed, so users learned to tune them out.</p>
+                  </div>
+                </li>
+                <li class="cs2__insight">
+                  <span class="cs2__insight-icon" aria-hidden="true">#</span>
+                  <div class="cs2__insight-body">
+                    <h4>Task organization</h4>
+                    <p class="cs2__quote">&ldquo;Everything piles into one long list. By Wednesday I can't find the thing that's actually due.&rdquo;</p>
+                    <p class="cs2__note"><strong>What I noticed:</strong> no grouping or priority, so the list stopped reflecting what mattered now.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- 2. SYNTHESIS -->
+            <div class="cs2__panel" role="tabpanel" id="cs2-panel-synthesis" aria-labelledby="cs2-tab-synthesis" hidden>
+              <p class="cs2__lead">Next I translated what people said into the need underneath it, and the product opportunity that follows.</p>
+              <div class="cs2__map">
+                <div class="cs2__map-row">
+                  <span class="cs2__map-obs">Confusing features on day one</span>
+                  <span class="cs2__map-arrow" aria-hidden="true">&rarr;</span>
+                  <span class="cs2__map-need">&ldquo;Show me where to start.&rdquo;</span>
+                  <span class="cs2__map-arrow" aria-hidden="true">&rarr;</span>
+                  <span class="cs2__map-opp">Guided, focused onboarding</span>
+                </div>
+                <div class="cs2__map-row">
+                  <span class="cs2__map-obs">Reminders ignored</span>
+                  <span class="cs2__map-arrow" aria-hidden="true">&rarr;</span>
+                  <span class="cs2__map-need">&ldquo;Nudge me when it's useful.&rdquo;</span>
+                  <span class="cs2__map-arrow" aria-hidden="true">&rarr;</span>
+                  <span class="cs2__map-opp">Reminders tuned to context &amp; timing</span>
+                </div>
+                <div class="cs2__map-row">
+                  <span class="cs2__map-obs">One overwhelming list</span>
+                  <span class="cs2__map-arrow" aria-hidden="true">&rarr;</span>
+                  <span class="cs2__map-need">&ldquo;Help me see what matters now.&rdquo;</span>
+                  <span class="cs2__map-arrow" aria-hidden="true">&rarr;</span>
+                  <span class="cs2__map-opp">Structure &amp; prioritization for tasks</span>
+                </div>
+              </div>
+              <p class="cs2__note cs2__note--wide"><strong>The through-line:</strong> signups aren't the problem. Users leave because the app never helps them feel oriented, on time, or in control, the three ingredients of a habit worth keeping.</p>
+            </div>
+
+            <!-- 3. PRIORITIZATION -->
+            <div class="cs2__panel" role="tabpanel" id="cs2-panel-priority" aria-labelledby="cs2-tab-priority" hidden>
+              <p class="cs2__lead">Three opportunities, limited time. I weighed each on impact, feasibility, and tradeoffs before making a call.</p>
+              <div class="cs2__matrix">
+                <div class="cs2__opt">
+                  <h4>Simpler onboarding</h4>
+                  <div class="cs2__bars">
+                    <span class="cs2__bar-label">Impact</span><span class="cs2__bar"><span class="cs2__bar-fill" style="width:85%"></span></span>
+                    <span class="cs2__bar-label">Feasibility</span><span class="cs2__bar"><span class="cs2__bar-fill cs2__bar-fill--green" style="width:80%"></span></span>
+                  </div>
+                  <p class="cs2__tradeoff">Directly targets the first-week drop-off and is quick to build. Tradeoff: helps new users more than the ones already slipping away.</p>
+                </div>
+                <div class="cs2__opt cs2__opt--pick">
+                  <span class="cs2__pick-flag">My pick to ship first</span>
+                  <h4>Personalized reminders</h4>
+                  <div class="cs2__bars">
+                    <span class="cs2__bar-label">Impact</span><span class="cs2__bar"><span class="cs2__bar-fill" style="width:90%"></span></span>
+                    <span class="cs2__bar-label">Feasibility</span><span class="cs2__bar"><span class="cs2__bar-fill cs2__bar-fill--amber" style="width:55%"></span></span>
+                  </div>
+                  <p class="cs2__tradeoff">Hits retention most directly: a well-timed nudge pulls lapsing users back. Tradeoff: needs usage data and careful timing, so it's more work, and done badly it becomes spam.</p>
+                </div>
+                <div class="cs2__opt">
+                  <h4>Better task organization</h4>
+                  <div class="cs2__bars">
+                    <span class="cs2__bar-label">Impact</span><span class="cs2__bar"><span class="cs2__bar-fill" style="width:65%"></span></span>
+                    <span class="cs2__bar-label">Feasibility</span><span class="cs2__bar"><span class="cs2__bar-fill cs2__bar-fill--green" style="width:70%"></span></span>
+                  </div>
+                  <p class="cs2__tradeoff">Real long-term value for power users. Tradeoff: matters most after people already return regularly, so it's a stronger second step than first.</p>
+                </div>
+              </div>
+              <p class="cs2__note cs2__note--wide"><strong>The decision:</strong> ship <em>personalized reminders</em> first. It maps to the strongest retention lever even though it's the hardest build, and I'd pair it with the low-cost onboarding fix to help the next wave of signups land better.</p>
+            </div>
+
+            <!-- 4. VALIDATION -->
+            <div class="cs2__panel" role="tabpanel" id="cs2-panel-validation" aria-labelledby="cs2-tab-validation" hidden>
+              <p class="cs2__lead">A decision isn't done until I know how I'd check it. Here's what I'd measure, and what I'd still need to learn.</p>
+              <div class="cs2__metrics">
+                <div class="cs2__metric">
+                  <span class="cs2__metric-num">D14</span>
+                  <span class="cs2__metric-lbl">Two-week retention, the headline number this whole effort is aimed at</span>
+                </div>
+                <div class="cs2__metric">
+                  <span class="cs2__metric-num cs2__metric-num--green">Open rate</span>
+                  <span class="cs2__metric-lbl">Reminder taps vs. dismissals, to tell a helpful nudge from spam</span>
+                </div>
+                <div class="cs2__metric">
+                  <span class="cs2__metric-num">Time&nbsp;to first task</span>
+                  <span class="cs2__metric-lbl">How fast a new user completes one real action, to check onboarding</span>
+                </div>
+              </div>
+              <div class="cs2__followup">
+                <h4>What I'd still want to learn</h4>
+                <ul>
+                  <li>An A/B test of reminder timing and copy before rolling it out to everyone.</li>
+                  <li>Follow-up interviews with lapsed users to confirm timing, not content, is the real issue.</li>
+                  <li>A guardrail metric for notification opt-outs, so a retention win doesn't quietly cost trust.</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Prev / next controls -->
+          <div class="cs2__controls">
+            <button class="cs2__nav cs2__nav--prev" id="cs2Prev" aria-label="Previous stage" disabled>&larr; Previous</button>
+            <span class="cs2__progress" id="cs2Progress" aria-hidden="true">Stage 1 of 4</span>
+            <button class="cs2__nav cs2__nav--next" id="cs2Next" aria-label="Next stage">Next &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ 3. SKILLS (compact, interactive) ============ -->
     <section class="section section--tint section-reveal" id="skills">
       <div class="wrap">
-        <p class="section__kicker reveal">02 / Skills</p>
+        <p class="section__kicker reveal">03 / Skills</p>
         <h2 class="section__title reveal">What I work with.</h2>
 
         <div class="skills reveal" id="skills2">
@@ -204,7 +384,7 @@
     <!-- ============ 5. EXPERIENCE / INVOLVEMENT ============ -->
     <section class="section section-reveal" id="experience">
       <div class="wrap">
-        <p class="section__kicker reveal">03 / Experience &amp; Involvement</p>
+        <p class="section__kicker reveal">04 / Experience &amp; Involvement</p>
         <h2 class="section__title reveal">Where I've been building.</h2>
 
         <ol class="timeline">
@@ -246,7 +426,7 @@
     <!-- ============ 6. CONTACT ============ -->
     <section class="section section--cta section-reveal" id="contact">
       <div class="wrap wrap--narrow">
-        <p class="section__kicker section__kicker--light reveal">04 / Contact</p>
+        <p class="section__kicker section__kicker--light reveal">05 / Contact</p>
         <h2 class="section__title section__title--light reveal">Let's work on something.</h2>
         <p class="contact__lede reveal">
           I'm looking for internships and open to design or engineering collaborations. Email or
