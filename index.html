@@ -171,47 +171,56 @@
         </p>
 
         <div class="cs2 reveal" id="caseStudy">
-          <p class="cs2__scenario">
-            <span class="cs2__scenario-label">How I work</span>
-            The same four moves run through all of my projects: understand the problem, design a
-            response, build it, and look back to improve. Follow the stages to see how each one shows
-            up in my actual work.
-          </p>
+          <!-- Map-style journey nav (left ~1/3) + stage content (right ~2/3) -->
+          <div class="cs2__layout">
 
-          <!-- Stage navigation -->
-          <ol class="cs2__steps" role="tablist" aria-label="Case study stages">
-            <li>
-              <button class="cs2__step is-active" role="tab" aria-selected="true" aria-controls="cs2-panel-understand" id="cs2-tab-understand">
-                <span class="cs2__step-num">01</span>
-                <span class="cs2__step-name">Understand</span>
-              </button>
-            </li>
-            <li>
-              <button class="cs2__step" role="tab" aria-selected="false" aria-controls="cs2-panel-design" id="cs2-tab-design">
-                <span class="cs2__step-num">02</span>
-                <span class="cs2__step-name">Design</span>
-              </button>
-            </li>
-            <li>
-              <button class="cs2__step" role="tab" aria-selected="false" aria-controls="cs2-panel-build" id="cs2-tab-build">
-                <span class="cs2__step-num">03</span>
-                <span class="cs2__step-name">Build</span>
-              </button>
-            </li>
-            <li>
-              <button class="cs2__step" role="tab" aria-selected="false" aria-controls="cs2-panel-improve" id="cs2-tab-improve">
-                <span class="cs2__step-num">04</span>
-                <span class="cs2__step-name">Improve</span>
-              </button>
-            </li>
-          </ol>
+            <!-- ===== JOURNEY ROUTE NAV ===== -->
+            <nav class="cs2map" aria-label="How I Work stages" id="cs2Map">
+              <p class="cs2map__label">The route</p>
+              <div class="cs2map__inner">
+                <svg class="cs2map__svg" viewBox="0 0 120 440" preserveAspectRatio="xMidYMin meet" aria-hidden="true">
+                  <path id="cs2Route" class="cs2map__road" d="M60 26 C 20 70, 100 108, 60 152 S 20 236, 60 280 S 100 364, 60 408" />
+                  <path id="cs2RouteProgress" class="cs2map__road-progress" d="M60 26 C 20 70, 100 108, 60 152 S 20 236, 60 280 S 100 364, 60 408" />
+                  <circle id="cs2Marker" class="cs2map__marker" cx="60" cy="26" r="8" />
+                  <circle id="cs2MarkerPulse" class="cs2map__marker-pulse" cx="60" cy="26" r="8" />
+                </svg>
 
-          <!-- Stage panels -->
-          <div class="cs2__panels">
+                <ol class="cs2map__pins">
+                  <li>
+                    <button class="cs2map__pin is-active" role="tab" aria-selected="true" aria-controls="cs2-panel-understand" id="cs2-tab-understand" data-stage="0" style="top:5.9%">
+                      <span class="cs2map__pinmark" aria-hidden="true"></span>
+                      <span class="cs2map__pintext"><span class="cs2map__pinnum">01</span>Understand</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button class="cs2map__pin" role="tab" aria-selected="false" aria-controls="cs2-panel-design" id="cs2-tab-design" data-stage="1" style="top:34.5%">
+                      <span class="cs2map__pinmark" aria-hidden="true"></span>
+                      <span class="cs2map__pintext"><span class="cs2map__pinnum">02</span>Design</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button class="cs2map__pin" role="tab" aria-selected="false" aria-controls="cs2-panel-build" id="cs2-tab-build" data-stage="2" style="top:63.6%">
+                      <span class="cs2map__pinmark" aria-hidden="true"></span>
+                      <span class="cs2map__pintext"><span class="cs2map__pinnum">03</span>Build</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button class="cs2map__pin" role="tab" aria-selected="false" aria-controls="cs2-panel-improve" id="cs2-tab-improve" data-stage="3" style="top:92.7%">
+                      <span class="cs2map__pinmark" aria-hidden="true"></span>
+                      <span class="cs2map__pintext"><span class="cs2map__pinnum">04</span>Improve</span>
+                    </button>
+                  </li>
+                </ol>
+              </div>
+            </nav>
 
-            <!-- 1. UNDERSTAND — project switcher + expandable steps beside a large visual -->
+            <!-- ===== STAGE CONTENT ===== -->
+            <div class="cs2__content">
+              <div class="cs2__panels">
+
+            <!-- 1. UNDERSTAND -->
             <div class="cs2__panel is-active" role="tabpanel" id="cs2-panel-understand" aria-labelledby="cs2-tab-understand">
-              <p class="cs2__lead">Before designing anything, I pin down the real problem and who it's for. Switch between two projects, then open each step.</p>
+              <p class="cs2__lead">Before designing anything, I pin down the real problem and who it's for. Choose a project, then walk its progression.</p>
 
               <div class="cs2u" data-cs2u>
                 <div class="cs2u__switch" role="tablist" aria-label="Choose a project">
@@ -219,55 +228,58 @@
                   <button class="cs2u__pick" role="tab" aria-selected="false" data-cs2u-pick="gather">Gather</button>
                 </div>
 
-                <div class="cs2u__body">
-                  <!-- Large visual -->
-                  <figure class="cs2u__visual">
-                    <img data-cs2u-img="er" src="images/ER-ss.png" alt="ER FastTrack triage-support prototype interface" loading="lazy" />
-                    <img data-cs2u-img="gather" src="images/SampleUserProfile-Gather.png" alt="Gather user profile for Maya, a creative university student" hidden loading="lazy" />
-                    <figcaption data-cs2u-cap="er">ER FastTrack running as a single-page web app with separate patient and clinician views.</figcaption>
-                    <figcaption data-cs2u-cap="gather" hidden>Maya's user profile: background, behaviors, frustrations, needs, and goals.</figcaption>
-                  </figure>
-
-                  <!-- Expandable steps, per project -->
-                  <div class="cs2u__steps">
-                    <!-- ER FastTrack -->
-                    <div data-cs2u-panel="er">
-                      <h4 class="cs2u__proj">ER FastTrack <span class="cs2__tagline">Emergency-room triage support · solo build</span></h4>
-                      <details class="cs2u__step" open>
-                        <summary>The problem</summary>
-                        <p>Emergency departments lose time to repeated information-gathering, and patients misjudge how urgent they are, roughly 65% overestimate and about 8% underestimate (the more dangerous case). The tool collects structured info before a clinician sees the patient and surfaces details that may need a faster look.</p>
-                      </details>
-                      <details class="cs2u__step">
-                        <summary>Research &amp; evidence</summary>
-                        <p>I read how emergency departments actually sort patients, grounding the design in real ESI triage protocols and published high-risk vitals thresholds, before designing anything.</p>
-                      </details>
-                      <details class="cs2u__step cs2u__step--key">
-                        <summary>Defining consideration</summary>
-                        <p><strong>Patients report, the software organizes, and clinical staff decide.</strong> It never diagnoses or ranks patients on its own; every priority and clinical call stays with qualified staff. That boundary shaped every later decision.</p>
-                      </details>
+                <div class="cs2u__project" data-cs2u-project="er">
+                  <div class="cs2u__body">
+                    <figure class="cs2u__visual">
+                      <img src="images/ER-ss.png" alt="ER FastTrack triage-support prototype with separate patient and clinician views" loading="lazy" />
+                      <figcaption>ER FastTrack running as a single-page web app with separate patient and clinician views.</figcaption>
+                    </figure>
+                    <div class="cs2u__steps">
+                      <h4 class="cs2u__proj">ER FastTrack <span class="cs2__tagline">Emergency-room triage support &middot; solo build</span></h4>
+                      <div class="cs2u__stepnav" role="tablist" aria-label="ER FastTrack progression">
+                        <button class="cs2u__stepbtn is-active" role="tab" aria-selected="true" data-cs2u-step="er-0">The problem</button>
+                        <button class="cs2u__stepbtn" role="tab" aria-selected="false" data-cs2u-step="er-1">Triage workflow</button>
+                        <button class="cs2u__stepbtn" role="tab" aria-selected="false" data-cs2u-step="er-2">Decision boundary</button>
+                      </div>
+                      <div class="cs2u__steptext">
+                        <p data-cs2u-steptext="er-0" class="is-active">Emergency departments lose time to repeated information-gathering, and patients misjudge how urgent they are, roughly 65% overestimate and about 8% underestimate (the more dangerous case). The tool collects structured info before a clinician sees the patient and surfaces details that may need a faster look.</p>
+                        <p data-cs2u-steptext="er-1" hidden><strong>Patients report &rarr; software organizes &rarr; clinicians decide.</strong> An adaptive intake asks one question per screen; a non-diagnostic flagging engine surfaces what may need review and explains why in plain language; a nurse dashboard presents it clearly.</p>
+                        <p data-cs2u-steptext="er-2" hidden><strong>The defining boundary:</strong> it never diagnoses or ranks patients on its own. Every priority and clinical call stays with qualified staff, the constraint that shaped every later decision.</p>
+                      </div>
                       <p class="cs2__demonstrates"><a href="projects/er-fasttrack.html">Read the full case study &rarr;</a></p>
                     </div>
+                  </div>
+                </div>
 
-                    <!-- Gather -->
-                    <div data-cs2u-panel="gather" hidden>
-                      <h4 class="cs2u__proj">Gather <span class="cs2__tagline">Visual reference discovery · with Julia Hou</span></h4>
-                      <details class="cs2u__step" open>
-                        <summary>The problem</summary>
-                        <p>Finding the right reference image is mostly keyword guesswork: people scroll past near-misses and jump between Pinterest, Google, and other sites. Gather explores how AI-driven personalization and smart filtering could make that more intuitive.</p>
-                      </details>
-                      <details class="cs2u__step">
-                        <summary>Research: Maya's profile</summary>
-                        <p>We started from a user profile built from preliminary research. Maya is a creative university student who makes recreational art and runs a small business, so she needs inspiration and references she can trust and credit properly. Her frustrations shaped Gather directly: tailored results, clear sourcing, and an easier way to keep track of references.</p>
-                      </details>
-                      <details class="cs2u__step cs2u__step--key">
-                        <summary>Research: four insight clusters</summary>
-                        <ul class="cs2u__clusters">
-                          <li><strong>Finding the right reference.</strong> Google works when users already know what they want; Pinterest for open inspiration, but recommendations often miss the mark.</li>
-                          <li><strong>Browsing vs. searching with a goal.</strong> People explore without a starting point, then switch to targeted search once they have an idea.</li>
-                          <li><strong>Trust, attribution &amp; copyright.</strong> Tracking down proper attribution is time-consuming; users worry about stolen or AI-generated work.</li>
-                          <li><strong>Managing &amp; revisiting references.</strong> References are spread across platforms, making them hard to save and come back to.</li>
-                        </ul>
-                      </details>
+                <div class="cs2u__project" data-cs2u-project="gather" hidden>
+                  <div class="cs2u__body">
+                    <figure class="cs2u__visual">
+                      <img data-cs2u-img="gather-0" src="images/SearchPage_AIFiltering-Gather.png" alt="Gather mid-fidelity search and AI filtering screens" loading="lazy" />
+                      <img data-cs2u-img="gather-1" src="images/SampleUserProfile-Gather.png" alt="Gather user profile for Maya, a creative university student" hidden loading="lazy" />
+                      <img data-cs2u-img="gather-2" src="images/Clusters-Gather.png" alt="Gather research findings grouped into four insight clusters" hidden loading="lazy" />
+                      <figcaption data-cs2u-cap="gather-0">An early Gather search flow with AI-assisted filtering.</figcaption>
+                      <figcaption data-cs2u-cap="gather-1" hidden>Maya's user profile: background, behaviors, frustrations, needs, and goals.</figcaption>
+                      <figcaption data-cs2u-cap="gather-2" hidden>Research findings synthesized into four insight clusters.</figcaption>
+                    </figure>
+                    <div class="cs2u__steps">
+                      <h4 class="cs2u__proj">Gather <span class="cs2__tagline">Visual reference discovery &middot; with Julia Hou</span></h4>
+                      <div class="cs2u__stepnav" role="tablist" aria-label="Gather progression">
+                        <button class="cs2u__stepbtn is-active" role="tab" aria-selected="true" data-cs2u-step="gather-0">The problem</button>
+                        <button class="cs2u__stepbtn" role="tab" aria-selected="false" data-cs2u-step="gather-1">Maya's profile</button>
+                        <button class="cs2u__stepbtn" role="tab" aria-selected="false" data-cs2u-step="gather-2">Insight clusters</button>
+                      </div>
+                      <div class="cs2u__steptext">
+                        <p data-cs2u-steptext="gather-0" class="is-active">Finding the right reference image is mostly keyword guesswork: people scroll past near-misses and jump between Pinterest, Google, and other sites. Gather explores how AI-driven personalization and smart filtering could make that more intuitive.</p>
+                        <p data-cs2u-steptext="gather-1" hidden>We started from a user profile built from preliminary research. Maya is a creative university student who makes recreational art and runs a small business, so she needs inspiration and references she can trust and credit properly. Her frustrations shaped Gather directly: tailored results, clear sourcing, and an easier way to keep track of references.</p>
+                        <div data-cs2u-steptext="gather-2" hidden>
+                          <ul class="cs2u__clusters">
+                            <li><strong>Finding the right reference.</strong> Google works when users already know what they want; Pinterest for open inspiration, but recommendations often miss the mark.</li>
+                            <li><strong>Browsing vs. searching with a goal.</strong> People explore without a starting point, then switch to targeted search once they have an idea.</li>
+                            <li><strong>Trust, attribution &amp; copyright.</strong> Tracking down proper attribution is time-consuming; users worry about stolen or AI-generated work.</li>
+                            <li><strong>Managing &amp; revisiting references.</strong> References are spread across platforms, making them hard to save and come back to.</li>
+                          </ul>
+                        </div>
+                      </div>
                       <p class="cs2__demonstrates"><a href="projects/gather.html">Read the full case study &rarr;</a></p>
                     </div>
                   </div>
@@ -275,64 +287,70 @@
               </div>
             </div>
 
-            <!-- 2. DESIGN — annotated gallery: big screen + clickable annotations -->
+            <!-- 2. DESIGN -->
             <div class="cs2__panel" role="tabpanel" id="cs2-panel-design" aria-labelledby="cs2-tab-design" hidden>
-              <p class="cs2__lead">Research-driven UI/UX. Pick a screen, then click the numbered annotations to see the design decisions behind it.</p>
+              <p class="cs2__lead">Research-driven UI/UX. Pick a screen, then choose a topic to highlight the relevant area and read the decision behind it.</p>
 
-              <div class="cs2d" data-cs2d>
-                <div class="cs2d__thumbs" role="tablist" aria-label="Choose a design screen">
-                  <button class="cs2d__thumb is-active" role="tab" aria-selected="true" data-cs2d-pick="0">Gather · Search</button>
-                  <button class="cs2d__thumb" role="tab" aria-selected="false" data-cs2d-pick="1">Gather · Results</button>
-                  <button class="cs2d__thumb" role="tab" aria-selected="false" data-cs2d-pick="2">Bits of Good · Duolingo</button>
+              <div class="cs2d2" data-cs2d2>
+                <div class="cs2d2__screens" role="tablist" aria-label="Choose a design screen">
+                  <button class="cs2d2__screen is-active" role="tab" aria-selected="true" data-cs2d2-screen="0">Gather &middot; Search</button>
+                  <button class="cs2d2__screen" role="tab" aria-selected="false" data-cs2d2-screen="1">Gather &middot; Results</button>
+                  <button class="cs2d2__screen" role="tab" aria-selected="false" data-cs2d2-screen="2">Bits of Good &middot; Duolingo</button>
                 </div>
 
-                <div class="cs2d__stage">
-                  <!-- Screen 0: Gather Search -->
-                  <figure class="cs2d__shot is-active" data-cs2d-shot="0">
-                    <img src="images/Gather-AISearch_General-HIFI.png" alt="Gather search page with AI Search and General Search" loading="lazy" />
-                    <button class="cs2d__dot" style="left:16%;top:30%" data-cs2d-note="0-0" aria-label="Annotation 1">1</button>
-                    <button class="cs2d__dot" style="left:60%;top:60%" data-cs2d-note="0-1" aria-label="Annotation 2">2</button>
+                <div class="cs2d2__body">
+                  <figure class="cs2d2__stage">
+                    <img data-cs2d2-img="0" src="images/Gather-AISearch_General-HIFI.png" alt="Gather search page with AI Search and General Search" loading="lazy" />
+                    <img data-cs2d2-img="1" src="images/Gather-SearchResults_HIFI.png" alt="Gather search results with match percentages and an image details panel" hidden loading="lazy" />
+                    <img data-cs2d2-img="2" src="images/Duolingo-Redesign.png" alt="Duolingo persona and before/after profile redesign in Figma" hidden loading="lazy" />
+                    <span class="cs2d2__hl" data-cs2d2-hl aria-hidden="true"></span>
                   </figure>
-                  <!-- Screen 1: Gather Results -->
-                  <figure class="cs2d__shot" data-cs2d-shot="1" hidden>
-                    <img src="images/Gather-SearchResults_HIFI.png" alt="Gather search results with match percentages and an image details panel" loading="lazy" />
-                    <button class="cs2d__dot" style="left:30%;top:28%" data-cs2d-note="1-0" aria-label="Annotation 1">1</button>
-                    <button class="cs2d__dot" style="left:75%;top:55%" data-cs2d-note="1-1" aria-label="Annotation 2">2</button>
-                  </figure>
-                  <!-- Screen 2: Bits of Good Duolingo -->
-                  <figure class="cs2d__shot" data-cs2d-shot="2" hidden>
-                    <img src="images/Duolingo-Redesign.png" alt="Duolingo user persona and before/after profile page redesign in Figma" loading="lazy" />
-                    <button class="cs2d__dot" style="left:22%;top:35%" data-cs2d-note="2-0" aria-label="Annotation 1">1</button>
-                    <button class="cs2d__dot" style="left:68%;top:50%" data-cs2d-note="2-1" aria-label="Annotation 2">2</button>
-                  </figure>
-                </div>
 
-                <aside class="cs2d__panel-note">
-                  <p data-cs2d-text="0-0" class="is-active"><strong>Two search modes.</strong> AI Search takes a plain-language prompt; General Search keeps the familiar keyword flow, so people can choose how they look.</p>
-                  <p data-cs2d-text="0-1" hidden><strong>Persistent navigation.</strong> A sidebar keeps Explore, Artists, and Collections in reach, so searching never feels like a dead end.</p>
-                  <p data-cs2d-text="1-0" hidden><strong>Match percentages.</strong> Each result shows how well it matched and a short reason, so the ranking isn't a black box.</p>
-                  <p data-cs2d-text="1-1" hidden><strong>Attribution built in.</strong> Opening a result reveals the real creator, license, and citation, answering the trust cluster from research.</p>
-                  <p data-cs2d-text="2-0" hidden><strong>Grounded in a persona.</strong> I wrote a user persona before redesigning the Duolingo profile, so layout choices trace back to a real need.</p>
-                  <p data-cs2d-text="2-1" hidden><strong>Before &amp; after with Auto Layout.</strong> Rebuilt in Figma with Auto Layout to tighten hierarchy and spacing between the original and the redesign.</p>
-                </aside>
+                  <div class="cs2d2__topics" role="tablist" aria-label="Design decisions">
+                    <button class="cs2d2__topic is-active" role="tab" data-cs2d2-topic="0" data-hl="6,20,40,26" data-screen="0">
+                      <span class="cs2d2__topic-t">Two search modes</span>
+                      <span class="cs2d2__topic-d">AI Search takes a plain-language prompt; General Search keeps the familiar keyword flow, so people choose how they look.</span>
+                    </button>
+                    <button class="cs2d2__topic" role="tab" data-cs2d2-topic="1" data-hl="2,10,22,80" data-screen="0">
+                      <span class="cs2d2__topic-t">Persistent navigation</span>
+                      <span class="cs2d2__topic-d">A sidebar keeps Explore, Artists, and Collections in reach, so searching never feels like a dead end.</span>
+                    </button>
+                    <button class="cs2d2__topic" role="tab" data-cs2d2-topic="2" data-hl="4,26,54,50" data-screen="1">
+                      <span class="cs2d2__topic-t">Match percentages</span>
+                      <span class="cs2d2__topic-d">Each result shows how well it matched and a short reason, so the ranking isn't a black box.</span>
+                    </button>
+                    <button class="cs2d2__topic" role="tab" data-cs2d2-topic="3" data-hl="62,14,34,78" data-screen="1">
+                      <span class="cs2d2__topic-t">Attribution built in</span>
+                      <span class="cs2d2__topic-d">Opening a result reveals the real creator, license, and citation, answering the trust cluster from research.</span>
+                    </button>
+                    <button class="cs2d2__topic" role="tab" data-cs2d2-topic="4" data-hl="4,8,44,40" data-screen="2">
+                      <span class="cs2d2__topic-t">Grounded in a persona</span>
+                      <span class="cs2d2__topic-d">I wrote a user persona before redesigning the Duolingo profile, so layout choices trace back to a real need.</span>
+                    </button>
+                    <button class="cs2d2__topic" role="tab" data-cs2d2-topic="5" data-hl="52,10,44,80" data-screen="2">
+                      <span class="cs2d2__topic-t">Before &amp; after with Auto Layout</span>
+                      <span class="cs2d2__topic-d">Rebuilt in Figma with Auto Layout to tighten hierarchy and spacing between the original and the redesign.</span>
+                    </button>
+                  </div>
+                </div>
               </div>
-              <p class="cs2__demonstrates"><strong>Shows:</strong> turning research into interface decisions. <a href="projects/gather.html">Gather designs &rarr;</a> &nbsp;·&nbsp; <a href="projects/bits-of-good.html">Bits of Good redesigns &rarr;</a></p>
+              <p class="cs2__demonstrates"><strong>Shows:</strong> turning research into interface decisions. <a href="projects/gather.html">Gather designs &rarr;</a> &nbsp;&middot;&nbsp; <a href="projects/bits-of-good.html">Bits of Good redesigns &rarr;</a></p>
             </div>
 
-            <!-- 3. BUILD — selectable project contributions with a large visual -->
+            <!-- 3. BUILD -->
             <div class="cs2__panel" role="tabpanel" id="cs2-panel-build" aria-labelledby="cs2-tab-build" hidden>
               <p class="cs2__lead">Design only matters once it's real. Select a project to see the contribution and a large view.</p>
 
               <div class="cs2b" data-cs2b>
                 <ul class="cs2b__list" role="tablist" aria-label="Choose a build project">
                   <li><button class="cs2b__item is-active" role="tab" aria-selected="true" data-cs2b-pick="ignition">
-                    <span class="cs2b__name">Ignition Portal</span><span class="cs2b__sub">Hackathon team · July 2026</span>
+                    <span class="cs2b__name">Ignition Portal</span><span class="cs2b__sub">Hackathon team &middot; July 2026</span>
                   </button></li>
                   <li><button class="cs2b__item" role="tab" aria-selected="false" data-cs2b-pick="unraveling">
-                    <span class="cs2b__name">Unraveling</span><span class="cs2b__sub">Game UI · GT VGDev</span>
+                    <span class="cs2b__name">Unraveling</span><span class="cs2b__sub">Game UI &middot; GT VGDev</span>
                   </button></li>
                   <li><button class="cs2b__item" role="tab" aria-selected="false" data-cs2b-pick="flower">
-                    <span class="cs2b__name">The Flower</span><span class="cs2b__sub">2D platformer · GameMaker</span>
+                    <span class="cs2b__name">The Flower</span><span class="cs2b__sub">2D platformer &middot; GameMaker</span>
                   </button></li>
                 </ul>
 
@@ -353,7 +371,7 @@
               </div>
             </div>
 
-            <!-- 4. IMPROVE — project-specific reflection cards; hypotheticals labeled -->
+            <!-- 4. IMPROVE -->
             <div class="cs2__panel" role="tabpanel" id="cs2-panel-improve" aria-labelledby="cs2-tab-improve" hidden>
               <p class="cs2__lead">Looking back per project: what I'd evaluate, change, or investigate next. Forward-looking ideas are labeled as hypothetical, not completed work.</p>
 
@@ -382,13 +400,14 @@
               <p class="cs2__note cs2__note--wide"><strong>The throughline:</strong> start from a real need, make a deliberate tradeoff, and stay open to revising, the product thinking I want to keep sharpening.</p>
             </div>
 
-          </div>
+              </div>
 
-          <!-- Prev / next controls -->
-          <div class="cs2__controls">
-            <button class="cs2__nav cs2__nav--prev" id="cs2Prev" aria-label="Previous stage" disabled>&larr; Previous</button>
-            <span class="cs2__progress" id="cs2Progress" aria-hidden="true">Stage 1 of 4</span>
-            <button class="cs2__nav cs2__nav--next" id="cs2Next" aria-label="Next stage">Next &rarr;</button>
+              <div class="cs2__controls">
+                <button class="cs2__nav cs2__nav--prev" id="cs2Prev" aria-label="Previous stage" disabled>&larr; Previous</button>
+                <span class="cs2__progress" id="cs2Progress" aria-hidden="true">Stage 1 of 4</span>
+                <button class="cs2__nav cs2__nav--next" id="cs2Next" aria-label="Next stage">Next &rarr;</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
