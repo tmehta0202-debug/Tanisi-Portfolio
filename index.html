@@ -179,45 +179,42 @@
               <p class="cs2map__label">The route</p>
               <div class="cs2map__scroll">
                 <div class="cs2map__inner">
-                  <svg class="cs2map__svg" viewBox="0 0 880 120" preserveAspectRatio="none" aria-hidden="true">
-                    <path id="cs2Route" class="cs2map__road" d="M40 60 C 150 18, 260 102, 333 60 S 520 18, 587 60 S 760 102, 840 60" />
-                    <path id="cs2RouteProgress" class="cs2map__road-progress" d="M40 60 C 150 18, 260 102, 333 60 S 520 18, 587 60 S 760 102, 840 60" />
-                    <circle id="cs2Marker" class="cs2map__marker" cx="40" cy="60" r="9" />
-                    <circle id="cs2MarkerPulse" class="cs2map__marker-pulse" cx="40" cy="60" r="9" />
+                  <svg class="cs2map__svg" viewBox="0 0 880 72" preserveAspectRatio="none" aria-hidden="true">
+                    <path id="cs2Route" class="cs2map__road" d="M70 36 C 170 12, 250 60, 340 36 S 500 12, 580 36 S 730 60, 810 36" />
+                    <path id="cs2RouteProgress" class="cs2map__road-progress" d="M70 36 C 170 12, 250 60, 340 36 S 500 12, 580 36 S 730 60, 810 36" />
+                    <circle id="cs2Marker" class="cs2map__marker" cx="70" cy="36" r="8" />
+                    <circle id="cs2MarkerPulse" class="cs2map__marker-pulse" cx="70" cy="36" r="8" />
                   </svg>
 
                   <ol class="cs2map__pins">
                     <li>
-                      <button class="cs2map__pin is-active" role="tab" aria-selected="true" aria-controls="cs2-panel-understand" id="cs2-tab-understand" data-stage="0" style="left:4.5%">
+                      <button class="cs2map__pin is-active" role="tab" aria-selected="true" aria-controls="cs2-panel-understand" id="cs2-tab-understand" data-stage="0" style="left:8%">
                         <span class="cs2map__pinmark" aria-hidden="true"></span>
                         <span class="cs2map__pintext"><span class="cs2map__pinnum">01</span><span class="cs2map__pinname">Understand</span></span>
-                        <span class="cs2map__pindesc">Pin down the real problem and who it's for.</span>
                       </button>
                     </li>
                     <li>
-                      <button class="cs2map__pin" role="tab" aria-selected="false" aria-controls="cs2-panel-design" id="cs2-tab-design" data-stage="1" style="left:37.8%">
+                      <button class="cs2map__pin" role="tab" aria-selected="false" aria-controls="cs2-panel-design" id="cs2-tab-design" data-stage="1" style="left:38.6%">
                         <span class="cs2map__pinmark" aria-hidden="true"></span>
                         <span class="cs2map__pintext"><span class="cs2map__pinnum">02</span><span class="cs2map__pinname">Design</span></span>
-                        <span class="cs2map__pindesc">Turn research into interface decisions.</span>
                       </button>
                     </li>
                     <li>
-                      <button class="cs2map__pin" role="tab" aria-selected="false" aria-controls="cs2-panel-build" id="cs2-tab-build" data-stage="2" style="left:66.7%">
+                      <button class="cs2map__pin" role="tab" aria-selected="false" aria-controls="cs2-panel-build" id="cs2-tab-build" data-stage="2" style="left:65.9%">
                         <span class="cs2map__pinmark" aria-hidden="true"></span>
                         <span class="cs2map__pintext"><span class="cs2map__pinnum">03</span><span class="cs2map__pinname">Build</span></span>
-                        <span class="cs2map__pindesc">Make it real, solo and on teams.</span>
                       </button>
                     </li>
                     <li>
-                      <button class="cs2map__pin" role="tab" aria-selected="false" aria-controls="cs2-panel-improve" id="cs2-tab-improve" data-stage="3" style="left:95.5%">
+                      <button class="cs2map__pin" role="tab" aria-selected="false" aria-controls="cs2-panel-improve" id="cs2-tab-improve" data-stage="3" style="left:92%">
                         <span class="cs2map__pinmark" aria-hidden="true"></span>
                         <span class="cs2map__pintext"><span class="cs2map__pinnum">04</span><span class="cs2map__pinname">Improve</span></span>
-                        <span class="cs2map__pindesc">Reflect, weigh tradeoffs, plan next steps.</span>
                       </button>
                     </li>
                   </ol>
                 </div>
               </div>
+              <p class="cs2map__hint" id="cs2Hint">Tap a destination to open its stage &darr;</p>
             </nav>
 
             <!-- ===== STAGE CONTENT ===== -->
@@ -415,6 +412,16 @@
                 <span class="cs2__progress" id="cs2Progress" aria-hidden="true">Stage 1 of 4</span>
                 <button class="cs2__nav cs2__nav--next" id="cs2Next" aria-label="Next stage">Next &rarr;</button>
               </div>
+            </div>
+          </div>
+
+          <!-- Lightbox for inspecting a screenshot at full size -->
+          <div class="cs2lb" id="cs2Lightbox" hidden aria-hidden="true">
+            <div class="cs2lb__backdrop" data-cs2lb-close></div>
+            <div class="cs2lb__dialog" role="dialog" aria-modal="true" aria-label="Enlarged screenshot">
+              <button class="cs2lb__close" id="cs2LbClose" aria-label="Close enlarged image" data-cs2lb-close>&times;</button>
+              <img class="cs2lb__img" id="cs2LbImg" src="" alt="" />
+              <p class="cs2lb__cap" id="cs2LbCap"></p>
             </div>
           </div>
         </div>

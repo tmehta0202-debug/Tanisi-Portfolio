@@ -1424,7 +1424,7 @@ a { color: inherit; text-decoration: none; }
 }
 .cs2map__scroll { overflow-x: auto; overflow-y: visible; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
 .cs2map__scroll::-webkit-scrollbar { display: none; }
-.cs2map__inner { position: relative; min-width: 620px; height: 132px; }
+.cs2map__inner { position: relative; min-width: 560px; height: 84px; }
 .cs2map__svg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; }
 .cs2map__road { fill: none; stroke: var(--line); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 2 10; vector-effect: non-scaling-stroke; }
 .cs2map__road-progress {
@@ -1442,8 +1442,9 @@ a { color: inherit; text-decoration: none; }
   position: absolute; top: 50%; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 8px;
   background: transparent; border: 0; cursor: pointer; padding: 4px; border-radius: var(--r-sm);
   text-align: center; transition: transform .25s cubic-bezier(.22,.61,.36,1);
-  width: 150px; max-width: 32vw;
+  width: 128px; max-width: 30vw;
 }
+.cs2map__pinname { white-space: nowrap; }
 .cs2map__pinmark {
   flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
   background: #fff; border: 2px solid var(--ink-3); box-shadow: var(--shadow-1); position: relative;
@@ -1452,11 +1453,6 @@ a { color: inherit; text-decoration: none; }
 .cs2map__pinmark::after { content: ""; position: absolute; inset: 0; margin: auto; width: 8px; height: 8px; border-radius: 50%; background: var(--ink-3); transform: rotate(45deg); transition: background .25s; }
 .cs2map__pintext { display: flex; flex-direction: column; align-items: center; font-weight: 600; color: var(--ink-2); font-size: .95rem; line-height: 1.15; transition: color .2s; }
 .cs2map__pinnum { font-size: .64rem; font-weight: 700; letter-spacing: .1em; color: var(--ink-3); }
-/* Active pin expands to reveal a short description; others keep it collapsed. */
-.cs2map__pindesc {
-  max-height: 0; opacity: 0; overflow: hidden; font-weight: 400; font-size: .8rem; line-height: 1.4;
-  color: var(--ink-3); transition: max-height .3s ease, opacity .3s ease, margin-top .3s ease;
-}
 .cs2map__pin:hover { transform: translate(-50%, -52%); }
 .cs2map__pin:hover .cs2map__pinmark { border-color: var(--blue); }
 /* Completed stages: soft green pin. */
@@ -1468,8 +1464,6 @@ a { color: inherit; text-decoration: none; }
 .cs2map__pin.is-active .cs2map__pinmark::after { background: #fff; }
 .cs2map__pin.is-active .cs2map__pintext { color: var(--blue-deep); }
 .cs2map__pin.is-active .cs2map__pinnum { color: var(--blue-deep); }
-.cs2map__pin.is-active .cs2map__pindesc { max-height: 60px; opacity: 1; margin-top: 2px; }
-@media (prefers-reduced-motion: reduce) { .cs2map__pindesc { transition: opacity .2s; } }
 
 /* ---- Understand: isolated per-project blocks, large visual ---- */
 .cs2u__switch { margin-bottom: 22px; }
@@ -1592,3 +1586,56 @@ a { color: inherit; text-decoration: none; }
 @keyframes cs2FadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .cs2-fade { animation: none; } }
 /* The anchored design highlight already eases via .cs2d2__hl transition. */
+
+/* ============================================================
+   How I Work — compact-by-default, expand-on-click, lightbox
+   ============================================================ */
+
+/* Collapsed by default: only the route shows until a stage is picked. */
+.cs2__content {
+  overflow: hidden; max-height: 0; opacity: 0;
+  transition: max-height .4s cubic-bezier(.22,.61,.36,1), opacity .3s ease, margin-top .3s ease, border-color .3s;
+  border-color: transparent;
+}
+.cs2__content.is-expanded {
+  max-height: 4000px; opacity: 1; border-color: var(--line);
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs2__content { transition: opacity .2s; }
+}
+/* A gentle hint shown before expansion. */
+.cs2map__hint { font-size: .82rem; color: var(--ink-3); margin-top: 10px; text-align: center; transition: opacity .3s; }
+.cs2__layout.is-open .cs2map__hint { opacity: 0; height: 0; margin: 0; overflow: hidden; }
+
+/* Contained image previews (desktop max-height ~340px), centered, clickable. */
+.cs2u__visual img, .cs2d2__stage img {
+  max-height: 340px !important; width: auto; max-width: 100%; height: auto;
+  margin-left: auto; margin-right: auto; cursor: zoom-in;
+}
+.cs2d2__imgwrap { cursor: zoom-in; }
+@media (max-width: 860px) {
+  .cs2u__visual img, .cs2d2__stage img { max-height: 260px !important; }
+}
+
+/* ---- Lightbox ---- */
+.cs2lb { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 4vmin; }
+.cs2lb[hidden] { display: none; }
+.cs2lb__backdrop { position: absolute; inset: 0; background: rgba(13,36,64,.72); backdrop-filter: blur(2px); animation: cs2lbFade .2s ease; }
+.cs2lb__dialog {
+  position: relative; z-index: 1; max-width: 92vw; max-height: 92vh; display: flex; flex-direction: column; align-items: center; gap: 12px;
+  animation: cs2lbPop .25s cubic-bezier(.22,.61,.36,1);
+}
+.cs2lb__img { max-width: 92vw; max-height: 82vh; width: auto; height: auto; border-radius: var(--r-md); box-shadow: var(--shadow-2); background: #fff; border: 1px solid var(--line); }
+.cs2lb__cap { color: #fff; font-size: .92rem; text-align: center; max-width: 70ch; margin: 0; }
+.cs2lb__close {
+  position: absolute; top: -14px; right: -14px; width: 42px; height: 42px; border-radius: 50%;
+  background: #fff; color: var(--navy); border: 1px solid var(--line); box-shadow: var(--shadow-2);
+  font-size: 1.5rem; line-height: 1; cursor: pointer; display: grid; place-items: center; transition: transform .15s, background .2s;
+}
+.cs2lb__close:hover { transform: scale(1.08); background: var(--tint); }
+@keyframes cs2lbFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes cs2lbPop { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .cs2lb__backdrop, .cs2lb__dialog { animation: none; } }
+@media (max-width: 600px) {
+  .cs2lb__close { top: -10px; right: -10px; width: 38px; height: 38px; }
+}

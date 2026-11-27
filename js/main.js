@@ -466,6 +466,10 @@
   var marker = document.getElementById("cs2Marker");
   var markerPulse = document.getElementById("cs2MarkerPulse");
 
+  var content = root.querySelector(".cs2__content");
+  var layout = root.querySelector(".cs2__layout");
+  var expanded = false;
+
   var current = 0;
   var routeLen = 0;
   var stagePos = []; // {offset, x, y} per stage along the path
@@ -501,9 +505,17 @@
     if (routeProg) routeProg.style.strokeDashoffset = (routeLen - pos.offset);
   }
 
+  function expand() {
+    if (expanded) return;
+    expanded = true;
+    if (content) content.classList.add("is-expanded");
+    if (layout) layout.classList.add("is-open");
+  }
+
   function select(index, focusPin) {
     index = Math.max(0, Math.min(pins.length - 1, index));
     current = index;
+    expand();
     pins.forEach(function (pin, i) {
       pin.classList.toggle("is-active", i === index);
       pin.classList.toggle("is-done", i < index);
@@ -547,7 +559,11 @@
     requestAnimationFrame(initRoute);
     window.addEventListener("resize", function () { computeRoute(); paintRoute(current); });
   }
-  select(0);
+
+  // Collapsed initial state: route only, no stage opened yet.
+  pins.forEach(function (pin) { pin.classList.remove("is-active"); pin.setAttribute("aria-selected", "false"); });
+  panels.forEach(function (panel) { panel.setAttribute("hidden", ""); });
+  if (progress) progress.textContent = "Pick a stage";
 
   /* ----- Understand: project switch + per-project step walkthrough ----- */
   var u = root.querySelector("[data-cs2u]");
@@ -673,6 +689,45 @@
           else { s.setAttribute("hidden", ""); s.classList.remove("is-active"); }
         });
       });
+    });
+  }
+
+  /* ----- Lightbox: click a preview to inspect it larger ----- */
+  var lb = document.getElementById("cs2Lightbox");
+  var lbImg = document.getElementById("cs2LbImg");
+  var lbCap = document.getElementById("cs2LbCap");
+  var lastFocus = null;
+  if (lb && lbImg) {
+    function openLightbox(src, alt, caption) {
+      lastFocus = document.activeElement;
+      lbImg.src = src; lbImg.alt = alt || "";
+      lbCap.textContent = caption || alt || "";
+      lb.hidden = false; lb.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      var closeBtn = document.getElementById("cs2LbClose");
+      if (closeBtn) closeBtn.focus();
+    }
+    function closeLightbox() {
+      lb.hidden = true; lb.setAttribute("aria-hidden", "true");
+      lbImg.src = "";
+      document.body.style.overflow = "";
+      if (lastFocus && lastFocus.focus) lastFocus.focus(); // preserve where the user was
+    }
+    // Open on click of any Understand/Design preview image (only the visible one).
+    Array.prototype.slice.call(root.querySelectorAll(".cs2u__visual img, .cs2d2__stage img")).forEach(function (img) {
+      img.addEventListener("click", function () {
+        if (img.hidden) return;
+        // Prefer a nearby caption for Understand visuals.
+        var fig = img.closest("figure");
+        var cap = fig ? fig.querySelector("figcaption:not([hidden])") : null;
+        openLightbox(img.currentSrc || img.src, img.alt, cap ? cap.textContent : img.alt);
+      });
+    });
+    Array.prototype.slice.call(lb.querySelectorAll("[data-cs2lb-close]")).forEach(function (el) {
+      el.addEventListener("click", closeLightbox);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !lb.hidden) closeLightbox();
     });
   }
 })();
