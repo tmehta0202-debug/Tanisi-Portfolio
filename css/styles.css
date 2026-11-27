@@ -1457,18 +1457,22 @@ a { color: inherit; text-decoration: none; }
 .cs2map__pinmark::after { content: ""; position: absolute; inset: 0; margin: auto; width: 8px; height: 8px; border-radius: 50%; background: var(--ink-3); transform: rotate(45deg); transition: background .25s; }
 /* Number sits clearly above the name, both well clear of the pin tip. */
 .cs2map__pintext { display: flex; flex-direction: column; align-items: center; gap: 3px; font-weight: 600; color: var(--ink-2); line-height: 1.2; transition: color .2s; }
-.cs2map__pinnum { font-size: .62rem; font-weight: 700; letter-spacing: .14em; color: var(--ink-3); }
+.cs2map__pinnum { font-size: .66rem; font-weight: 700; letter-spacing: .14em; color: var(--ink-2); }
 .cs2map__pin:hover { transform: translate(-50%, -52%); }
 .cs2map__pin:hover .cs2map__pinmark { border-color: var(--blue); }
 /* Completed stages: soft green pin. */
 .cs2map__pin.is-done .cs2map__pinmark { border-color: var(--green); background: var(--tint-green); }
 .cs2map__pin.is-done .cs2map__pinmark::after { background: var(--green-deep); }
 .cs2map__pin.is-done .cs2map__pinnum { color: var(--green-deep); }
-/* Active stage: filled blue pin, larger, with its description expanded. */
-.cs2map__pin.is-active .cs2map__pinmark { border-color: var(--blue); background: var(--blue); transform: rotate(-45deg) scale(1.15); }
+/* Active stage: filled blue pin, slightly larger. transform-origin keeps the
+   growth upward so the number/name below stay fully visible. */
+.cs2map__pin.is-active .cs2map__pinmark { border-color: var(--blue); background: var(--blue); transform: rotate(-45deg) scale(1.12); }
 .cs2map__pin.is-active .cs2map__pinmark::after { background: #fff; }
 .cs2map__pin.is-active .cs2map__pintext { color: var(--blue-deep); }
-.cs2map__pin.is-active .cs2map__pinnum { color: var(--blue-deep); }
+/* Make the active number clearly readable (not washed out). */
+.cs2map__pin.is-active .cs2map__pinnum { color: var(--blue-deep); opacity: 1; }
+/* A touch more breathing room between the active pin and its label. */
+.cs2map__pin.is-active { gap: 13px; }
 
 /* ---- Understand: isolated per-project blocks, large visual ---- */
 .cs2u__switch { margin-bottom: 22px; }
