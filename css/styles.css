@@ -1618,23 +1618,22 @@ a { color: inherit; text-decoration: none; }
 .cs2__layout.is-open .cs2map__hint { opacity: 0; height: 0; margin: 0; overflow: hidden; }
 
 /* ---- Preview sizing ----
-   Two strategies so previews look large but the section stays compact:
-   • Understand visuals (no anchored highlight): a bold, full-width "window"
-     that CROPS to a fixed height via object-fit: cover (top-anchored, so
-     titles stay visible). The full, uncropped image opens in the lightbox.
-   • Design stage (has % highlights): CONTAIN so the highlight stays anchored
-     to the real image, at a slightly larger fixed height. */
+   The whole image is always shown (object-fit: contain, no cropping) on a
+   tinted plate with a fixed height, so the section stays compact while the
+   image is as large as it can be within that height. Click opens the
+   full-size lightbox. Design uses the same approach (contain) so its
+   anchored highlight stays accurate. */
 .cs2u__visual {
-  padding: 0; display: block; background: var(--tint); border-radius: var(--r-md); overflow: visible;
+  padding: 14px; display: flex; align-items: center; justify-content: center;
+  background: var(--tint); border: 1px solid var(--line); border-radius: var(--r-md);
+  min-height: 320px; overflow: visible; flex-direction: column;
 }
-/* object-fit: cover crops the image to its own box (no parent overflow needed),
-   so the caption below stays visible. Rounded top corners on the crop. */
 .cs2u__visual img {
-  width: 100% !important; max-width: 100% !important; height: 300px !important; max-height: 300px !important;
-  object-fit: cover; object-position: top center; display: block; cursor: zoom-in;
-  border: 1px solid var(--line); border-radius: var(--r-md);
+  width: auto !important; max-width: 100% !important; height: auto !important; max-height: 300px !important;
+  object-fit: contain; display: block; cursor: zoom-in;
+  border: 1px solid var(--line); border-radius: var(--r-sm); background: var(--surface);
 }
-.cs2u__visual figcaption { padding: 10px 4px 0; }
+.cs2u__visual figcaption { padding: 10px 4px 0; text-align: center; }
 .cs2d2__stage { align-items: center; min-height: 260px; }
 .cs2d2__stage img {
   max-height: 280px !important; width: auto; max-width: 100%; height: auto;
