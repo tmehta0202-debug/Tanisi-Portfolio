@@ -15,14 +15,16 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%231a73e8'/><stop offset='1' stop-color='%231aa06a'/></linearGradient></defs><rect width='100' height='100' rx='26' fill='url(%23g)'/><rect x='30' y='29' width='40' height='9' rx='4.5' fill='white'/><rect x='45.5' y='29' width='9' height='42' rx='4.5' fill='white'/></svg>" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Subtle cursor-following glow (decorative; toggled on by JS, disabled for reduced motion / touch) -->
+  <div id="cursorGlow" class="cursor-glow" aria-hidden="true"></div>
 
   <!-- ============ NAV ============ -->
   <header class="nav" id="nav">
@@ -55,6 +57,8 @@
       <div class="hero__bg" aria-hidden="true">
         <span class="blob blob--1"></span>
         <span class="blob blob--2"></span>
+        <span class="blob blob--3"></span>
+        <canvas class="hero__particles" id="heroParticles"></canvas>
       </div>
 
       <div class="hero__inner">
@@ -74,20 +78,13 @@
           </div>
         </div>
 
-        <div class="hero__showcase reveal" aria-label="Featured project previews">
-          <a class="hero__shot hero__shot--main" href="projects/gather.html" style="--d:1">
-            <img src="images/Gather-AISearch_General-HIFI.png" alt="Gather — AI-powered visual reference discovery, high-fidelity search screen" loading="eager" />
-            <span class="hero__shot-tag">Gather</span>
-          </a>
-          <a class="hero__shot hero__shot--er" href="projects/er-fasttrack.html" style="--d:2">
-            <img src="images/ER-ss.png" alt="ER FastTrack — emergency-room triage-support prototype" loading="lazy" />
-            <span class="hero__shot-tag">ER FastTrack</span>
-          </a>
-          <a class="hero__shot hero__shot--un" href="projects/unraveling.html" style="--d:3">
-            <img src="images/Settings-Unravel.png" alt="Unraveling — game UI settings menu" loading="lazy" />
-            <span class="hero__shot-tag">Unraveling</span>
-          </a>
-          <span class="hero__badge"><span class="dot">●</span> Open to internships</span>
+        <div class="hero__portrait reveal">
+          <div class="portrait">
+            <img src="images/tanisi.jpg" alt="Portrait of Tanisi Mehta"
+                 onerror="this.style.display='none';this.parentElement.classList.add('portrait--empty')" />
+            <span class="portrait__mono" aria-hidden="true">TM</span>
+          </div>
+          <div class="portrait__badge"><span class="dot">●</span> Open to internships</div>
         </div>
       </div>
 
@@ -119,26 +116,23 @@
             <div class="tile__body">
               <h3 class="tile__title">Ignition Portal</h3>
               <p class="tile__meta">Team hackathon project · July 2026</p>
-              <p class="tile__desc">A student onboarding portal built in a hackathon weekend with a 3-person team, from a survey of 44 students to a working prototype.</p>
               <div class="tile__cta">
-                <a class="tile__btn" href="projects/gt-ignite.html">Read case study <span class="tile__btn-arrow" aria-hidden="true">→</span></a>
+                <a class="tile__btn" href="projects/gt-ignite.html">Read more →</a>
               </div>
             </div>
           </article>
 
           <!-- Gather -->
           <article class="tile reveal">
-            <div class="tile__media tile__media--swap">
+            <div class="tile__media">
               <span class="tile__tag tile__tag--star">★ Featured</span>
-              <img class="tile__img tile__img--base" src="images/Gather-Photocard.png" alt="Gather photocard" loading="lazy" />
-              <img class="tile__img tile__img--alt" src="images/Gather-AISearch_General-HIFI.png" alt="Gather high-fidelity search screen" loading="lazy" aria-hidden="true" />
+              <img src="images/Gather-Photocard.png" alt="Gather photocard" loading="lazy" />
             </div>
             <div class="tile__body">
               <h3 class="tile__title">Gather</h3>
               <p class="tile__meta">Visual reference discovery · Figma concept · September - November 2026</p>
-              <p class="tile__desc">An AI-powered visual discovery concept: research, a persona, and four insight clusters mapped to six hi-fi screens.</p>
               <div class="tile__cta">
-                <a class="tile__btn" href="projects/gather.html">Read case study <span class="tile__btn-arrow" aria-hidden="true">→</span></a>
+                <a class="tile__btn" href="projects/gather.html">Read more →</a>
               </div>
             </div>
           </article>
@@ -147,14 +141,13 @@
           <article class="tile reveal">
             <div class="tile__media">
               <span class="tile__tag tile__tag--star">★ Featured</span>
-              <img class="tile__img tile__img--base" src="images/ER-ss.png" alt="Screenshot of the ER FastTrack triage-support prototype" loading="lazy" />
+              <img src="images/ER-ss.png" alt="Screenshot of the ER FastTrack triage-support prototype" loading="lazy" />
             </div>
             <div class="tile__body">
               <h3 class="tile__title">ER FastTrack</h3>
               <p class="tile__meta">Web app · Healthcare UX · Sept 2026</p>
-              <p class="tile__desc">A triage-support web app, built solo and grounded in real ESI protocols: patients report, software organizes, clinicians decide.</p>
               <div class="tile__cta">
-                <a class="tile__btn" href="projects/er-fasttrack.html">Read case study <span class="tile__btn-arrow" aria-hidden="true">→</span></a>
+                <a class="tile__btn" href="projects/er-fasttrack.html">Read more →</a>
               </div>
             </div>
           </article>
