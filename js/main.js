@@ -759,12 +759,15 @@
       document.body.style.overflow = "";
       if (lastFocus && lastFocus.focus) lastFocus.focus(); // preserve where the user was
     }
-    // Open on click of any Understand/Design preview image (only the visible one).
-    Array.prototype.slice.call(root.querySelectorAll(".cs2u__visual img, .cs2d2__stage img")).forEach(function (img) {
-      img.addEventListener("click", function () {
-        if (img.hidden) return;
-        // Prefer a nearby caption for Understand visuals.
-        var fig = img.closest("figure");
+    // Open on click anywhere in a preview container (image, padding, or the
+    // expand icon, which has pointer-events:none so the click lands here).
+    Array.prototype.slice.call(root.querySelectorAll(".cs2u__visual, .cs2d2__stage")).forEach(function (box) {
+      box.style.cursor = "zoom-in";
+      box.addEventListener("click", function () {
+        var imgs = Array.prototype.slice.call(box.querySelectorAll("img"));
+        var img = imgs.filter(function (im) { return !im.hidden && im.offsetParent !== null; })[0] || imgs[0];
+        if (!img) return;
+        var fig = box.closest("figure") || box;
         var cap = fig ? fig.querySelector("figcaption:not([hidden])") : null;
         openLightbox(img.currentSrc || img.src, img.alt, cap ? cap.textContent : img.alt);
       });
