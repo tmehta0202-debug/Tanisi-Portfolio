@@ -61,6 +61,16 @@
 
   /* ---- Scroll reveal ---- */
   var revealEls = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+  // Stagger siblings that share a parent (~80ms each) for a cascade.
+  (function setStagger() {
+    var seen = new Map();
+    revealEls.forEach(function (el) {
+      var p = el.parentNode;
+      var i = seen.get(p) || 0;
+      el.style.setProperty("--i", i);
+      seen.set(p, i + 1);
+    });
+  })();
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(
       function (entries) {
@@ -75,8 +85,15 @@
     );
     revealEls.forEach(function (el) { io.observe(el); });
   } else {
-    // Fallback: just show everything
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
+  }
+
+  /* ---- Hero showcase: trigger the staggered screenshot entrance on load ---- */
+  var heroShowcase = document.querySelector(".hero__showcase");
+  if (heroShowcase) {
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { heroShowcase.classList.add("is-visible"); });
+    });
   }
 
   /* ---- Scroll spy: active nav link ---- */
@@ -180,95 +197,9 @@
     }
   }
 
-  /* ---- Cursor-following glow (subtle, understated) ---- */
-  var glow = document.getElementById("cursorGlow");
-  if (glow && finePointer && !reduceMotion) {
-    var gx = window.innerWidth / 2;
-    var gy = window.innerHeight / 3;
-    var tx = gx;
-    var ty = gy;
-    var rafId = null;
-    var shown = false;
-
-    function render() {
-      // Ease toward the pointer for a smooth, trailing feel.
-      gx += (tx - gx) * 0.14;
-      gy += (ty - gy) * 0.14;
-      glow.style.setProperty("--glow-x", gx + "px");
-      glow.style.setProperty("--glow-y", gy + "px");
-      if (Math.abs(tx - gx) > 0.5 || Math.abs(ty - gy) > 0.5) {
-        rafId = window.requestAnimationFrame(render);
-      } else {
-        rafId = null;
-      }
-    }
-    function onMove(e) {
-      tx = e.clientX;
-      ty = e.clientY;
-      if (!shown) {
-        shown = true;
-        glow.classList.add("is-active");
-      }
-      if (rafId === null) rafId = window.requestAnimationFrame(render);
-    }
-    window.addEventListener("mousemove", onMove, { passive: true });
-    window.addEventListener("mouseout", function (e) {
-      if (!e.relatedTarget) glow.classList.remove("is-active");
-    });
-  }
-
-  /* ---- Subtle 3D tilt on project tiles (image/video previews) ---- */
-  var tiles = Array.prototype.slice.call(document.querySelectorAll(".tile"));
-  if (tiles.length && finePointer && !reduceMotion) {
-    var MAX_TILT = 5; // degrees; kept small and understated
-    tiles.forEach(function (tile) {
-      tile.addEventListener("mousemove", function (e) {
-        var r = tile.getBoundingClientRect();
-        var px = (e.clientX - r.left) / r.width;  // 0..1
-        var py = (e.clientY - r.top) / r.height;  // 0..1
-        var ry = (px - 0.5) * (MAX_TILT * 2);     // rotateY from horizontal pos
-        var rx = (0.5 - py) * (MAX_TILT * 2);     // rotateX from vertical pos
-        tile.style.setProperty("--rx", ry.toFixed(2) + "deg");
-        tile.style.setProperty("--ry", rx.toFixed(2) + "deg");
-        tile.classList.add("tilt");
-      });
-      tile.addEventListener("mouseleave", function () {
-        tile.classList.remove("tilt");
-        tile.style.removeProperty("--rx");
-        tile.style.removeProperty("--ry");
-      });
-    });
-  }
-
-  /* ---- Image mask reveal: wipe project images open as they scroll in ---- */
-  var mediaEls = Array.prototype.slice.call(
-    document.querySelectorAll(".tile__media img, .tile__media video")
-  );
-  if (mediaEls.length) {
-    if (reduceMotion || !("IntersectionObserver" in window)) {
-      // Leave images fully visible; no wipe.
-    } else {
-      mediaEls.forEach(function (el) {
-        var host = el.closest(".tile");
-        if (host) host.classList.add("mask-hidden");
-      });
-      var mio = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              var host = entry.target;
-              host.classList.remove("mask-hidden");
-              host.classList.add("mask-shown");
-              mio.unobserve(host);
-            }
-          });
-        },
-        { threshold: 0.2, rootMargin: "0px 0px -8% 0px" }
-      );
-      Array.prototype.slice.call(document.querySelectorAll(".tile.mask-hidden"))
-        .forEach(function (t) { mio.observe(t); });
-    }
-  }
+  /* Cursor glow, 3D tile tilt, and image mask-wipe removed — replaced by the
+     purposeful hover (1.03 zoom + alternate cross-fade) and the lighter
+     scroll reveals. */
 
   /* ---- Magnetic hero headline (per-letter nudge toward the cursor) ---- */
   var magneticLine = document.querySelector("[data-magnetic]");
@@ -387,60 +318,8 @@
     navLinksList.forEach(function (l) { navObserver.observe(l, { attributes: true, attributeFilter: ["class"] }); });
   }
 
-  /* ---- Generative hero particles (gentle floating shapes) ---- */
-  var canvas = document.getElementById("heroParticles");
-  if (canvas && canvas.getContext && !reduceMotion) {
-    var ctx = canvas.getContext("2d");
-    var hero = canvas.closest(".hero");
-    var particles = [];
-    var colors = ["rgba(26,115,232,0.14)", "rgba(26,160,106,0.13)", "rgba(74,148,236,0.12)"];
-    var running = true;
-
-    function size() {
-      var r = hero.getBoundingClientRect();
-      canvas.width = r.width; canvas.height = r.height;
-      var count = Math.min(14, Math.max(6, Math.round(r.width / 110)));
-      particles = [];
-      for (var i = 0; i < count; i++) {
-        particles.push({
-          x: Math.random() * r.width,
-          y: Math.random() * r.height,
-          rad: 6 + Math.random() * 20,
-          vx: (Math.random() - 0.5) * 0.25,
-          vy: (Math.random() - 0.5) * 0.25,
-          c: colors[i % colors.length]
-        });
-      }
-    }
-    function frame() {
-      if (!running) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(function (p) {
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < -40) p.x = canvas.width + 40;
-        if (p.x > canvas.width + 40) p.x = -40;
-        if (p.y < -40) p.y = canvas.height + 40;
-        if (p.y > canvas.height + 40) p.y = -40;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.rad, 0, Math.PI * 2);
-        ctx.fillStyle = p.c;
-        ctx.fill();
-      });
-      requestAnimationFrame(frame);
-    }
-    size();
-    frame();
-    window.addEventListener("resize", size);
-    // Pause when the hero scrolls out of view to save battery.
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) {
-          running = en.isIntersecting;
-          if (running) frame();
-        });
-      }, { threshold: 0 }).observe(hero);
-    }
-  }
+  /* Generative hero particle canvas removed to reduce ambient motion and
+     keep the hero calm; the layered screenshot composition is the focus. */
 })();
 
 /* ============================================================
